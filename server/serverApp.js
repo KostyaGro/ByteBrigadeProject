@@ -1,32 +1,51 @@
 import fs from "fs";
 import path from "path";
 import router from "./router.js";
+import { URL } from "url";
+
+const formatHtml = (htmlPage) =>
+  String(htmlPage)
+    .replace(/(?<=href="\S+)\.html(?=")/g, "")
+    .replace(/(?<=href="\S+)index(?=")/g, "");
+
+const isLegitTarget = (targetPath) =>
+  fs.existsSync(targetPath) && fs.statSync(targetPath).isFile();
 
 export default (config) => (request, response) => {
-  console.log(request.url);
-  console.log(config);
-  console.log(router);
+  console.log(`> request: ${request.method}  ${request.url}`);
+  const url = new URL(request.url, `http://${request.headers.host}`);
+  const searchParams = url.searchParams;
+  let relativePath = url.pathname;
+  console.log(
+    `looking for relative path: "${relativePath}"  with searchparams: "${searchParams}"`
+  );
+
+  //  ============= вывести в функцию router.js ===========
+  // ------------- поиск и отдача элементов сайта из папки "./site"
+  if (relativePath.at(-1) === "/") relativePath += "index";
 
   let data = "";
-  response.writeHead(200);
-  if (request.url === "/") {
-    data = fs.readFileSync(
-      path.resolve(config.dirname, config.sitePath, "index.html")
-    );
-  } else {
-    try {
-      const fullPath = path.resolve(
-        config.dirname,
-        config.sitePath,
-        request.url.slice(1)
-      );
-      console.log(fullPath);
-      data = fs.readFileSync(fullPath);
-    } catch (e) {
-      console.log(`can't read address: "${request.url}"`);
-    }
+  const absolutePath = path.resolve(
+    config.dirname,
+    config.sitePath,
+    `.${relativePath}`
+  );
+  if (isLegitTarget(absolutePath)) {
+    response.writeHead(200);
+    data = fs.readFileSync(absolutePath);
+    response.end(data, "binary");
+    return true;
   }
 
-  // response.end("hi");
-  response.end(data, "binary");
+  const absolutePathHtml = absolutePath + ".html";
+  if (isLegitTarget(absolutePathHtml)) {
+    response.writeHead(200, { ContentType: "text/html" });
+    data = fs.readFileSync(absolutePathHtml);
+    response.end(formatHtml(data));
+    return true;
+  }
+  // ================================================
+  console.log(
+    `site resource isn't found on: ${request.url} | ${absolutePath} | ${absolutePathHtml}`
+  );
 };
