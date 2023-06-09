@@ -1,3 +1,4 @@
+
 import fs from "fs";
 import path from "path";
 import http from "http";
@@ -16,3 +17,4 @@ console.log(config);
 http.createServer(app).listen(config.port, () => {
   console.log(`server started. Listening on ${config.port}`);
 });
+
