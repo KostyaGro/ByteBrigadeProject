@@ -6,4 +6,9 @@
 "2":{"name":"товар2",
 "image":"image2.img",
 "description":"это второй тестовый товар в БД",
-"price":1000}}
+"price":1000},
+
+"3":{"name":"товарище №3",
+"image":"image3.img",
+"description":"ТОВАРИЩЕ !!",
+"price":5999.99}}
