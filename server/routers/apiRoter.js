@@ -4,11 +4,14 @@ import Users from '../users.js';
 const routes = {
   GET: {
     // cart: (request, response) => {},
-    products: ({ response, products }) => {
+    'products/': ({ response, products }) => {
       response.writeHead(200);
-      response.end(JSON.stringify(products.list));
+      response.end(JSON.stringify(products.all));
     },
-    // 'product/(\\w+)': (request, response) => {},
+    'product/(\\w+)': ({ response, products, ID }) => {
+      response.writeHead(200);
+      response.end(JSON.stringify(products.getByID(ID)));
+    },
   },
   POST: {
     // 'cart-add-product/(\\w+)': (request, response) => {},
@@ -36,23 +39,24 @@ const apiRouter = (request, response, config) => {
       const route = routes[request.method];
 
       const result = pathname && Object.keys(route).find((str) => {
-        const regexp = new RegExp(`^/api/${str}/$`);
+        const regexp = new RegExp(`^/api/${str}$`);
         console.log(regexp);
-        console.log(body);
+        // console.log(body);
         const matches = pathname.match(regexp);
         if (!matches) {
           return false;
         }
 
+        const ID = matches[1];
         route[str]({
-          request, response, matches, body, users, products,
+          request, response, matches, body, users, products, ID,
         });
         return true;
       });
 
       if (!result) {
-        // response.writeHead(404);
-        // response.end();
+        response.writeHead(404);
+        response.end();
         return false;
       }
     });

@@ -14,17 +14,9 @@ export default (config) => (request, response) => {
   );
 
   if (request.url.startsWith('/api/')) {
-    const isApiOk = apiRouter(request, response, config);
-    if (!isApiOk) {
-      response.writeHead(400);
-      response.end('400 Bad Reques');
-    }
+    apiRouter(request, response, config);
     return;
   }
 
-  const isStaticOk = staticRouter(request, response, relativePath, config);
-  if (!isStaticOk) {
-    response.writeHead(404);
-    response.end('<p style="font-size:500%"> 404: Page not found!</p>');
-  }
+  staticRouter(request, response, relativePath, config);
 };

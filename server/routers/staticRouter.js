@@ -10,7 +10,6 @@ const formatHtml = (htmlPage) => String(htmlPage)
 const staticRouter = (request, response, relativePath, config) => {
   // ------------- поиск и отдача элементов сайта из папки "./site"
   const absolutePath = path.resolve(
-    config.dirname,
     config.sitePath,
     `.${relativePath}${(relativePath.at(-1) === '/') ? 'index' : ''}`,
   );
@@ -31,6 +30,8 @@ const staticRouter = (request, response, relativePath, config) => {
   }
 
   console.log('\x1b[31m%s\x1b[0m"', 'resource isn\'t found:', `${request.url} | ${absolutePath} | ${absolutePathHtml}`);
+  response.writeHead(404);
+  response.end('<p style="font-size:500%"> 404: Page not found!</p>');
   return false;
 };
 
