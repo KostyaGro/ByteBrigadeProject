@@ -1,0 +1,9 @@
+{"1":{"name":"товар1",
+"image":"image1.img",
+"description":"это первый тестовый товар в БД",
+"price":500},
+
+"2":{"name":"товар2",
+"image":"image2.img",
+"description":"это второй тестовый товар в БД",
+"price":1000}}
