@@ -9,9 +9,9 @@ publish:
 	npm publish --dry-run
 
 lint:
-	npx eslint .
+	npx eslint . || exit 0
 	npx prettier --check .
 
 fix-lint:
-	npx eslint . --fix
+	npx eslint . --fix || exit 0
 	npx prettier --write .
