@@ -20,6 +20,8 @@ const getProducts = async () => {
     });
   Object.entries(products).forEach(async ([ID, info]) => {
     const card = await addCard();
+    card.querySelector('.img-container img').src = info.productImgPath;
+    card.querySelector('.product-brand').textContent = info.brand;
     card.querySelector('.product-name').textContent = info.name;
     card.querySelector('.product-description').textContent = info.description;
     card.querySelector('.price').textContent = `${info.price}$`;
