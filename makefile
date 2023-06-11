@@ -10,7 +10,8 @@ publish:
 
 lint:
 	npx eslint .
-	npx stylelint "**/*.css"
+	npx prettier --check .
 
 fix-lint:
 	npx eslint . --fix
+	npx prettier --write .
