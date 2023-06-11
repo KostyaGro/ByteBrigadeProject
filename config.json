@@ -2,4 +2,5 @@
 "siteDir":"./site/",
 "dataDir":"./database/",
 "usersDBfilename":"users.json",
-"productsDBfilename":"products.json"}
+"productsDBfilename":"products.json",
+"productImgDir":"/resources/"}  

@@ -60,7 +60,17 @@ p {
 
 .product-name-container {
   height: 1em;
+  display: flex;
+  border-style: solid;
+  border-radius: 5px;
+  background-color: rgba(128, 128, 128, 0.623);
+}
 
+.product-brand {
+  margin: 0;
+  height: 1em;
+  align-self: start;
+  width: 50%;
   border-style: solid;
   border-radius: 5px;
   background-color: rgba(128, 128, 128, 0.623);

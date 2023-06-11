@@ -1,14 +1,17 @@
 {"1":{"name":"товар1",
-"image":"image1.img",
+"brand":"бренд",
+"image":"image1.webp",
 "description":"это первый тестовый товар в БД",
 "price":500},
 
 "2":{"name":"товар2",
-"image":"image2.img",
+"brand":"бренд2",
+"image":"image2.jpg",
 "description":"это второй тестовый товар в БД",
 "price":1000},
 
 "3":{"name":"товарище №3",
-"image":"image3.img",
+"brand":"бренд3",
+"image":"image3.webp",
 "description":"ТОВАРИЩЕ !!",
 "price":5999.99}}
