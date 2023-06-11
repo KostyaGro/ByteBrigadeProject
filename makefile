@@ -10,6 +10,8 @@ publish:
 
 lint:
 	npx eslint .
+	npx prettier --check .
 
 fix-lint:
 	npx eslint . --fix
+	npx prettier --write .
