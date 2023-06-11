@@ -1,9 +1,10 @@
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
+import readObjFromFile from './readObjFromFile.js';
 
 class Users {
   constructor(config) {
-    this.list = JSON.parse(fs.readFileSync(path.resolve(config.dirname, config.dataPath, 'users.json')));
+    this.all = readObjFromFile(config.usersDBpath);
   }
 }
 export default Users;

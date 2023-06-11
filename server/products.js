@@ -1,9 +1,13 @@
-import fs from 'fs';
-import path from 'path';
+// import fs from 'fs';
+// import path from 'path';
+import readObjFromFile from './readObjFromFile.js';
 
 class Products {
   constructor(config) {
-    this.list = JSON.parse(fs.readFileSync(path.resolve(config.dirname, config.dataPath, 'products.json')));
+    this.all = readObjFromFile(config.productsDBpath);
   }
+
+  getByID = (id) => this.all[id];
 }
+
 export default Products;
