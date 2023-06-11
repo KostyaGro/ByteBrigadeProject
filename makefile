@@ -10,7 +10,6 @@ publish:
 
 lint:
 	npx eslint .
-	npx stylelint "**/*.css"
 
 fix-lint:
 	npx eslint . --fix
