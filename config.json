@@ -1,3 +1,5 @@
 {"port":"5000",
-"sitePath":"./site/",
-"dataPath":"./database/"}
+"siteDir":"./site/",
+"dataDir":"./database/",
+"usersDBfilename":"users.json",
+"productsDBfilename":"products.json"}
