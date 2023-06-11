@@ -1,0 +1,26 @@
+p {
+  color: green;
+}
+
+.shop-main-navbar {
+  background-color: burlywood;
+  display: flex;
+  padding: 10px 25%;
+  justify-content: space-around;
+}
+
+.product-list-container {
+  background-color: beige;
+  display: flex;
+  flex-direction: column;
+  vertical-align: middle;
+  /* justify-content: flex-start; */
+}
+
+.product-list-item {
+  background-color: cadetblue;
+  display: flex;
+  height: 150px;
+  margin: 10px 25%;
+  border-radius: 10px;
+}
