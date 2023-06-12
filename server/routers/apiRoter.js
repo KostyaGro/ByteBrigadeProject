@@ -15,7 +15,7 @@ const routes = {
   },
   POST: {
     // 'cart-add-product/(\\w+)': (request, response) => {},
-    // user: (request, response) => {},
+    user: ({ request, body, users }) => { console.log(body); console.log(users); },
     // login: (request, response) => {},
   },
   DELETE: {
@@ -35,13 +35,13 @@ const apiRouter = (request, response, config) => {
   request
     .on('data', (chunk) => body.push(chunk.toString()))
     .on('end', () => {
+      console.log('body: ', body);
       const { pathname } = new URL(request.url, `http://${request.headers.host}`);
       const route = routes[request.method];
 
       const result = pathname && Object.keys(route).find((str) => {
         const regexp = new RegExp(`^/api/${str}$`);
         console.log(regexp);
-        // console.log(body);
         const matches = pathname.match(regexp);
         if (!matches) {
           return false;
