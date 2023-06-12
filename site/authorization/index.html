@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="auth-styles.css" />
+  </head>
+
+  <body>
+    авторизация
+    <p>
+      <a href="../shop/index.html">магазин</a>
+    </p>
+    <div class="auth-container">
+      <div class="reg-container auth-block">
+        <form action="/api/user" method="post">
+          <h2>регистрация</h2>
+          <label for="loginName-reg">псевдоним</label>
+          <br />
+          <input id="loginName-reg" type="name" placeholder="имя" value="hi" />
+          <br />
+          <label for="password-reg">пароль</label>
+          <br />
+          <input id="password-reg" type="password" placeholder="пароль" />
+          <br />
+          <label for="password-repeat-reg">повторите пароль</label>
+          <br />
+          <input id="password-repeat-reg" type="password" placeholder="повторите пароль" /> <br />
+          <button id="reg-button">зарегистрироваться</button>
+        </form>
+      </div>
+      <div class="login-container auth-block">
+        <form action="">
+          <h2>логин</h2>
+          <label for="loginName-log-in">псевдоним</label>
+          <br />
+          <input id="loginName-log-in" type="name" placeholder="имя" />
+          <br />
+          <label for="password-log-in">пароль</label>
+          <br />
+          <input id="password-log-in" type="password" placeholder="повторите пароль" /> <br />
+          <button id="login-button">войти</button>
+        </form>
+      </div>
+    </div>
+  </body>
+  <script src="auth-script.js"></script>
+</html>
