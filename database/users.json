@@ -1,1 +1,22 @@
-{}
+{
+  "1": {
+    "loginName": "ivan",
+    "password": "12345",
+    "email": "",
+    "firstName": "",
+    "secondName": "",
+    "phoneNumber": "",
+    "shippingAddress": "",
+    "cart": []
+  },
+  "2": {
+    "loginName": "ivanII",
+    "password": "123456",
+    "email": "",
+    "firstName": "",
+    "secondName": "",
+    "phoneNumber": "",
+    "shippingAddress": "",
+    "cart": []
+  }
+}
