@@ -15,11 +15,11 @@
     </p>
     <div class="auth-container">
       <div class="reg-container auth-block">
-        <form action="">
+        <form action="/api/user" method="post">
           <h2>регистрация</h2>
           <label for="username">псевдоним</label>
           <br />
-          <input id="username" type="name" placeholder="имя" />
+          <input id="username" type="name" placeholder="имя" value="hi" />
           <br />
           <label for="username">пароль</label>
           <br />
@@ -28,8 +28,7 @@
           <label for="username">повторите пароль</label>
           <br />
           <input id="password-repeat" type="password" placeholder="повторите пароль" /> <br />
-          <input type="button" value="зарегистрироваться" />
-          <!-- <button>зарегистрироваться</button> -->
+          <button>зарегистрироваться</button>
         </form>
       </div>
       <div class="login-container auth-block">
@@ -42,8 +41,7 @@
           <label for="username">пароль</label>
           <br />
           <input id="password-repeat" type="password" placeholder="повторите пароль" /> <br />
-          <input type="button" value="войти" />
-          <!-- <button>войти</button> -->
+          <button>войти</button>
         </form>
       </div>
     </div>
