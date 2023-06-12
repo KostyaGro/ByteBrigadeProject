@@ -16,7 +16,27 @@ const routes = {
   POST: {
     // 'cart-add-product/(\\w+)': (request, response) => {},
     user: ({ request, body, users }) => { console.log(body); console.log(users); },
-    // login: (request, response) => {},
+    login: ({
+      request, response, body, users,
+    }) => {
+      console.log('=}} login attempt');
+      const credentials = JSON.parse(body);
+      if (!users.hasUser(credentials.loginName)) {
+        console.log(`login as "${credentials.loginName}" failed, user is not registered`);
+        response.writeHead(400);
+        response.end();
+      }
+
+      if (users.checkCredentials(credentials)) {
+        console.log(`login as "${credentials.loginName}" succesfull`);
+        response.writeHead(200, { 'Set-Cookie': `loginedAs = ${users.findUserID(credentials.loginName)}; path = / ` });
+        response.end();
+      } else {
+        console.log(`login as "${credentials.loginName}" failed, wrong password`);
+        response.writeHead(400);
+        response.end();
+      }
+    },
   },
   DELETE: {
     // 'cart-remove-item/(\\w+)': (request, response, body, matches) => {},
