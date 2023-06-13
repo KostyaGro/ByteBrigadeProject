@@ -16,10 +16,21 @@ const routes = {
   },
   POST: {
     // 'cart-add-product/(\\w+)': (request, response) => {},
-    user: ({ request, body, users }) => { console.log(body); console.log(users); },
-    login: ({
-      request, response, body, users,
-    }) => {
+    user: ({ response, body, users }) => {
+      const credentials = JSON.parse(body);
+      if (users.isAvailable(credentials)) {
+        users.add(credentials);
+        response.writeHead(200);
+        response.end();
+        console.log('user added');
+        console.log(users.all);
+        return;
+      }
+      console.log('user not added');
+      response.writeHead(400); // уточнить код ошибки
+      response.end();
+    },
+    login: ({ response, body, users }) => {
       console.log('=}} login attempt');
       const credentials = JSON.parse(body);
       if (!users.hasUser(credentials.loginName)) {
