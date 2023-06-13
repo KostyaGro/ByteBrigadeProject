@@ -22,7 +22,7 @@ loginButton.addEventListener('click', async (event) => {
       switch (response.status) {
         case 200:
           messageBox.textContent = 'успех';
-          history.back();
+          window.history.back();
           break;
         case 400:
           messageBox.textContent = 'неверный логин или пароль';
