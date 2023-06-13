@@ -1,3 +1,6 @@
+import common from '../common.js';
+
+// ---- добавление товаров -------
 const addCard = async () => fetch('./podutct-card.html')
   .then((cardResponse) => cardResponse.text())
   .then((html) => {
@@ -14,9 +17,6 @@ const getProducts = async () => {
     .then(async (response) => {
       const obj = await response.json();
       return obj;
-      // const txt = JSON.stringify(obj);
-      // console.log(txt);
-      // return txt;
     });
   Object.entries(products).forEach(async ([ID, info]) => {
     const card = await addCard();
@@ -28,9 +28,17 @@ const getProducts = async () => {
     card.id = ID;
     console.log(`ID: ${ID} | info: ${info}`);
   });
-  // document.querySelector('.product-list-item').textContent = products;
   return products;
 };
 
 getProducts();
-// addCard().then(console.log);
+// --------- выход
+const logoutButton = document.querySelector('.logout-button');
+logoutButton.addEventListener('click', (e) => {
+  fetch('/api/logout', {
+    method: 'DELETE',
+  })
+    .then(() => { common.refreshVisibility(); });
+});
+
+common.refreshVisibility();

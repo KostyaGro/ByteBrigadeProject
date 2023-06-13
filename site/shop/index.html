@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="stylesheet" href="../styles.css" />
+      <link rel="stylesheet" href="./shop-styles.css" />
+      <title>Document</title>
+      <script type="module" src="../common.js"></script>
+   </head>
 
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../styles.css">
-        <link rel="stylesheet" href="./shop-styles.css">
-        <title>Document</title>
-    </head>
+   <body>
+      <h1>
+         <p>Магазин</p>
+      </h1>
+      <nav class="shop-main-navbar">
+         <div>
+            <a href="../index.html">главная</a>
+         </div>
+         <div>
+            <a href="../cart.html">корзина</a>
+         </div>
+         <div>
+            <a href="../accaunt.html">личный кабинет</a>
+         </div>
+         <div class="vsible-when-logged-out">
+            <a href="../authorization/index.html">авторизация</a>
+         </div>
+         <div class="vsible-when-logged-in">
+            <button class="logout-button">выйти</button>
+         </div>
+      </nav>
 
-    <body>
-        <h1>
-            <p>Магазин</p>
-        </h1>
-        <nav class="shop-main-navbar">
-            <div>
-                <a href="../index.html">главная</a>
-            </div>
-            <div>
-                <a href="../authorization.html">авторизация</a>
-            </div>
-            <div>
-                <a href="../cart.html">корзина</a>
-            </div>
-            <div>
-                <a href="../accaunt.html">личный кабинет</a>
-            </div>
-        </nav>
+      <div class="product-list-container">
+         <!-- сюда скриптом добавляется список товаров -->
+      </div>
 
-        <div class="product-list-container">
-            <!-- <div class="product-list-item"></div>
-            <div class="product-list-item"></div> -->
-
-        </div>
-
-        <!-- <img src="../resources/nokia3310-800x800.jpg" alt=""> -->
-        <script src="shop-script.js"></script>
-    </body>
-
+      <script type="module" src="shop-script.js"></script>
+   </body>
 </html>
