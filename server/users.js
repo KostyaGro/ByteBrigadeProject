@@ -35,6 +35,11 @@ class Users {
     return this.hasUser(loginName) && this.getUserByID(ID).password === password;
   }
 
+  isAvailable(credentials) {
+    if (this.hasUser(credentials.loginName)) return false;
+    return true;
+  }
+
   saveDB() { fs.writeFileSync(this.config.usersDBpath, JSON.stringify(this.all, null, 2)); }
 
   add(credentials) {
