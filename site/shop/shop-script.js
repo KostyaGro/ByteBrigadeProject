@@ -37,8 +37,8 @@ const logoutButton = document.querySelector('.logout-button');
 logoutButton.addEventListener('click', (e) => {
   fetch('/api/logout', {
     method: 'DELETE',
-
-  });
+  })
+    .then(() => { common.refreshVisibility(); });
 });
 
-common();
+common.refreshVisibility();
