@@ -18,5 +18,25 @@
     "phoneNumber": "",
     "shippingAddress": "",
     "cart": []
+  },
+  "3": {
+    "loginName": "user",
+    "password": "123",
+    "email": "",
+    "firstName": "",
+    "secondName": "",
+    "phoneNumber": "",
+    "shippingAddress": "",
+    "cart": []
+  },
+  "4": {
+    "loginName": "user2",
+    "password": "123",
+    "email": "",
+    "firstName": "",
+    "secondName": "",
+    "phoneNumber": "",
+    "shippingAddress": "",
+    "cart": []
   }
 }
