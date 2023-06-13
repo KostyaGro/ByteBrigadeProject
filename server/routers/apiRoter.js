@@ -1,5 +1,6 @@
 import Products from '../products.js';
 import Users from '../users.js';
+import parseCookie from '../utils/parseCookie.js';
 
 const routes = {
   GET: {
@@ -40,7 +41,18 @@ const routes = {
   },
   DELETE: {
     // 'cart-remove-item/(\\w+)': (request, response, body, matches) => {},
-    // logout: (request, response) => {},
+    logout: ({ request, response }) => {
+      console.log(request.headers.cookie);
+      const { loginedAs } = parseCookie(request.headers.cookie);
+
+      if (!loginedAs) {
+        response.writeHead(400); // код ошибки?
+        response.end("Can't logout as you are not logged in");
+        return;
+      }
+      response.writeHead(200, { 'Set-Cookie': `loginedAs = ${loginedAs}; path = /; max-age=0;` });
+      response.end();
+    },
   },
 
 };
