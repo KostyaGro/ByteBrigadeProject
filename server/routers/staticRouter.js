@@ -1,3 +1,4 @@
+import { log } from 'console';
 import fs from 'fs';
 import path from 'path';
 
@@ -15,7 +16,30 @@ const staticRouter = (request, response, relativePath, config) => {
   );
 
   if (isLegitTarget(absolutePath)) {
-    response.writeHead(200);
+    const ext = absolutePath.split('.').at(-1);
+    let MIME = 'application/octet-stream';
+    switch (ext) {
+      case 'mjs':
+      case 'js':
+        MIME = 'application/javascript';
+        break;
+      case 'css':
+        MIME = 'text/css';
+        break;
+      case 'img':
+      case 'jpg':
+      case 'ico':
+      case 'webp':
+        MIME = 'image/png';
+        break;
+      case 'html':
+        MIME = 'text/html';
+        break;
+      default:
+        break;
+    }
+    console.log(`ext: ${ext} | MIME: ${MIME}`);
+    response.writeHead(200, { 'Content-Type': MIME });
     const data = fs.readFileSync(absolutePath);
     response.end(data, 'binary');
     return true;
@@ -23,7 +47,7 @@ const staticRouter = (request, response, relativePath, config) => {
 
   const absolutePathHtml = `${absolutePath}.html`;
   if (isLegitTarget(absolutePathHtml)) {
-    response.writeHead(200, { ContentType: 'text/html' });
+    response.writeHead(200, { 'Content-Type': 'text/html' });
     const data = fs.readFileSync(absolutePathHtml);
     response.end(formatHtml(data));
     return true;
