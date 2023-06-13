@@ -24,7 +24,7 @@ const getProducts = async () => {
     card.querySelector('.product-brand').textContent = info.brand;
     card.querySelector('.product-name').textContent = info.name;
     card.querySelector('.product-description').textContent = info.description;
-    card.querySelector('.price').textContent = `${info.price}$`;
+    card.querySelector('.price').textContent = `${info.price} \u20bd`;
     card.id = ID;
     console.log(`ID: ${ID} | info: ${info}`);
   });
