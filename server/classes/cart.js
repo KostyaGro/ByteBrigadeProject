@@ -13,7 +13,10 @@ export default class Cart {
 
   get content() {
     return this.contentIDarray
-      .map((productID) => this.productsDB.getByID(productID));
+      .reduce((productsInCart, productID) => ({
+        ...productsInCart,
+        [productID]: this.productsDB.getByID(productID),
+      }), {});
   }
 
   clearAll() {
