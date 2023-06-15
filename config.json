@@ -3,4 +3,5 @@
 "dataDir":"./database/",
 "usersDBfilename":"users.json",
 "productsDBfilename":"products.json",
-"productImgDir":"/resources/"}  
+"productImgDir":"/resources/",
+"cartDir":"./database/cart"}  

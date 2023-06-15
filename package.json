@@ -12,6 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/KostyaGro/ByteBrigadeProject.git"
   },
+  "imports": {
+    "#config": "./server/config.js" 
+  },
   "author": "bytebrigad",
   "license": "ISC",
   "bugs": {
