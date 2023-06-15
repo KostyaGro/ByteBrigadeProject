@@ -1,6 +1,7 @@
 import Products from '../products.js';
 import Users from '../users.js';
 import parseCookie from '../utils/parseCookie.js';
+import Cart from '../classes/cart.js';
 
 const routes = {
   GET: {
@@ -15,7 +16,19 @@ const routes = {
     },
   },
   POST: {
-    // 'cart-add-product/(\\w+)': (request, response) => {},
+    'add-to-cart/(\\w+)': ({
+      response, ID, userID, products,
+    }) => {
+      console.log(`UID ===>${userID}`);
+      if (!userID) {
+        response.writeHead(400);
+        response.end(); return;
+      }
+      const cart = new Cart(userID, products);
+      cart.add(ID);
+      response.writeHead(200);
+      response.end();
+    },
     user: ({ response, body, users }) => {
       const credentials = JSON.parse(body);
       if (users.isAvailable(credentials)) {
@@ -89,10 +102,14 @@ const apiRouter = (request, response, config) => {
         if (!matches) {
           return false;
         }
+        console.log(request.headers.cookie);
+        console.log(parseCookie(request.headers.cookie));
+        const { loginedAs: userID } = parseCookie(request.headers.cookie); // сделать абстракцию
+        console.log(userID);
 
         const ID = matches[1];
         route[str]({
-          request, response, matches, body, users, products, ID,
+          request, response, matches, body, users, products, ID, userID,
         });
         return true;
       });
