@@ -3,6 +3,16 @@ import Users from '../users.js';
 import parseCookie from '../utils/parseCookie.js';
 import Cart from '../classes/cart.js';
 
+const notLoggedInError = (resp) => {
+  resp.writeHead(400);
+  resp.end('you are not logged in');
+};
+
+const sendData = (data, resp) => {
+  resp.writeHead(200);
+  resp.end(JSON.stringify(data));
+};
+
 const routes = {
   GET: {
     // cart: (request, response) => {},
@@ -14,6 +24,41 @@ const routes = {
       response.writeHead(200);
       response.end(JSON.stringify(products.getByID(ID)));
     },
+    'cart-content/': ({
+      response, userID, products,
+    }) => {
+      console.log(`UID ===>${userID}`);
+      if (!userID) {
+        notLoggedInError(response);
+        return;
+      }
+      const cart = new Cart(userID, products);
+      sendData(cart.content, response);
+    },
+
+    'cart-ammounts/': ({
+      response, userID, products,
+    }) => {
+      console.log(`UID ===>${userID}`);
+      if (!userID) {
+        notLoggedInError(response);
+        return;
+      }
+      const cart = new Cart(userID, products);
+      sendData(cart.ammountByID, response);
+    },
+
+    'cart-total-price/': ({
+      response, userID, products,
+    }) => {
+      console.log(`UID ===>${userID}`);
+      if (!userID) {
+        notLoggedInError(response);
+        return;
+      }
+      const cart = new Cart(userID, products);
+      sendData(cart.totalPrice, response);
+    },
   },
   POST: {
     'add-to-cart/(\\w+)': ({
@@ -21,13 +66,13 @@ const routes = {
     }) => {
       console.log(`UID ===>${userID}`);
       if (!userID) {
-        response.writeHead(400);
-        response.end(); return;
+        notLoggedInError(response);
+        return;
       }
       const cart = new Cart(userID, products);
       cart.add(ID);
       response.writeHead(200);
-      response.end();
+      response.end(JSON.stringify(cart.ammountByID));
     },
     user: ({ response, body, users }) => {
       const credentials = JSON.parse(body);
@@ -65,6 +110,45 @@ const routes = {
   },
   DELETE: {
     // 'cart-remove-item/(\\w+)': (request, response, body, matches) => {},
+    'subtract-from-cart/(\\w+)': ({
+      response, ID, userID, products,
+    }) => {
+      console.log(`UID ===>${userID}`);
+      if (!userID) {
+        notLoggedInError(response);
+        return;
+      }
+      const cart = new Cart(userID, products);
+      cart.subtract(ID);
+      sendData(cart.ammountByID, response);
+    },
+
+    'remove-from-cart/(\\w+)': ({
+      response, ID, userID, products,
+    }) => {
+      console.log(`UID ===>${userID}`);
+      if (!userID) {
+        notLoggedInError(response);
+        return;
+      }
+      const cart = new Cart(userID, products);
+      cart.remove(ID);
+      sendData(cart.ammountByID, response);
+    },
+
+    'clear-cart/': ({
+      response, userID, products,
+    }) => {
+      console.log(`UID ===>${userID}`);
+      if (!userID) {
+        notLoggedInError(response);
+        return;
+      }
+      const cart = new Cart(userID, products);
+      cart.clearAll();
+      sendData(cart.content, response);
+    },
+
     logout: ({ request, response }) => {
       console.log(request.headers.cookie);
       const { loginedAs } = parseCookie(request.headers.cookie);
