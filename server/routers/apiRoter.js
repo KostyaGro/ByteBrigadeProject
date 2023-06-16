@@ -15,15 +15,16 @@ const sendData = (data, resp) => {
 
 const routes = {
   GET: {
-    // cart: (request, response) => {},
     'products/': ({ response, products }) => {
       response.writeHead(200);
       response.end(JSON.stringify(products.all));
     },
+    // _________________________________________________________
     'product/(\\w+)': ({ response, products, ID }) => {
       response.writeHead(200);
       response.end(JSON.stringify(products.getByID(ID)));
     },
+    // _________________________________________________________
     'cart-content/': ({
       response, userID, products,
     }) => {
@@ -35,7 +36,7 @@ const routes = {
       const cart = new Cart(userID, products);
       sendData(cart.content, response);
     },
-
+    // _________________________________________________________
     'cart-ammounts/': ({
       response, userID, products,
     }) => {
@@ -47,7 +48,7 @@ const routes = {
       const cart = new Cart(userID, products);
       sendData(cart.ammountByID, response);
     },
-
+    // _________________________________________________________
     'cart-total-price/': ({
       response, userID, products,
     }) => {
@@ -74,6 +75,7 @@ const routes = {
       response.writeHead(200);
       response.end(JSON.stringify(cart.ammountByID));
     },
+    // _________________________________________________________
     user: ({ response, body, users }) => {
       const credentials = JSON.parse(body);
       if (users.isAvailable(credentials)) {
@@ -88,6 +90,7 @@ const routes = {
       response.writeHead(400); // уточнить код ошибки
       response.end();
     },
+    // _________________________________________________________
     login: ({ response, body, users }) => {
       console.log('=}} login attempt');
       const credentials = JSON.parse(body);
@@ -109,7 +112,6 @@ const routes = {
     },
   },
   DELETE: {
-    // 'cart-remove-item/(\\w+)': (request, response, body, matches) => {},
     'subtract-from-cart/(\\w+)': ({
       response, ID, userID, products,
     }) => {
@@ -122,7 +124,7 @@ const routes = {
       cart.subtract(ID);
       sendData(cart.ammountByID, response);
     },
-
+    // _________________________________________________________
     'remove-from-cart/(\\w+)': ({
       response, ID, userID, products,
     }) => {
@@ -135,7 +137,7 @@ const routes = {
       cart.remove(ID);
       sendData(cart.ammountByID, response);
     },
-
+    // _________________________________________________________
     'clear-cart/': ({
       response, userID, products,
     }) => {
@@ -148,7 +150,7 @@ const routes = {
       cart.clearAll();
       sendData(cart.content, response);
     },
-
+    // _________________________________________________________
     logout: ({ request, response }) => {
       console.log(request.headers.cookie);
       const { loginedAs } = parseCookie(request.headers.cookie);
@@ -162,7 +164,6 @@ const routes = {
       response.end();
     },
   },
-
 };
 
 const apiRouter = (request, response, config) => {
@@ -186,10 +187,8 @@ const apiRouter = (request, response, config) => {
         if (!matches) {
           return false;
         }
-        console.log(request.headers.cookie);
-        console.log(parseCookie(request.headers.cookie));
+
         const { loginedAs: userID } = parseCookie(request.headers.cookie); // сделать абстракцию
-        console.log(userID);
 
         const ID = matches[1];
         route[str]({

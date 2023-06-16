@@ -1,0 +1,194 @@
+:root {
+    --card-hight: 210px;
+    --img-container-size: calc(var(--card-hight));
+    --debug-bg-color: rgba(158, 172, 173, 0.151);
+}
+
+.product-list-container {
+    background-color: beige;
+    display: flex;
+    flex-direction: column;
+    vertical-align: middle;
+    /* justify-content: flex-start; */
+}
+
+.product-list-item {
+    /* background-color: cadetblue;
+    border-radius: 10px;
+    */
+
+    /* Rectangle 16 */
+
+    display: flex;
+    align-items: center;
+
+
+    height: var(--card-hight);
+    margin: 10px 20%;
+    background: #FFFFFF;
+    box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+
+
+
+}
+
+.img-container {
+    width: var(--img-container-size);
+    height: var(--img-container-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.img-container img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.info-container {
+    height: 90%;
+    width: 100%;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-style: solid;
+    /* временно */
+    border-width: 1px;
+    background-color: var(--debug-bg-color);
+    margin: 1px;
+    border-radius: 5px;
+}
+
+.product-name-container {
+    height: 2em;
+    display: flex;
+
+    /* временно */
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--debug-bg-color);
+    margin: 1px;
+    border-radius: 5px;
+
+}
+
+.product-brand {
+    /* 
+    height: 1em;
+    align-self: start;
+    width: 50%;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.623); */
+
+    /* Asus TUF GAMING */
+
+    margin: 0;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 29px;
+    line-height: 94.69%;
+    /* or 27px */
+    letter-spacing: 0.03em;
+
+    color: #000000;
+
+    /* временно */
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--debug-bg-color);
+    margin: 1px;
+    border-radius: 5px;
+
+
+}
+
+.product-name {
+    /* 
+    height: 1em;
+    align-self: start;
+    width: 50%;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.623); */
+
+    /* A15 FA507XI-HQ014 */
+
+    margin: 0;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 94.69%;
+    /* or 17px */
+    letter-spacing: 0.03em;
+
+    color: #000000;
+
+    /* временно */
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--debug-bg-color);
+    margin: 1px;
+    border-radius: 5px;
+
+}
+
+.product-description-container {
+    height: 5em;
+    /* временно */
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--debug-bg-color);
+    margin: 1px;
+    border-radius: 5px;
+}
+
+.product-description {
+    /* 
+    width: 50%;
+    border-style: solid;
+    border-radius: 5px;
+    background-color: rgba(128, 128, 128, 0.623); */
+
+    /* Quad HD 2K (2560x1440), IPS, AMD Ryzen 9 7940HS, ядра: 8 х 4 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 4070 для ноутбуков 8 ГБ */
+
+    margin: 0;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 94.69%;
+    /* or 15px */
+    letter-spacing: 0.03em;
+
+    color: #000000;
+
+    /* временно */
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--debug-bg-color);
+    margin: 1px;
+    border-radius: 5px;
+
+}
+
+.buy-container {
+
+    display: flex;
+
+    justify-content: end;
+    /* временно */
+    border-style: solid;
+    border-width: 1px;
+    background-color: var(--debug-bg-color);
+    margin: 1px;
+    border-radius: 5px;
+}

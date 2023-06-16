@@ -1,0 +1,10 @@
+.cart-side-bar {
+    flex-direction: column;
+    background-color: aquamarine;
+    width: 20%;
+}
+
+.cart-content {
+    width: 80%;
+    background-color: aqua;
+}
