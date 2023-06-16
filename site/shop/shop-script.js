@@ -1,6 +1,16 @@
 import common from '../common.js';
 
-// ---- добавление товаров -------
+// ---- добавление в корзину при нажатии кнопки -------
+const addListenerToBuyButton = (btn) => {
+  btn.addEventListener('click', (event) => {
+    const productID = event.target.closest('.product-list-item').id;
+    fetch(`/api/add-to-cart/${productID}`, { method: 'POST' })
+      .then((response) => response.json())
+      .then(JSON.stringify)
+      .then(console.log);
+  });
+};
+// добавление карточеи в список товаров
 const addCard = async () => fetch('./podutct-card.html')
   .then((cardResponse) => cardResponse.text())
   .then((html) => {
@@ -11,7 +21,7 @@ const addCard = async () => fetch('./podutct-card.html')
     productList.append(card);
     return card;
   });
-
+// --- заполнение списка товаров ---
 const getProducts = async () => {
   const products = await fetch('/api/products/')
     .then(async (response) => {
@@ -25,9 +35,11 @@ const getProducts = async () => {
     card.querySelector('.product-name').textContent = info.name;
     card.querySelector('.product-description').textContent = info.description;
     card.querySelector('.price').textContent = `${info.price} \u20bd`;
+    addListenerToBuyButton(card.querySelector('.add-to-cart-button'));
     card.id = ID;
     console.log(`ID: ${ID} | info: ${info}`);
   });
+
   return products;
 };
 

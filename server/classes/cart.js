@@ -8,7 +8,8 @@ export default class Cart {
   constructor(userID, productsDB, config = new Config()) {
     this.filePath = `${config.cartPath}/id_${userID}.json`;
     this.productsDB = productsDB;
-    this.ammountByID = (readFile(this.filePath));
+    if (!fs.existsSync(this.filePath)) fs.appendFileSync(this.filePath, '{}');
+    this.ammountByID = readFile(this.filePath);
   }
 
   get content() {
