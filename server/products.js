@@ -18,6 +18,11 @@ class Products {
   }
 
   getByID = (id) => this.all[id];
+
+  getListBy = (key) => {
+    const list = Object.values(_.mapValues(this.all, key));
+    return _.uniq(list);
+  };
 }
 
 export default Products;
