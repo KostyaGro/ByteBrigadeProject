@@ -15,9 +15,22 @@ const sendData = (data, resp) => {
 
 const routes = {
   GET: {
+    'user/': ({ userID, response, users }) => {
+      if (!userID) {
+        notLoggedInError(response);
+        return;
+      }
+      sendData(users.getUserByID(userID), response);
+    },
+    // _________________________________________________________
     'products/': ({ response, products }) => {
       response.writeHead(200);
       response.end(JSON.stringify(products.all));
+    },
+    // _________________________________________________________
+    'product-variants/(\\w+)': ({ response, products, ID: property }) => {
+      response.writeHead(200);
+      response.end(JSON.stringify(products.getListBy(property)));
     },
     // _________________________________________________________
     'product/(\\w+)': ({ response, products, ID }) => {
