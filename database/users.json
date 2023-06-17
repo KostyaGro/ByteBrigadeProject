@@ -38,5 +38,15 @@
     "phoneNumber": "",
     "shippingAddress": "",
     "cart": []
+  },
+  "5": {
+    "loginName": "user6",
+    "password": "123",
+    "email": "",
+    "firstName": "",
+    "secondName": "",
+    "phoneNumber": "",
+    "shippingAddress": "",
+    "cart": []
   }
 }
