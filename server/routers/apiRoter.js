@@ -28,6 +28,11 @@ const routes = {
       response.end(JSON.stringify(products.all));
     },
     // _________________________________________________________
+    'product-variants/(\\w+)': ({ response, products, ID: property }) => {
+      response.writeHead(200);
+      response.end(JSON.stringify(products.getListBy(property)));
+    },
+    // _________________________________________________________
     'product/(\\w+)': ({ response, products, ID }) => {
       response.writeHead(200);
       response.end(JSON.stringify(products.getByID(ID)));
