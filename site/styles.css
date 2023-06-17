@@ -1,11 +1,115 @@
 p {
-  color: red;
+
 }
 
 h1 {
   text-align: center;
+  Font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 38px;
+  line-height: 46px;
+  /* identical to box height */
+
+  text-align: center;
+  color: #000000;
+}
+
+h2 {
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 27px;
+  line-height: 32px;
+  text-align: center;
+
+  color: #000000;
+}
+
+.frame {
+  position: relative;
+  width: 1065px;
+  height: 672px;
+  left: calc(50% - 1065px/2);
+  top: 50px;
+
+  background: #FFFFFF;
+  box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
 }
 
 .flex-container {
   display: flex;
+}
+
+img {
+  position: relative;
+  left: calc(50% - 636px/2);
+}
+
+.red-plate {
+  width: 900px;
+  height: 176px;
+  background: #FF3333;
+  box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  position: relative;
+  left: calc(50% - 900px/2);
+}
+
+.red-plate div {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  width: 300px;
+  height: 176px;
+}
+
+.button {
+  background: #FF3333;
+  box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  width: 153px;
+  height: 48px;
+}
+
+.stat {
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 63px;
+  text-align: center;
+  margin: 30px 0 0 0;
+  color: #FFFFFF;
+}
+
+.stat-text {
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 23px;
+  line-height: 28px;
+  text-align: center;
+  margin: 0;
+  color: #FFFFFF;
+}
+
+.button a {
+  display: block;
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  /* identical to box height */
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.button-container {
+  margin-top: 100px;
+  width: 900px;
+  justify-content: space-around;
+  position: relative;
+  left: calc(50% - 900px/2);
 }
