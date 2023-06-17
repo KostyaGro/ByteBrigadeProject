@@ -1,10 +1,36 @@
-// console.log('i`m common JS script');
-const fetchObject = (path, options = {}) => new Promise((resolve, reject) => {
+const hideElement = (elem) => elem.style.display = 'none';
+const showElement = (elem) => elem.style.display = 'block';
+
+// делает запрос и отдает тело ответа виде строки из объекта/массива
+const fetchStringObject = (path, options = {}) => new Promise((resolve, reject) => {
   fetch(path, options)
     .then((resp) => (resp.json()))
     .then((resp) => resolve(JSON.stringify(resp)));
 });
+// делает запрос и отдает тело ответа виде объекта/массива
+const fetchObject = (path, options = {}) => new Promise((resolve, reject) => {
+  fetch(path, options)
+    .then((resp) => resolve(resp.json()));
+});
 
+const refreshAllCardButtonsVisisbility = () => {
+
+};
+
+const refreshCardButtonsVisisbility = ({ container, productCount }) => {
+  const showWhenEmpty = container.querySelectorAll('.show-when-empty');
+  const hideWhenEmpty = container.querySelectorAll('.hide-when-empty');
+  const isEmpty = () => productCount < 1;
+  if (isEmpty()) {
+    showWhenEmpty.forEach(showElement);
+    hideWhenEmpty.forEach(hideElement);
+    return;
+  }
+  showWhenEmpty.forEach(hideElement);
+  hideWhenEmpty.forEach(showElement);
+};
+
+// обновляет видимость объектов в зависимости от того, залогинен ли пользователь
 const refreshVisibility = () => {
   console.log('refresh visibility is called');
   const visibleWhenLoggedIn = document.querySelectorAll('.vsible-when-logged-in');
@@ -12,12 +38,17 @@ const refreshVisibility = () => {
   const isLoggedIn = document.cookie.includes('loginedAs');
 
   if (isLoggedIn) {
-    visibleWhenLoggedIn.forEach((elem) => { console.log(elem); elem.style.visibility = 'visible'; });
-    visibleWhenLoggedOut.forEach((elem) => { elem.style.visibility = 'hidden'; });
+    visibleWhenLoggedIn.forEach(showElement);
+    visibleWhenLoggedOut.forEach(hideElement);
     return;
   }
 
-  visibleWhenLoggedIn.forEach((elem) => { elem.style.visibility = 'hidden'; });
-  visibleWhenLoggedOut.forEach((elem) => { elem.style.visibility = 'visible'; });
+  visibleWhenLoggedIn.forEach(hideElement);
+  visibleWhenLoggedOut.forEach(showElement);
 };
-export { refreshVisibility, fetchObject };
+export {
+  refreshVisibility,
+  fetchStringObject,
+  fetchObject,
+  refreshCardButtonsVisisbility,
+};

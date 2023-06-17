@@ -1,4 +1,8 @@
-import { refreshVisibility } from '../lib.js';
+import {
+  refreshVisibility,
+  fetchObject,
+  refreshCardButtonsVisisbility,
+} from '../lib.js';
 
 // ---- добавление в корзину при нажатии кнопки -------
 const addListenerToBuyButton = (btn) => {
@@ -10,6 +14,41 @@ const addListenerToBuyButton = (btn) => {
       .then(console.log);
   });
 };
+
+const listenAddButton = (btn) => {
+  btn.addEventListener('click', (event) => {
+    const container = event.target.closest('.product-list-item');
+    const productID = container.id;
+    fetchObject(`/api/add-to-cart/${productID}`, { method: 'POST' })
+      .then((cartCount) => {
+        const productCount = cartCount[String(productID)] ?? 0;
+        container
+          .querySelector('.cart-counter')
+          .textContent = productCount;
+        console.log(cartCount);
+        return ({ container, productCount });
+      })
+      .then((resolve) => refreshCardButtonsVisisbility(resolve));
+  });
+};
+
+const listenMinusButton = (btn) => {
+  btn.addEventListener('click', (event) => {
+    const container = event.target.closest('.product-list-item');
+    const productID = container.id;
+    fetchObject(`/api/subtract-from-cart/${productID}`, { method: 'delete' })
+      .then((cartCount) => {
+        const productCount = cartCount[String(productID)] ?? 0;
+        container
+          .querySelector('.cart-counter')
+          .textContent = productCount;
+        console.log(cartCount);
+        return ({ container, productCount });
+      })
+      .then((resolve) => refreshCardButtonsVisisbility(resolve));
+  });
+};
+
 // добавление карточеи в список товаров
 const addCard = async () => fetch('./podutct-card.html')
   .then((cardResponse) => cardResponse.text())
@@ -35,7 +74,10 @@ const getProducts = async () => {
     card.querySelector('.product-name').textContent = info.name;
     card.querySelector('.product-description').textContent = info.description;
     card.querySelector('.price').textContent = `${info.price} \u20bd`;
-    addListenerToBuyButton(card.querySelector('.add-to-cart-button'));
+    listenAddButton(card.querySelector('.add-to-cart-button'));
+    listenAddButton(card.querySelector('.plus-cart-button'));
+    listenMinusButton(card.querySelector('.minus-cart-button'));
+
     card.id = ID;
     console.log(`ID: ${ID} | info: ${info}`);
   });

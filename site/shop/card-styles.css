@@ -192,3 +192,17 @@
     margin: 1px;
     border-radius: 5px;
 }
+
+.hide-when-empty {
+    display: none;
+    width: 40px;
+}
+
+.show-when-empty {
+
+    width: 120px;
+}
+
+.cart-counter {
+    text-align: center;
+}
