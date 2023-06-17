@@ -1,4 +1,4 @@
-import common from '../common.js';
+import { refreshVisibility } from '../lib.js';
 
 // ---- добавление в корзину при нажатии кнопки -------
 const addListenerToBuyButton = (btn) => {
@@ -50,7 +50,7 @@ logoutButton.addEventListener('click', (e) => {
   fetch('/api/logout', {
     method: 'DELETE',
   })
-    .then(() => { common.refreshVisibility(); });
+    .then(() => { refreshVisibility(); });
 });
 
-common.refreshVisibility();
+refreshVisibility();

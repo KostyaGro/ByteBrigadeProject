@@ -1,4 +1,9 @@
-console.log('i`m common JS script');
+// console.log('i`m common JS script');
+const fetchObject = (path, options = {}) => new Promise((resolve, reject) => {
+  fetch(path, options)
+    .then((resp) => (resp.json()))
+    .then((resp) => resolve(JSON.stringify(resp)));
+});
 
 const refreshVisibility = () => {
   console.log('refresh visibility is called');
@@ -15,4 +20,4 @@ const refreshVisibility = () => {
   visibleWhenLoggedIn.forEach((elem) => { elem.style.visibility = 'hidden'; });
   visibleWhenLoggedOut.forEach((elem) => { elem.style.visibility = 'visible'; });
 };
-export default { refreshVisibility };
+export { refreshVisibility, fetchObject };
