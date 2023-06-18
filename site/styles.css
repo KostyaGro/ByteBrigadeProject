@@ -71,6 +71,15 @@ img.logo {
   height: 48px;
 }
 
+.button:hover {
+  background: #FF3333;
+  box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  width: 153px;
+  height: 48px;
+}
+
+
 .stat {
   font-family: 'Bahnschrift';
   font-style: normal;
@@ -102,6 +111,7 @@ img.logo {
   /* identical to box height */
   text-align: center;
   color: #FFFFFF;
+  align-self: center;
 }
 
 .button-container {
