@@ -13,25 +13,37 @@ const fetchObject = (path, options = {}) => new Promise((resolve, reject) => {
     .then((resp) => resolve(resp.json()));
 });
 
-const refreshAllCardButtonsVisisbility = () => {
-
-};
-
 const refreshCardButtonsVisisbility = ({ container, productCount }) => {
   const showWhenEmpty = container.querySelectorAll('.show-when-empty');
   const hideWhenEmpty = container.querySelectorAll('.hide-when-empty');
   const isEmpty = () => productCount < 1;
   if (isEmpty()) {
+    console.log(`empty > ID: ${container.id} | count: ${productCount}`);
     showWhenEmpty.forEach(showElement);
     hideWhenEmpty.forEach(hideElement);
     return;
   }
+  console.log(`not empty > ID: ${container.id} | count: ${productCount}`);
   showWhenEmpty.forEach(hideElement);
   hideWhenEmpty.forEach(showElement);
 };
 
+const refreshAllCardButtons = () => {
+  fetchObject('/api/cart-ammounts/')
+    .then((cartAmmountsByID) => {
+      const items = Array.from(document.querySelectorAll('.product-card'));
+      // console.log('refreshing visibility dependant on ammounts in cart');
+      items.forEach((item) => {
+        const productID = item.id;
+        const itemAmmount = cartAmmountsByID[productID] ?? 0;
+        item.querySelector('.cart-counter').textContent = itemAmmount;
+        refreshCardButtonsVisisbility({ container: item, productCount: itemAmmount });
+      });
+    });
+};
+
 // обновляет видимость объектов в зависимости от того, залогинен ли пользователь
-const refreshVisibility = () => {
+const refreshLoginDependant = () => {
   console.log('refresh visibility is called');
   const visibleWhenLoggedIn = document.querySelectorAll('.vsible-when-logged-in');
   const visibleWhenLoggedOut = document.querySelectorAll('.vsible-when-logged-out');
@@ -46,9 +58,12 @@ const refreshVisibility = () => {
   visibleWhenLoggedIn.forEach(hideElement);
   visibleWhenLoggedOut.forEach(showElement);
 };
+
 export {
-  refreshVisibility,
+  refreshLoginDependant,
   fetchStringObject,
   fetchObject,
   refreshCardButtonsVisisbility,
+  refreshAllCardButtons,
+
 };
