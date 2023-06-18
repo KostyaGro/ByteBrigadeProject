@@ -30,9 +30,10 @@ loginButton.addEventListener('click', async (event) => {
         default:
           return false;
       }
-    }).then((result) => {
+    })
+    .then((result) => {
       if (!result) return;
-      window.history.back();
+      window.location = '/shop/';
     });
 });
 

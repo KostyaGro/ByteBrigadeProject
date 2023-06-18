@@ -12,7 +12,7 @@ class Products {
       this.all,
       _.mapValues(
         this.all,
-        (({ image }) => ({ productImgPath: path.resolve(config.productImgDir, image) })),
+        ({ image }) => ({ productImgPath: path.resolve(config.productImgDir, image) }),
       ),
     );
   }

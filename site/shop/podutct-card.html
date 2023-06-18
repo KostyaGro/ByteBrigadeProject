@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <link rel="stylesheet" href="shop-styles.css" />
 <body>
-    <div class="product-list-item">
+    <div class="product-card">
         <div class="img-container">
             <img src="../resources/nokia3310-800x800.jpg" alt="" />
         </div>
@@ -16,7 +16,11 @@
             </div>
             <div class="buy-container">
                 <p class="price">499.99$</p>
-                <button class="add-to-cart-button">добавить</button>
+                <button class="add-to-cart-button show-when-empty">добавить</button>
+                <button class="minus-cart-button hide-when-empty">-</button>
+                <p class="cart-counter hide-when-empty">0</p>
+                <button class="plus-cart-button hide-when-empty">+</button>
+                <button class="remove-from-cart hide-when-empty">x</button>
             </div>
         </div>
     </div>

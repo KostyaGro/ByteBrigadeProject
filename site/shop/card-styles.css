@@ -12,13 +12,13 @@
     /* justify-content: flex-start; */
 }
 
-.product-list-item {
+.product-card {
     /* background-color: cadetblue;
     border-radius: 10px;
     */
 
     /* Rectangle 16 */
-
+    position: relative;
     display: flex;
     align-items: center;
 
@@ -191,4 +191,26 @@
     background-color: var(--debug-bg-color);
     margin: 1px;
     border-radius: 5px;
+}
+
+.hide-when-empty {
+    display: none;
+    width: 40px;
+}
+
+.show-when-empty {
+
+    width: 120px;
+}
+
+.cart-counter {
+    text-align: center;
+}
+
+.remove-from-cart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-weight: bold;
+    background-color: rgb(180, 67, 67);
 }

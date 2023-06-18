@@ -9,9 +9,17 @@ export default (config) => (request, response) => {
   const url = new URL(request.url, `http://${request.headers.host}`);
   const { searchParams } = url;
   const relativePath = url.pathname;
-  console.log(
-    `looking for relative path: "${relativePath}"  with searchparams: "${searchParams}"`,
-  );
+
+  console.log(searchParams);
+  if (searchParams.toString()) {
+    console.log(
+      `looking for relative path: "${relativePath}"  with searchparams: "${searchParams}"`,
+    );
+  } else {
+    console.log(
+      `looking for relative path: "${relativePath}"`,
+    );
+  }
 
   if (request.url.startsWith('/api/')) {
     apiRouter(request, response, config);
