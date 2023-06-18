@@ -1,6 +1,4 @@
-p {
-
-}
+p {}
 
 h1 {
   text-align: center;
@@ -42,7 +40,7 @@ h2 {
   display: flex;
 }
 
-img {
+img.logo {
   position: relative;
   left: calc(50% - 636px/2);
 }
