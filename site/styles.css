@@ -1,5 +1,5 @@
-p {
-
+a {
+  text-decoration: none;
 }
 
 h1 {
@@ -71,6 +71,13 @@ img {
   border-radius: 30px;
   width: 153px;
   height: 48px;
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 48px;
+  text-align: center;
+  color: #FFFFFF;
 }
 
 .stat {
@@ -91,18 +98,6 @@ img {
   line-height: 28px;
   text-align: center;
   margin: 0;
-  color: #FFFFFF;
-}
-
-.button a {
-  display: block;
-  font-family: 'Bahnschrift';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 24px;
-  /* identical to box height */
-  text-align: center;
   color: #FFFFFF;
 }
 
