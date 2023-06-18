@@ -70,6 +70,8 @@ img.logo {
   width: 153px;
   height: 48px;
   transition: background-color 0.3s, box-shadow 0.5s ease-in-out;
+  text-align: center;
+  cursor: pointer;
 }
 
 .button:hover {
@@ -77,10 +79,8 @@ img.logo {
   box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.3);
 }
 
-
 .button:active {
   background: #EE2E2E;
-  /* background: #512eee; */
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -106,7 +106,8 @@ img.logo {
   color: #FFFFFF;
 }
 
-.button a {
+.button-text {
+  text-align: center;
   display: block;
   font-family: 'Bahnschrift';
   font-style: normal;
@@ -117,6 +118,8 @@ img.logo {
   text-align: center;
   color: #FFFFFF;
   align-self: center;
+  cursor: pointer;
+
 }
 
 .button-container {
