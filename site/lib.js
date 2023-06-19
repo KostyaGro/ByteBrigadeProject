@@ -10,7 +10,11 @@ const fetchStringObject = (path, options = {}) => new Promise((resolve, reject) 
 // делает запрос и отдает тело ответа виде объекта/массива
 const fetchObject = (path, options = {}) => new Promise((resolve, reject) => {
   fetch(path, options)
-    .then((resp) => resolve(resp.json()));
+    .then((resp) => {
+      if (resp.status === 401) { throw new Error('you are not authorized'); }
+      resolve(resp.json());
+    })
+    .catch((err) => reject(err));
 });
 
 const refreshCardButtonsVisisbility = ({ container, productCount }) => {

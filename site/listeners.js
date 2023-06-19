@@ -37,6 +37,7 @@ const addToCart = (btn) => {
           .textContent = productCount;
         return ({ container, productCount });
       })
+      .catch(() => window.alert('войдите или зарегистрируйтесь для добавления товаров в корзину'))
       .then(refreshCardButtonsVisisbility);
   });
 };
