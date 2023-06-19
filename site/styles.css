@@ -29,10 +29,7 @@ h2 {
   color: #000000;
 }
 
-
-.frame {
-  /* position: relative; */
-
+.title-screen {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -41,14 +38,7 @@ h2 {
   height: 672px;
   left: calc(50% - 1065px/2);
   /* top: 50px; */
-  top: calc(50% - 672px/2); /* сделал по центу экрана */
-
-.title-screen {
-  position: relative;
-  width: 1065px;
-  height: 672px;
-  left: calc(50% - 1065px/2);
-  top: 50px;
+  top: calc(50% - 672px/2);  /*сделал по центу экрана */
 }
 
 
