@@ -1,6 +1,9 @@
+p {}
+
 a {
   text-decoration: none;
 }
+
 
 h1 {
   text-align: center;
@@ -42,7 +45,7 @@ h2 {
   display: flex;
 }
 
-img {
+img.logo {
   position: relative;
   left: calc(50% - 636px/2);
 }
@@ -71,6 +74,14 @@ img {
   border-radius: 30px;
   width: 153px;
   height: 48px;
+  transition: background-color 0.3s, box-shadow 0.5s ease-in-out;
+  text-align: center;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #FF5252;
+  box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.3);
   font-family: 'Bahnschrift';
   font-style: normal;
   font-weight: 700;
@@ -78,7 +89,14 @@ img {
   line-height: 48px;
   text-align: center;
   color: #FFFFFF;
+
 }
+
+.button:active {
+  background: #EE2E2E;
+  box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
 
 .stat {
   font-family: 'Bahnschrift';
@@ -99,6 +117,23 @@ img {
   text-align: center;
   margin: 0;
   color: #FFFFFF;
+}
+
+.button-text {
+  text-align: center;
+  display: block;
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 48px;
+  /* identical to box height */
+  text-align: center;
+  color: #FFFFFF;
+  align-self: center;
+  cursor: pointer;
+  user-select: none;
+
 }
 
 .button-container {

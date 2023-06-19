@@ -4,7 +4,7 @@ import {
 import listener from './listeners.js';
 
 // добавление карточеи в список товаров
-const addCard = (cardTemplateAddress = './podutct-card.html') => fetch(cardTemplateAddress)
+const addCard = (cardTemplateAddress = '/shop/podutct-card.html') => fetch(cardTemplateAddress)
   .then((cardResponse) => cardResponse.text())
   .then((html) => {
     const parser = new DOMParser();
@@ -17,7 +17,7 @@ const addCard = (cardTemplateAddress = './podutct-card.html') => fetch(cardTempl
   });
 
 // --- заполнение списка товаров ---
-const gerFrom = (fetchAddress = '/api/products/', cardTemplateAddress = './podutct-card.html') => new Promise((resolve, reject) => {
+const gerFrom = (fetchAddress = '/api/products/', cardTemplateAddress = '/shop/podutct-card.html') => new Promise((resolve, reject) => {
   fetchObject(fetchAddress)
     .then((products) => {
       const lastID = Object.keys(products).at(-1);

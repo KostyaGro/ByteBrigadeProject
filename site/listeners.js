@@ -5,6 +5,9 @@ import {
   refreshAllCardButtons,
 } from './lib.js';
 
+const redirect = (button, address) => button
+  .addEventListener('click', () => window.location = address);
+
 const removeFromCart = (btn) => {
   btn.addEventListener('click', (event) => {
     const container = event.target.closest('.product-card');
@@ -69,5 +72,5 @@ const logout = (btn) => {
 };
 
 export default {
-  removeFromCart, addToCart, subtractFromCart, logout,
+  removeFromCart, addToCart, subtractFromCart, logout, redirect,
 };

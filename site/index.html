@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 
 <html lang="ru">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Основной файл index.html</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Основной файл index.html</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
 
-  <body>
-    <div class="frame">
-      <h1>Welcome to</h1>
-      <img src="resources/main-logo.png" alt="Логотип магазина">
-      <h2>Один из лидеров рынка по продаже цифровой техники</h2>
-      <div class="red-plate flex-container">
-        <div>
-          <p class="stat">3255</p>
-          <p class="stat-text">Магазинов по всему миру</p>
+    <body>
+        <div class="frame">
+            <h1>Welcome to</h1>
+            <img class="logo" src="resources/main-logo.png" alt="Логотип магазина" />
+            <h2>Один из лидеров рынка по продаже цифровой техники</h2>
+            <div class="red-plate flex-container">
+                <div>
+                    <p class="stat">3255</p>
+                    <p class="stat-text">Магазинов по всему миру</p>
+                </div>
+                <div>
+                    <p class="stat">38497</p>
+                    <p class="stat-text">Сотрудников</p>
+                </div>
+                <div>
+                    <p class="stat">2175</p>
+                    <p class="stat-text">Городов с ByteBrigade</p>
+                </div>
+            </div>
+            <div class="button-container flex-container">
+                <div onclick="document.location='/shop/index.html'" class="button">
+                    <span class="button-text">Магазин</span>
+                </div>
+                <div onclick="document.location='/authorization/index.html'" class="button">
+                    <span class="button-text"> Авторизация</span>
+                </div>
+            </div>
         </div>
-        <div>
-          <p class="stat">38497</p>
-          <p class="stat-text">Сотрудников</p>
-        </div>
-        <div>
-          <p class="stat">2175</p>
-          <p class="stat-text">Городов с ByteBrigade</p>
-        </div>
-      </div>
-      <div class="button-container flex-container">
-        <a href="./shop/index.html">
-          <div class="button">Магазин</div>
-        </a>
-        <a href="./authorization/index.html">
-          <div class="button">Авторизация</div>
-        </a>
-      </div>
-    </div>
-  </body>
+    </body>
+    <!-- <script src="index.js" type="module"></script> -->
 </html>
