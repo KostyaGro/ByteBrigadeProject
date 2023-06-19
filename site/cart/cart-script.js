@@ -6,7 +6,7 @@ const logoutButton = document.querySelector('.logout-button');
 listener.logout(logoutButton);
 
 refreshLoginDependant();
-productList.gerFrom('/api/cart-content/', '/shop/podutct-card.html')
+productList.gerFrom('/api/cart-content/', '/cart/podutct-card.html')
   .then(refreshAllCardButtons);
 
 // вынести
@@ -65,4 +65,4 @@ const refreshTotalPrice = () => {
 
 // productList.gerFrom('/api/cart-content/', '/shop/podutct-card.html')
 //   .then(refreshAllCardButtons);
-// refreshTotalPrice();
+refreshTotalPrice();
