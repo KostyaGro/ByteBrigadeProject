@@ -17,7 +17,7 @@ const addCard = (cardTemplateAddress = '/shop/podutct-card.html') => fetch(cardT
   });
 
 // --- заполнение списка товаров ---
-const gerFrom = (fetchAddress = '/api/products/', cardTemplateAddress = '/shop/podutct-card.html') => new Promise((resolve, reject) => {
+const getFrom = (fetchAddress = '/api/products/', cardTemplateAddress = '/shop/podutct-card.html') => new Promise((resolve, reject) => {
   fetchObject(fetchAddress)
     .then((products) => {
       const lastID = Object.keys(products).at(-1);
@@ -48,6 +48,6 @@ const gerFrom = (fetchAddress = '/api/products/', cardTemplateAddress = '/shop/p
 });
 
 export default {
-  gerFrom,
+  getFrom,
   addCard,
 };

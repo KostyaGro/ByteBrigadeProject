@@ -6,5 +6,5 @@ const logoutButton = document.querySelector('.logout-button');
 listener.logout(logoutButton);
 
 refreshLoginDependant();
-productList.gerFrom('/api/products/', '/shop/podutct-card.html')
+productList.getFrom('/api/products/', '/shop/podutct-card.html')
   .then(refreshAllCardButtons);
