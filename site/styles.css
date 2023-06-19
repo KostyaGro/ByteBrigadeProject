@@ -29,6 +29,20 @@ h2 {
   color: #000000;
 }
 
+
+.frame {
+  /* position: relative; */
+
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  width: 1065px;
+  height: 672px;
+  left: calc(50% - 1065px/2);
+  /* top: 50px; */
+  top: calc(50% - 672px/2); /* сделал по центу экрана */
+
 .title-screen {
   position: relative;
   width: 1065px;
@@ -36,6 +50,7 @@ h2 {
   left: calc(50% - 1065px/2);
   top: 50px;
 }
+
 
 .frame {
   background: #FFFFFF;
@@ -164,6 +179,7 @@ svg.logo:hover {
   position: relative;
   left: calc(50% - 900px/2);
 }
+
 
 .flex-vertical {
   flex-direction: column;
