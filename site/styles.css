@@ -120,6 +120,7 @@ img.logo {
   color: #FFFFFF;
   align-self: center;
   cursor: pointer;
+  user-select: none;
 
 }
 
