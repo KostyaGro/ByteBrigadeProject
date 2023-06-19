@@ -4,7 +4,7 @@ import parseCookie from '../utils/parseCookie.js';
 import Cart from '../classes/cart.js';
 
 const notLoggedInError = (resp) => {
-  resp.writeHead(400);
+  resp.writeHead(401);
   resp.end('you are not logged in');
 };
 
@@ -169,7 +169,7 @@ const routes = {
       const { loginedAs } = parseCookie(request.headers.cookie);
 
       if (!loginedAs) {
-        response.writeHead(400); // код ошибки?
+        response.writeHead(401);
         response.end("Can't logout as you are not logged in");
         return;
       }
