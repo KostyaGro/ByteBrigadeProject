@@ -35,6 +35,8 @@ div {
 }
 
 body {
+  margin: 0;
+  
   overflow: hidden;
   position: absolute;
   width: 100%;
