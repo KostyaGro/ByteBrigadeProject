@@ -71,6 +71,7 @@ img.logo {
   height: 48px;
   transition: background-color 0.3s, box-shadow 0.5s ease-in-out;
   text-align: center;
+  /* line-height: 35px; */
   cursor: pointer;
 }
 
@@ -113,7 +114,7 @@ img.logo {
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
-  line-height: 24px;
+  line-height: 48px;
   /* identical to box height */
   text-align: center;
   color: #FFFFFF;
