@@ -1,5 +1,10 @@
 p {}
 
+a {
+  text-decoration: none;
+}
+
+
 h1 {
   text-align: center;
   Font-family: 'Bahnschrift';
@@ -71,13 +76,20 @@ img.logo {
   height: 48px;
   transition: background-color 0.3s, box-shadow 0.5s ease-in-out;
   text-align: center;
-  /* line-height: 35px; */
   cursor: pointer;
 }
 
 .button:hover {
   background: #FF5252;
   box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.3);
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 48px;
+  text-align: center;
+  color: #FFFFFF;
+
 }
 
 .button:active {
