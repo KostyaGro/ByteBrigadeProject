@@ -7,7 +7,15 @@ listener.logout(logoutButton);
 
 refreshLoginDependant();
 productList.getFrom('/api/cart-content/', '/cart/podutct-card.html')
-  .then(refreshAllCardButtons);
+  .then(refreshAllCardButtons)
+  .then(() => {
+    const removeBtns = document.querySelectorAll('.remove-from-cart');
+    removeBtns.forEach((btn) => {
+      console.log(btn);
+      console.log(btn.closest('.product-card'));
+      listener.setDeleteTimer(btn);
+    });
+  });
 
 // вынести
 const refreshTotalPrice = () => {

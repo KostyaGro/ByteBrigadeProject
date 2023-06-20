@@ -38,7 +38,8 @@ h2 {
   height: 672px;
   left: calc(50% - 1065px/2);
   /* top: 50px; */
-  top: calc(50% - 672px/2);  /*сделал по центу экрана */
+  top: calc(50% - 672px/2);
+  /*сделал по центу экрана */
 }
 
 
@@ -75,21 +76,32 @@ img.logo {
   height: 176px;
 }
 
-
-
-.button {
-  background: #FF3333;
-  box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.1);
-  border-radius: 30px;
+/* ----- размеры кнопок ------ */
+.button.medium-size {
   width: 153px;
   height: 48px;
+}
+
+.undo-button {
+  position: relative;
+  width: 120;
+  height: 40;
+}
+
+/* Основной стиль кнопки  */
+
+.button {
+  /* background: #FF3333; */
+  box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+
   transition: background-color 0.3s, box-shadow 0.5s ease-in-out;
   text-align: center;
   cursor: pointer;
 }
 
 .button:hover {
-  background: #FF5252;
+  /* background: #FF5252; */
   box-shadow: 1px 3px 15px rgba(0, 0, 0, 0.3);
 
   font-family: 'Bahnschrift';
@@ -103,7 +115,7 @@ img.logo {
 }
 
 .button:active {
-  background: #EE2E2E;
+  /* background: #EE2E2E; */
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.3);
 }
 
@@ -213,36 +225,67 @@ svg.logo:hover {
   user-select: none;
 }
 
-.white-button .small-button-text {
+.button.white .small-button-text {
   color: #000000;
 }
 
-.red-button .small-button-text {
+.button.red .small-button-text {
   color: #FFFFFF;
 }
 
-.red-button {
+.button.red {
   background: #FF3333;
 }
 
-.red-button:hover {
+.button.red:hover {
   background: #FF5252;
 }
 
-.red-button:active {
-
+.button.red:active {
   background: #EE2E2E;
 }
 
-.white-button {
+.button.white {
   background: #FFFFFF;
 }
 
-.white-button:hover {
+.button.white:hover {
   background: #E2E2E2;
 }
 
-.white-button:active {
+.button.white:active {
 
   background: #E2E2E2;
+}
+
+
+/* ----- эксперимент */
+svg.countdown {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 120px;
+  height: 40px;
+  overflow: visible;
+}
+
+svg .fuse-line {
+
+  stroke-dasharray: 285px;
+  stroke-dashoffset: 0px;
+  stroke-linecap: round;
+  stroke-width: 4px;
+  stroke: red;
+  fill: none;
+  animation: countdown 5s linear infinite forwards;
+}
+
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0px;
+  }
+
+  to {
+    stroke-dashoffset: -285px;
+  }
 }
