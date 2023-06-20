@@ -110,7 +110,7 @@ img.logo {
   font-size: 20px;
   line-height: 48px;
   text-align: center;
-  color: #FFFFFF;
+  /* color: #FFFFFF; */
 
 }
 
@@ -258,6 +258,9 @@ svg.logo:hover {
   background: #E2E2E2;
 }
 
+.white .button-text {
+  color: black;
+}
 
 /* ----- эксперимент */
 svg.countdown {
