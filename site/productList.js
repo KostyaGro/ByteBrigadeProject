@@ -17,14 +17,20 @@ const addCard = (cardTemplateAddress = '/shop/podutct-card.html') => fetch(cardT
   });
 
 // --- заполнение списка товаров ---
-const getFrom = (fetchAddress = '/api/products/', cardTemplateAddress = '/shop/podutct-card.html') => new Promise((resolve, reject) => {
-  fetchObject(fetchAddress)
+const getFrom = (inputOptions) => new Promise((resolve, reject) => {
+  const DefaultOptions = {
+    fetchAddress: '/api/products/',
+    cardTemplateAddress: '/shop/podutct-card.html',
+    removeCardIfEmpty: false,
+  };
+  const options = { ...DefaultOptions, ...inputOptions };
+  fetchObject(options.fetchAddress)
     .then((products) => {
       const lastID = Object.keys(products).at(-1);
       Object
         .entries(products)
         .forEach(([ID, info]) => {
-          addCard(cardTemplateAddress).then((card) => {
+          addCard(options.cardTemplateAddress).then((card) => {
             card.querySelector('.img-container img').src = info.productImgPath;
             card.querySelector('.product-brand').textContent = info.brand;
             card.querySelector('.product-name').textContent = info.name;
@@ -33,7 +39,7 @@ const getFrom = (fetchAddress = '/api/products/', cardTemplateAddress = '/shop/p
             listener.removeFromCart(card.querySelector('.remove-from-cart'));
             listener.addToCart(card.querySelector('.add-to-cart-button'));
             listener.addToCart(card.querySelector('.plus-cart-button'));
-            listener.subtractFromCart(card.querySelector('.minus-cart-button'));
+            listener.subtractFromCart(card.querySelector('.minus-cart-button'), options.removeCardIfEmpty);
 
             card.id = ID;
             console.log(`ID: ${ID} | info: ${info}`);
