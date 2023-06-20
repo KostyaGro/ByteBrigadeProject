@@ -6,5 +6,8 @@ const logoutButton = document.querySelector('.logout-button');
 listener.logout(logoutButton);
 
 refreshLoginDependant();
-productList.getFrom('/api/products/', '/shop/podutct-card.html')
+productList.getFrom({
+  fetchAddress: '/api/products/',
+  cardTemplateAddress: '/shop/podutct-card.html',
+})
   .then(refreshAllCardButtons);
