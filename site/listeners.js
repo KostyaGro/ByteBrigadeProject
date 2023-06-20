@@ -8,6 +8,23 @@ import {
 const redirect = (button, address) => button
   .addEventListener('click', () => window.location = address);
 
+const setDeleteTimer = (btn) => {
+  btn.addEventListener('click', (event) => {
+    const container = event.target.closest('.product-card');
+    const { id } = container;
+    const timerID = setTimeout(() => {
+      document.timeout[id] = container.remove();
+      console.log(document.timeout[id]);
+    }, 5000);
+    container.querySelectorAll('.add-to-cart-button')
+      .forEach((addBtn) => addBtn.addEventListener('click', () => { clearTimeout(timerID); }));
+  });
+};
+
+const stopRefresh = (btn) => {
+  btn.addEventListener('click', () => {});
+};
+
 const removeFromCart = (btn) => {
   btn.addEventListener('click', (event) => {
     const container = event.target.closest('.product-card');
@@ -73,5 +90,5 @@ const logout = (btn) => {
 };
 
 export default {
-  removeFromCart, addToCart, subtractFromCart, logout, redirect,
+  removeFromCart, addToCart, subtractFromCart, logout, redirect, setDeleteTimer, stopRefresh,
 };
