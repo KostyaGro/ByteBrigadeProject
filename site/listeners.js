@@ -8,22 +8,23 @@ import {
 const redirect = (button, address) => button
   .addEventListener('click', () => window.location = address);
 
+const selfDestructContainer = (container) => {
+  const timerID = setTimeout(() => (container.remove()), 5000);
+  container.querySelectorAll('.add-to-cart-button')
+    .forEach((addBtn) => addBtn.addEventListener('click', () => { clearTimeout(timerID); }, { once: true }));
+};
+
 const setDeleteTimer = (btn) => {
   btn.addEventListener('click', (event) => {
     const container = event.target.closest('.product-card');
-    const { id } = container;
-    const timerID = setTimeout(() => {
-      document.timeout[id] = container.remove();
-      console.log(document.timeout[id]);
-    }, 5000);
-    container.querySelectorAll('.add-to-cart-button')
-      .forEach((addBtn) => addBtn.addEventListener('click', () => { clearTimeout(timerID); }));
+    selfDestructContainer(container);
   });
 };
 
 const stopRefresh = (btn) => {
   btn.addEventListener('click', () => {});
 };
+// удаление
 
 const removeFromCart = (btn) => {
   btn.addEventListener('click', (event) => {
@@ -59,13 +60,14 @@ const addToCart = (btn) => {
   });
 };
 
-const subtractFromCart = (btn) => {
+const subtractFromCart = (btn, removeIfEmpty = false) => {
   btn.addEventListener('click', (event) => {
     const container = event.target.closest('.product-card');
     const productID = container.id;
     fetchObject(`/api/subtract-from-cart/${productID}`, { method: 'delete' })
       .then((cartCount) => {
         const productCount = cartCount[String(productID)] ?? 0;
+        if (removeIfEmpty && productCount === 0) { selfDestructContainer(container); }
         container
           .querySelector('.cart-counter')
           .textContent = productCount;
