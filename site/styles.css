@@ -294,3 +294,49 @@ svg .fuse-line {
     stroke-dashoffset: -285px;
   }
 }
+
+.title {
+  justify-self: start;
+  font-family: Bahnschrift;
+  font-size: 34px;
+  font-weight: 600;
+  /* line-height: 41px; */
+  letter-spacing: 0em;
+  text-align: left;
+  margin: 0;
+  flex-grow: 1;
+  /* text-align: center; */
+}
+
+.cart-side-bar {
+  flex-direction: column;
+  align-items: start;
+}
+
+.frame-inset {
+  border-radius: 30px;
+  background: #FFF;
+  box-shadow: 2px 6px 30px 0px rgba(0, 0, 0, 0.10) inset;
+}
+
+.frame-inset p {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.user-info {
+  width: 590px;
+  margin: 50px;
+}
+
+.user-info p {
+  color: #B4B4B4;
+  font-size: 22px;
+  font-family: Bahnschrift;
+  height: 36px;
+}
+
+.footer {
+  background: #D9D9D9;
+  height: 88px;
+}
