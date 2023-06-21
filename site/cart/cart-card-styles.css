@@ -1,5 +1,5 @@
 :root {
-    --card-hight: 210px;
+    --card-hight: 250px;
     --img-container-size: calc(var(--card-hight));
     --debug-bg-color: #FFFFFF;
 }
@@ -7,35 +7,31 @@
 .product-list-container {
     background-color: beige;
     display: flex;
+    gap: 10px;
     flex-direction: column;
-    vertical-align: middle;
-    /* justify-content: flex-start; */
+    align-items: end;
 }
 
 .product-card {
-    /* background-color: cadetblue;
-    border-radius: 10px;
-    */
-
-    /* Rectangle 16 */
     position: relative;
     display: flex;
     align-items: center;
-
+    min-width: 610px;
+    max-width: 1100px;
 
     height: var(--card-hight);
-    margin: 10px 20%;
+    margin: 5px;
     background: #FFFFFF;
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
     width: 80%;
-
-
 }
 
 .img-container {
+    text-overflow: initial;
     width: var(--img-container-size);
     height: var(--img-container-size);
+    min-width: var(--img-container-size);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -48,45 +44,23 @@
 }
 
 .info-container {
-    height: 90%;
-    width: 60%;
+    height: 80%;
+    width: 100%;
+    min-width: 210px;
+
     margin-right: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: start;
 
-    border-style: solid;
-    /* временно */
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
-}
-
-.product-name-container {
-    height: 2em;
-    display: flex;
-
-    /* временно */
-    border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 10px;
 
 }
 
 .product-brand {
-    /* 
-    height: 1em;
-    align-self: start;
-    width: 50%;
-    border-style: solid;
-    border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.623); */
-
-    /* Asus TUF GAMING */
-
+    /* flex-grow: 1; */
     margin: 0;
     font-family: 'Roboto';
     font-style: normal;
@@ -95,32 +69,11 @@
     line-height: 94.69%;
     /* or 27px */
     letter-spacing: 0.03em;
-
     color: #000000;
-
-    /* временно */
-    border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
-
-
 }
 
 .product-name {
-    /* 
-    height: 1em;
-    align-self: start;
-    width: 50%;
-    border-style: solid;
-    border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.623); */
-
-    /* A15 FA507XI-HQ014 */
-
     margin: 0;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -128,69 +81,31 @@
     line-height: 94.69%;
     /* or 17px */
     letter-spacing: 0.03em;
-
     color: #000000;
-
-    /* временно */
-    border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
-
 }
 
-.product-description-container {
-    height: 5em;
-    /* временно */
-    border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
-}
 
 .product-description {
-    /* 
-    width: 50%;
-    border-style: solid;
-    border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.623); */
-
-    /* Quad HD 2K (2560x1440), IPS, AMD Ryzen 9 7940HS, ядра: 8 х 4 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 4070 для ноутбуков 8 ГБ */
-
-    margin: 0;
-
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+    text-overflow: clip;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 94.69%;
-    /* or 15px */
     letter-spacing: 0.03em;
-
     color: #000000;
-
-    /* временно */
-    border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
-
 }
 
 .buy-container {
-
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     display: flex;
     align-items: center;
     justify-content: end;
-    /* временно */
-    border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
 }
 
 .hide-when-empty {
@@ -204,12 +119,29 @@
 
 .cart-counter {
     text-align: center;
+    margin: 0;
 }
 
 .remove-from-cart {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 20px;
+    right: 20px;
     font-weight: bold;
     background-color: rgb(197, 55, 55);
+}
+
+.price {
+    text-align: center;
+    font-family: Roboto;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.03em;
+}
+
+.price-tag {
+    margin: 0px 20px 0px 0px;
+    min-width: 120px;
+    width: 120px;
+    text-align: center;
 }
