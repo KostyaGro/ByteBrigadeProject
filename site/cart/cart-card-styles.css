@@ -4,27 +4,22 @@
     --debug-bg-color: #FFFFFF;
 }
 
-.product-list-container {
-    background-color: beige;
-    display: flex;
-    gap: 10px;
-    flex-direction: column;
-    align-items: end;
-}
 
 .product-card {
+    /* border: solid blue; */
+    margin: 5px 15px;
     position: relative;
     display: flex;
     align-items: center;
-    min-width: 610px;
+    min-width: 620px;
     max-width: 1100px;
-
+    /* gap: 10px; */
     height: var(--card-hight);
     margin: 5px;
     background: #FFFFFF;
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
-    width: 80%;
+    width: 95%;
 }
 
 .img-container {
@@ -33,6 +28,7 @@
     height: var(--img-container-size);
     min-width: var(--img-container-size);
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -130,13 +126,17 @@
     background-color: rgb(197, 55, 55);
 }
 
-.price {
+.price,
+.total-price {
     text-align: center;
     font-family: Roboto;
+    margin: 0px;
     font-size: 26px;
     font-weight: 700;
     line-height: 30px;
     letter-spacing: 0.03em;
+    margin: 5px;
+
 }
 
 .price-tag {
@@ -144,4 +144,61 @@
     min-width: 120px;
     width: 120px;
     text-align: center;
+}
+
+.cart-container {
+    /* border: solid red; */
+    justify-content: center;
+}
+
+.cart-side-bar {
+    flex-direction: column;
+    align-items: start;
+    /* border: solid; */
+}
+
+
+.cart-list-container {
+    /* padding: 0; */
+    /* border: solid green; */
+    /* background-color: beige; */
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: end;
+}
+
+.checkout-box {
+    margin: 5px 15px;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+}
+
+.price-container {
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav {
+    gap: 30px;
+    display: flex;
+    justify-content: end;
+    max-height: 50px;
+    /* background-color: aqua; */
+    padding: 0px 20%;
+    max-width: 1350px;
+}
+
+.title {
+    justify-self: start;
+    font-family: Bahnschrift;
+    font-size: 34px;
+    font-weight: 600;
+    /* line-height: 41px; */
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 0;
+    flex-grow: 1;
+    /* text-align: center; */
 }

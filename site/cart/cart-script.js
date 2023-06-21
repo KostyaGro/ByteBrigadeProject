@@ -10,6 +10,7 @@ productList.getFrom({
   fetchAddress: '/api/cart-content/',
   cardTemplateAddress: '/cart/podutct-card.html',
   removeCardIfEmpty: true,
+  listContainerClass: '.cart-list-container',
 })
   .then(refreshAllCardButtons)
   .then(() => {
