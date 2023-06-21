@@ -9,5 +9,6 @@ refreshLoginDependant();
 productList.getFrom({
   fetchAddress: '/api/products/',
   cardTemplateAddress: '/shop/podutct-card.html',
+  listContainerClass: '.product-list-container',
 })
   .then(refreshAllCardButtons);

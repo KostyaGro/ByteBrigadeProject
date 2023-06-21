@@ -53,6 +53,7 @@ h2 {
   display: flex;
 }
 
+
 img.logo {
   position: relative;
   left: calc(50% - 636px/2);
@@ -142,6 +143,7 @@ img.logo {
 }
 
 .logo-container {
+  text-align: center;
   margin: 0px;
   padding: 0px;
 }
