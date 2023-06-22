@@ -48,7 +48,7 @@ const staticRouter = (request, response, relativePath, config) => {
     response.writeHead(200, { 'Content-Type': MIME });
     let data = fs.readFileSync(absolutePath);
     if (needsReformat) { data = formatHtml(data); }
-    console.log(data);
+    // console.log(data);
     response.end(data, format);
     return true;
   }
@@ -58,7 +58,7 @@ const staticRouter = (request, response, relativePath, config) => {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     const data = fs.readFileSync(absolutePathHtml);
     const formattedHTML = formatHtml(data);
-    console.log(formattedHTML);
+    // console.log(formattedHTML);
     response.end(formattedHTML);
     return true;
   }
