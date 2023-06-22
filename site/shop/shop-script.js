@@ -1,4 +1,4 @@
-import { refreshLoginDependant, refreshAllCardButtons } from '../lib.js';
+import { fetchObject, refreshLoginDependant, refreshAllCardButtons } from '../lib.js';
 import listener from '../listeners.js';
 import productList from '../productList.js';
 
@@ -12,3 +12,8 @@ productList.getFrom({
   listContainerClass: '.product-list-container',
 })
   .then(refreshAllCardButtons);
+
+fetchObject('/api/user/')
+  .then((resp) => {
+    document.querySelector('.username').textContent = resp.loginName;
+  });
