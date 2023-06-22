@@ -1,3 +1,4 @@
+import { request } from 'express';
 import Products from '../products.js';
 import Users from '../users.js';
 import parseCookie from '../utils/parseCookie.js';
@@ -6,6 +7,11 @@ import Cart from '../classes/cart.js';
 const notLoggedInError = (resp) => {
   resp.writeHead(401);
   resp.end('you are not logged in');
+};
+
+const badRequest = (resp) => {
+  resp.writeHead(400);
+  resp.end('bad request');
 };
 
 const sendData = (data, resp) => {
@@ -73,7 +79,25 @@ const routes = {
       const cart = new Cart(userID, products);
       sendData(cart.totalPrice, response);
     },
+    // _________________________________________________________
+    'filter/': ({ response, products, body }) => {
+      if (body.length === 0) {
+        badRequest(response);
+        return;
+      }
+      const filter = JSON.parse(body);
+      const filteredData = products.filterBy(filter);
+      if (Object.keys(filteredData) === 0) {
+        response.writeHead('204');
+        return;
+      }
+      // response.writeHead('200');
+      sendData(filteredData, response);
+      // response.end();
+    },
   },
+  // ____________________________________________________________
+  // ____________________________________________________________
   POST: {
     'add-to-cart/(\\w+)': ({
       response, ID, userID, products,
