@@ -63,7 +63,15 @@ const refreshLoginDependant = () => {
   visibleWhenLoggedOut.forEach(showElement);
 };
 
+const clearSiblingsOfTag = (element, tag) => {
+  Array.from(element
+    .parentElement
+    .children)
+    .forEach((sibling) => sibling.classList.remove(tag));
+};
+
 export {
+  clearSiblingsOfTag,
   refreshLoginDependant,
   fetchStringObject,
   fetchObject,
