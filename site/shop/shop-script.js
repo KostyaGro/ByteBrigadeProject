@@ -4,6 +4,8 @@ import {
 import listener from '../listeners.js';
 import productList from '../productList.js';
 
+const typeListContainer = document.querySelector('.product-type-filter');
+const brandListContainer = document.querySelector('.product-brand-filter');
 const logoutButton = document.querySelector('.logout-button');
 listener.logout(logoutButton);
 
@@ -22,8 +24,6 @@ fetchObject('/api/user/')
     document.querySelector('.username').textContent = resp.loginName;
   });
 // фильтрация
-const typeListContainer = document.querySelector('.product-type-filter');
-const brandListContainer = document.querySelector('.product-brand-filter');
 
 const applyFilters = () => {
   // type filter
@@ -59,6 +59,9 @@ const addTypeFilter = (form) => form.addEventListener('click', (e) => {
 const addBrandFilter = (form) => form.addEventListener('click', (e) => {
   const buttonPressed = e.target;
   if (buttonPressed === form) return;
+  if (buttonPressed.tagName === 'LABEL') return;
+  // console.log(buttonPressed);
+  // if (buttonPressed)
   applyFilters();
 });
 
