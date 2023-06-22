@@ -6,7 +6,9 @@ p {
   background-color: burlywood;
   display: flex;
   padding: 10px 25%;
-  justify-content: space-around;
+  justify-content: end;
+  align-items: center;
+  gap: 30px;
 }
 
 
