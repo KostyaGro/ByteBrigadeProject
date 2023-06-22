@@ -223,7 +223,7 @@ const apiRouter = (request, response, config) => {
 
       const result = pathname && Object.keys(route).find((str) => {
         const regexp = new RegExp(`^/api/${str}$`);
-        console.log(regexp);
+        // console.log(regexp);
         const matches = pathname.match(regexp);
         if (!matches) {
           return false;
