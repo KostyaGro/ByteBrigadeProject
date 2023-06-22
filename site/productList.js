@@ -16,6 +16,33 @@ const addCard = (cardTemplateAddress = '/shop/podutct-card.html', listContainerC
     return card;
   });
 
+const buildCards = (products, options) => new Promise((resolve, reject) => {
+  const lastID = Object.keys(products).at(-1);
+  Object
+    .entries(products)
+    .forEach(([ID, info]) => {
+      addCard(options.cardTemplateAddress, options.listContainerClass).then((card) => {
+        card.querySelector('.img-container img').src = info.productImgPath;
+        card.querySelector('.product-brand').textContent = info.brand;
+        card.querySelector('.product-name').textContent = info.name;
+        card.querySelector('.product-description').textContent = info.description;
+        card.querySelector('.price').textContent = `${info.price} \u20bd`;
+        listener.removeFromCart(card.querySelector('.remove-from-cart'));
+        listener.addToCart(card.querySelector('.add-to-cart-button'));
+        listener.addToCart(card.querySelector('.plus-cart-button'));
+        listener.subtractFromCart(card.querySelector('.minus-cart-button'), options.removeCardIfEmpty);
+
+        card.id = ID;
+        console.log(`ID: ${ID} | info: ${info}`);
+        // return card;
+        if (ID === lastID) {
+          console.log('getting products');
+          resolve(products);
+        }
+      });
+    });
+});
+
 // --- заполнение списка товаров ---
 const getFrom = (inputOptions) => new Promise((resolve, reject) => {
   const DefaultOptions = {
@@ -26,35 +53,11 @@ const getFrom = (inputOptions) => new Promise((resolve, reject) => {
   };
   const options = { ...DefaultOptions, ...inputOptions };
   fetchObject(options.fetchAddress)
-    .then((products) => {
-      const lastID = Object.keys(products).at(-1);
-      Object
-        .entries(products)
-        .forEach(([ID, info]) => {
-          addCard(options.cardTemplateAddress, options.listContainerClass).then((card) => {
-            card.querySelector('.img-container img').src = info.productImgPath;
-            card.querySelector('.product-brand').textContent = info.brand;
-            card.querySelector('.product-name').textContent = info.name;
-            card.querySelector('.product-description').textContent = info.description;
-            card.querySelector('.price').textContent = `${info.price} \u20bd`;
-            listener.removeFromCart(card.querySelector('.remove-from-cart'));
-            listener.addToCart(card.querySelector('.add-to-cart-button'));
-            listener.addToCart(card.querySelector('.plus-cart-button'));
-            listener.subtractFromCart(card.querySelector('.minus-cart-button'), options.removeCardIfEmpty);
-
-            card.id = ID;
-            console.log(`ID: ${ID} | info: ${info}`);
-            // return card;
-            if (ID === lastID) {
-              console.log('getting products');
-              resolve(products);
-            }
-          });
-        });
-    });
+    .then((obj) => resolve(buildCards(obj, options)));
 });
 
 export default {
+  buildCards,
   getFrom,
   addCard,
 };

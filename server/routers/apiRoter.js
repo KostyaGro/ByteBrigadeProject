@@ -20,6 +20,24 @@ const sendData = (data, resp) => {
 };
 
 const routes = {
+  OPTIONS: {
+    'filter/': ({ response, products, body }) => {
+      if (body.length === 0) {
+        badRequest(response);
+        return;
+      }
+      const filter = JSON.parse(body);
+      const filteredData = products.filterBy(filter);
+      if (Object.keys(filteredData) === 0) {
+        response.writeHead('204');
+        return;
+      }
+      // response.writeHead('200');
+      sendData(filteredData, response);
+      // response.end();
+    },
+  },
+
   GET: {
     'user/': ({ userID, response, users }) => {
       if (!userID) {
@@ -80,21 +98,6 @@ const routes = {
       sendData(cart.totalPrice, response);
     },
     // _________________________________________________________
-    'filter/': ({ response, products, body }) => {
-      if (body.length === 0) {
-        badRequest(response);
-        return;
-      }
-      const filter = JSON.parse(body);
-      const filteredData = products.filterBy(filter);
-      if (Object.keys(filteredData) === 0) {
-        response.writeHead('204');
-        return;
-      }
-      // response.writeHead('200');
-      sendData(filteredData, response);
-      // response.end();
-    },
   },
   // ____________________________________________________________
   // ____________________________________________________________
