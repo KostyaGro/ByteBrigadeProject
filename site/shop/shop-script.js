@@ -1,4 +1,6 @@
-import { fetchObject, refreshLoginDependant, refreshAllCardButtons } from '../lib.js';
+import {
+  clearSiblingsOfTag, fetchObject, refreshLoginDependant, refreshAllCardButtons,
+} from '../lib.js';
 import listener from '../listeners.js';
 import productList from '../productList.js';
 
@@ -48,12 +50,7 @@ const addTypeFilter = (form) => form.addEventListener('click', (e) => {
   const buttonPressed = e.target;
   if (buttonPressed === form) return;
   if (buttonPressed.classList.contains('active')) return;
-  const clearSiblingsOfTag = (element, tag) => {
-    Array.from(element
-      .parentElement
-      .children)
-      .forEach((sibling) => sibling.classList.remove(tag));
-  };
+
   clearSiblingsOfTag(buttonPressed, 'active');
   buttonPressed.classList.add('active');
   applyFilters();

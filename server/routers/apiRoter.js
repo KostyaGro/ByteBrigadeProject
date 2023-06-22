@@ -19,6 +19,24 @@ const sendData = (data, resp) => {
   resp.end(JSON.stringify(data));
 };
 
+const loginAs = ({ credentials, users, response }) => {
+  if (!users.hasUser(credentials.loginName)) {
+    console.log(`login as "${credentials.loginName}" failed, user is not registered`);
+    response.writeHead(422);
+    response.end();
+  }
+
+  if (users.checkCredentials(credentials)) {
+    console.log(`login as "${credentials.loginName}" succesfull`);
+    response.writeHead(200, { 'Set-Cookie': `loginedAs = ${users.findUserID(credentials.loginName)}; path = / ` });
+    response.end();
+  } else {
+    console.log(`login as "${credentials.loginName}" failed, wrong password`);
+    response.writeHead(403);
+    response.end();
+  }
+};
+
 const routes = {
   OPTIONS: {
     'filter/': ({ response, products, body }) => {
@@ -120,35 +138,18 @@ const routes = {
       const credentials = JSON.parse(body);
       if (users.isAvailable(credentials)) {
         users.add(credentials);
-        response.writeHead(200);
-        response.end();
-        console.log('user added');
-        console.log(users.all);
+        loginAs({ credentials, users, response });
         return;
       }
-      console.log('user not added');
-      response.writeHead(400); // уточнить код ошибки
+      console.log('username is not available');
+      response.writeHead(403);
       response.end();
     },
     // _________________________________________________________
     login: ({ response, body, users }) => {
       console.log('=}} login attempt');
       const credentials = JSON.parse(body);
-      if (!users.hasUser(credentials.loginName)) {
-        console.log(`login as "${credentials.loginName}" failed, user is not registered`);
-        response.writeHead(400);
-        response.end();
-      }
-
-      if (users.checkCredentials(credentials)) {
-        console.log(`login as "${credentials.loginName}" succesfull`);
-        response.writeHead(200, { 'Set-Cookie': `loginedAs = ${users.findUserID(credentials.loginName)}; path = / ` });
-        response.end();
-      } else {
-        console.log(`login as "${credentials.loginName}" failed, wrong password`);
-        response.writeHead(400);
-        response.end();
-      }
+      loginAs({ credentials, users, response });
     },
   },
   DELETE: {

@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-   <head>
-      <meta charset="UTF-8" />
-      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>Document</title>
-      <link rel="stylesheet" href="auth-styles.css" />
-   </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="../styles.css" />
+        <link rel="stylesheet" href="auth-styles.css" />
+    </head>
+    <body class="auth">
+        <main class="ui-container">
+            <div class="forms-container">
+                <form class="login-form active" action="#">
+                    <label> никнейм</label>
+                    <input id="loginName-log-in" type="name" />
+                    <label> пароль</label>
+                    <input id="password-log-in" type="password" />
+                    <p id="login-error-text" class="hidden">неверный логин или пароль</p>
+                    <div id="login-button" class="button medium-size red">
+                        <span class="button-text"> войти </span>
+                    </div>
+                    <div class="button medium-size white go-back">
+                        <span class="button-text"> отмена </span>
+                    </div>
+                </form>
 
-   <body>
-      авторизация
-      <p>
-         <a href="../shop/index.html">магазин</a>
-      </p>
-      <div class="auth-container">
-         <div class="reg-container auth-block">
-            <form action="/api/user" method="post">
-               <h2>регистрация</h2>
-               <label for="loginName-reg">псевдоним</label>
-               <br />
-               <input id="loginName-reg" type="name" placeholder="имя" value="" />
-               <br />
-               <label for="password-reg">пароль</label>
-               <br />
-               <input id="password-reg" type="password" placeholder="пароль" />
-               <br />
-               <label for="password-repeat-reg">повторите пароль</label>
-               <br />
-               <input id="password-repeat-reg" type="password" placeholder="повторите пароль" />
-               <br />
-               <button id="reg-button">зарегистрироваться</button>
-            </form>
-         </div>
-         <div class="login-container auth-block">
-            <form action="">
-               <h2>логин</h2>
-               <label for="loginName-log-in">псевдоним</label>
-               <br />
-               <input id="loginName-log-in" type="name" placeholder="имя" />
-               <br />
-               <label for="password-log-in">пароль</label>
-               <br />
-               <input id="password-log-in" type="password" placeholder="повторите пароль" /> <br />
-               <button id="login-button">войти</button>
-            </form>
-         </div>
-      </div>
-   </body>
-   <script src="auth-script.js"></script>
+                <form class="registration-form" action="#">
+                    <label> никнейм *</label>
+                    <input id="loginName-reg" type="name" />
+                    <label> пароль *</label>
+                    <input id="password-reg" type="password" />
+                    <label> повторите пароль *</label>
+                    <input id="password-repeat-reg" type="password" />
+                    <label> e-mail *</label>
+                    <input id="email-reg" type="email" />
+                    <label> имя </label>
+                    <input id="first-name-reg" type="first-name" />
+                    <label> фамилия </label>
+                    <input id="second-name-reg" type="second-name" />
+                    <p id="registration-error-text" class="hidden">никнейм занят</p>
+                    <div id="reg-button" class="button medium-size red">
+                        <span class="button-text"> зарегистрироваться </span>
+                    </div>
+                    <div class="button medium-size white go-back">
+                        <span class="button-text"> отмена </span>
+                    </div>
+                </form>
+            </div>
+
+            <div tabindex="0" class="login-tab active" data-form="login-form">вход</div>
+            <div tabindex="0" class="registration-tab" data-form="registration-form">
+                регистрация
+            </div>
+        </main>
+    </body>
+    <script type="module" src="auth-script.js"></script>
 </html>
