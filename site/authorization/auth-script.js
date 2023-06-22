@@ -55,11 +55,17 @@ loginButton.addEventListener('click', async (event) => {
           // messageBox.textContent = 'успех';
           return true;
 
-        case 400:
-          loginErrorOut.textContent = 'неверный логин или пароль';
+        case 403:
+          loginErrorOut.textContent = 'неверный пароль';
+          loginErrorOut.classList.remove('hidden');
+          break;
+        case 422:
+          loginErrorOut.textContent = 'пользователь не зарегистрирован';
           loginErrorOut.classList.remove('hidden');
           break;
         default:
+          loginErrorOut.textContent = 'неизвестная ошибка';
+          loginErrorOut.classList.remove('hidden');
           return false;
       }
     })

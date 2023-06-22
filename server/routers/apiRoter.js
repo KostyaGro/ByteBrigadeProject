@@ -22,7 +22,7 @@ const sendData = (data, resp) => {
 const loginAs = ({ credentials, users, response }) => {
   if (!users.hasUser(credentials.loginName)) {
     console.log(`login as "${credentials.loginName}" failed, user is not registered`);
-    response.writeHead(400);
+    response.writeHead(422);
     response.end();
   }
 
@@ -32,7 +32,7 @@ const loginAs = ({ credentials, users, response }) => {
     response.end();
   } else {
     console.log(`login as "${credentials.loginName}" failed, wrong password`);
-    response.writeHead(400);
+    response.writeHead(403);
     response.end();
   }
 };
