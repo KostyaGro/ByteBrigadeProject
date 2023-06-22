@@ -340,3 +340,36 @@ svg .fuse-line {
   background: #D9D9D9;
   height: 88px;
 }
+
+.footer p {
+
+  /* 8-800-23-11-777(с 08:00 до 22:00) */
+  margin-top: 0.5em; /* приблизил к макету, как смог) */
+  margin-bottom: 0.5em; /* приблизил к макету, как смог) */
+  font-family: 'Bahnschrift';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 17px;
+
+  /* identical to box height */
+  /* text-decoration-line: underline; */
+
+  color: #929292;
+}
+
+.content {
+  flex-grow: 1;
+}
+
+body {
+  margin: 0;
+
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+}
