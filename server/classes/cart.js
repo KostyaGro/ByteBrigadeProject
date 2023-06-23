@@ -1,7 +1,7 @@
 import fs from 'fs';
-import readFile from '../readObjFromFile.js';
+import readFile from '../utils/readObjFromFile.js';
 // eslint-disable-next-line import/no-unresolved
-import Config from '#config';
+import Config from './config.js';
 // import Products from '../products.js';
 
 export default class Cart {

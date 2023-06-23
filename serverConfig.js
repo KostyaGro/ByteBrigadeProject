@@ -1,5 +1,5 @@
 import fs from 'fs';
-import readFile from './server/readObjFromFile.js';
+import readFile from './server/utils/readObjFromFile.js';
 
 const currentConfig = readFile('./config.json');
 console.log(currentConfig);

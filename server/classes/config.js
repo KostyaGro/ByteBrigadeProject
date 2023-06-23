@@ -1,5 +1,5 @@
 import path from 'path';
-import readObjFromFile from './readObjFromFile.js';
+import readObjFromFile from '../utils/readObjFromFile.js';
 
 export default class Config {
   constructor(configFilePath = 'config.json') {

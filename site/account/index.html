@@ -5,14 +5,12 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="../assets/styles.css" />
-        <link rel="stylesheet" href="./shop-styles.css" />
-        <link rel="stylesheet" href="./card-styles.css" />
         <title>Document</title>
     </head>
 
-    <body>
-        <header class="shop-header">
-            <h1 class="logo-container">
+    <body class="account-body">
+        <!-- <header>
+            <div class="logo-container">
                 <svg
                     onclick="document.location='/index.html'"
                     class="logo"
@@ -46,10 +44,7 @@
                         d="M294.4 36.4L289.1 36C284 36 280.8 37.6 279.3 40.8V73.5H263.2V21.9H278.3L278.8 28.5C281.5 23.4 285.3 20.9 290.1 20.9C291.8 20.9 293.3 21.1 294.6 21.5L294.4 36.4Z"
                         fill="#FF3333"
                     />
-                    <path
-                        d="M317.1 0.699951H300.9V52.4H317.1V0.699951Z"
-                        fill="#FF3333"
-                    />
+                    <path d="M317.1 0.699951H300.9V52.4H317.1V0.699951Z" fill="#FF3333" />
                     <path
                         d="M318 65.7C318 68 317.2 69.9 315.5 71.3C313.8 72.8 311.7 73.5 309 73.5C306.3 73.5 304.2 72.8 302.5 71.3C300.8 69.8 300 68 300 65.7C300 63.4 300.8 61.5 302.5 60.1C304.2 58.6 306.3 57.9 309 57.9C311.6 57.9 313.8 58.6 315.5 60.1C317.2 61.6 318 63.4 318 65.7Z"
                         fill="#333333"
@@ -71,110 +66,49 @@
                         fill="#FF3333"
                     />
                 </svg>
-            </h1>
-            <nav class="shop-main-navbar">
-                <div class="vsible-when-logged-in">
-                    <span>привет, </span><span class="username"></span>
-                </div>
-                <!-- <div>
-                <a href="../index.html">главная</a>
-            </div> -->
+            </div>
+        </header> -->
 
-                <div>
-                    <a href="../account/index.html">
-                        <svg
-                            width="18"
-                            height="20"
-                            viewBox="0 0 18 20"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M8.75 8.5C10.683 8.5 12.25 6.933 12.25 5C12.25 3.067 10.683 1.5 8.75 1.5C6.817 1.5 5.25 3.067 5.25 5C5.25 6.933 6.817 8.5 8.75 8.5ZM8.75 10C11.5114 10 13.75 7.76142 13.75 5C13.75 2.23858 11.5114 0 8.75 0C5.98858 0 3.75 2.23858 3.75 5C3.75 7.76142 5.98858 10 8.75 10Z"
-                                fill="black"
-                            />
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M5.75 13.75C3.40279 13.75 1.5 15.6528 1.5 18V19C1.5 19.4142 1.16421 19.75 0.75 19.75C0.335786 19.75 0 19.4142 0 19V18C0 14.8244 2.57436 12.25 5.75 12.25H11.75C14.9256 12.25 17.5 14.8244 17.5 18V19C17.5 19.4142 17.1642 19.75 16.75 19.75C16.3358 19.75 16 19.4142 16 19V18C16 15.6528 14.0972 13.75 11.75 13.75H5.75Z"
-                                fill="black"
-                            />
-                        </svg>
+        <div
+            class="flex-container flex-align-center content justify-content-center column"
+        >
+            <div class="small-logo">
+                <img
+                    src="../assets/images/ByteBridage-small.png"
+                    alt="Логотип магазина"
+                />
+            </div>
 
-                        <!-- личный кабинет -->
-                    </a>
-                </div>
-
-                <div>
-                    <a href="../cart/index.html"
-                        ><svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M5.69865 7L10.0973 2.78467C11.161 1.7653 12.839 1.7653 13.9027 2.78467L18.3013 7H20.847C21.4555 7 21.923 7.53899 21.8369 8.14142L20.368 18.4243C20.1568 19.9022 18.8911 21 17.3981 21H6.6019C5.10895 21 3.84318 19.9022 3.63205 18.4243L2.16307 8.14142C2.07701 7.53899 2.54447 7 3.15302 7H5.69865ZM11.1351 3.86766C11.6186 3.4043 12.3814 3.4043 12.8649 3.86766L16.1334 7H7.86658L11.1351 3.86766ZM3.72952 8.5L5.11697 18.2121C5.22254 18.9511 5.85542 19.5 6.6019 19.5H17.3981C18.1446 19.5 18.7775 18.9511 18.883 18.2121L20.2705 8.5H3.72952Z"
-                                fill="black"
-                            />
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M8 11.25C8.41421 11.25 8.75 11.5858 8.75 12V16C8.75 16.4142 8.41421 16.75 8 16.75C7.58579 16.75 7.25 16.4142 7.25 16V12C7.25 11.5858 7.58579 11.25 8 11.25Z"
-                                fill="black"
-                            />
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M12 11.25C12.4142 11.25 12.75 11.5858 12.75 12V16C12.75 16.4142 12.4142 16.75 12 16.75C11.5858 16.75 11.25 16.4142 11.25 16V12C11.25 11.5858 11.5858 11.25 12 11.25Z"
-                                fill="black"
-                            />
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M16 11.25C16.4142 11.25 16.75 11.5858 16.75 12V16C16.75 16.4142 16.4142 16.75 16 16.75C15.5858 16.75 15.25 16.4142 15.25 16V12C15.25 11.5858 15.5858 11.25 16 11.25Z"
-                                fill="black"
-                            />
-                        </svg>
-                    </a>
-                </div>
-                <div class="vsible-when-logged-out">
-                    <a href="../authorization/index.html">авторизация</a>
-                </div>
-
-                <div class="vsible-when-logged-in">
-                    <button class="logout-button">
-                        <img
-                            src="../assets/images/logouticon.png"
-                            style="height: 20px"
-                            alt=""
-                        />
-                        <!-- выйти -->
-                    </button>
+            <nav class="flex-container account">
+                <p class="title content">Личный кабинет</p>
+                <div
+                    onclick="document.location='/shop/index.html'"
+                    class="button medium-size red"
+                >
+                    <span class="button-text"> < < назад </span>
+                    <!-- &#60 &#60  -->
                 </div>
             </nav>
-            <div class="product-type-filter">
-                <a id="all" class="active" href="#">все</a>
-                <!-- cписок типов -->
+            <div class="user-info">
+                <p>Никнейм:</p>
+                <div class="login-name frame-inset">
+                    <p>Никнейм</p>
+                </div>
+                <p>Ф.И.О :</p>
+                <div class="first-name frame-inset">
+                    <p>Иванов Иван Иванович</p>
+                </div>
+                <p>E-mail:</p>
+                <div class="e-mail frame-inset">
+                    <p>test@test.com</p>
+                </div>
             </div>
-        </header>
-        <main class="shop-main">
-            <div class="product-list-container">
-                <!-- сюда скриптом добавляется список товаров -->
-            </div>
-            <div class="shop-sidebar">
-                <form class="product-brand-filter frame">
-                    фильтр:
-                    <br />
-                    <!-- cписок брендов -->
-                </form>
-            </div>
-        </main>
+        </div>
+
+        <div class="footer">
+            <img src="../assets/images/footer-logo.png" alt="Логотип футера" />
+            <p>8-800-23-11-777(с 08:00 до 22:00)</p>
+        </div>
     </body>
-    <script type="module" src="shop-script.js"></script>
+    <script type="module" src="./acc-script.js"></script>
 </html>

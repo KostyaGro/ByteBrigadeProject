@@ -1,6 +1,6 @@
-import listener from '../listeners.js';
-import { refreshLoginDependant, refreshAllCardButtons } from '../lib.js';
-import productList from '../productList.js';
+import listener from '../assets/common-scripts/listeners.js';
+import { refreshLoginDependant, refreshAllCardButtons } from '../assets/common-scripts/lib.js';
+import productList from '../assets/common-scripts/productList.js';
 
 const logoutButton = document.querySelector('.logout-button');
 listener.logout(logoutButton);

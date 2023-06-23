@@ -1,8 +1,8 @@
 import {
   clearSiblingsOfTag, fetchObject, refreshLoginDependant, refreshAllCardButtons,
-} from '../lib.js';
-import listener from '../listeners.js';
-import productList from '../productList.js';
+} from '../assets/common-scripts/lib.js';
+import listener from '../assets/common-scripts/listeners.js';
+import productList from '../assets/common-scripts/productList.js';
 
 const typeListContainer = document.querySelector('.product-type-filter');
 const brandListContainer = document.querySelector('.product-brand-filter');
@@ -69,7 +69,7 @@ const addBrandFilter = (form) => form.addEventListener('click', (e) => {
 fetchObject('/api/product-variants/type')
   .then((types) => {
     types
-      .map((type) => {
+      .forEach((type) => {
         const typeButton = document.createElement('a');
         typeButton.href = '#';
         typeButton.textContent = type;
@@ -81,7 +81,7 @@ fetchObject('/api/product-variants/type')
 fetchObject('/api/product-variants/brand')
   .then((brands) => {
     brands
-      .map((brand) => {
+      .forEach((brand) => {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = brand;

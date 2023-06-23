@@ -6,7 +6,7 @@ import {
 } from './lib.js';
 
 const redirect = (button, address) => button
-  .addEventListener('click', () => window.location = address);
+  .addEventListener('click', () => { window.location = address; });
 
 const selfDestructContainer = (container) => {
   const timerID = setTimeout(() => (container.remove()), 5000);

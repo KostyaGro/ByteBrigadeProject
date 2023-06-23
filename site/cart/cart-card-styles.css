@@ -1,9 +1,8 @@
 :root {
     --card-hight: 250px;
     --img-container-size: calc(var(--card-hight));
-    --debug-bg-color: #FFFFFF;
+    --debug-bg-color: #ffffff;
 }
-
 
 .product-card {
     /* border: solid blue; */
@@ -16,7 +15,7 @@
     /* gap: 10px; */
     height: var(--card-hight);
     margin: 5px;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
     width: 95%;
@@ -52,7 +51,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     gap: 10px;
-
 }
 
 .product-brand {
@@ -79,7 +77,6 @@
     letter-spacing: 0.03em;
     color: #000000;
 }
-
 
 .product-description {
     flex-grow: 1;
@@ -136,7 +133,6 @@
     line-height: 30px;
     letter-spacing: 0.03em;
     margin: 5px;
-
 }
 
 .price-tag {
@@ -155,7 +151,6 @@
         flex-direction: column;
         align-items: start;
     } */
-
 
 .cart-list-container {
     /* padding: 0; */
@@ -194,7 +189,7 @@ header {
     margin: 0px;
     padding-top: 10px;
     width: 100vw;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     position: fixed;
@@ -209,7 +204,6 @@ body {
 .padding {
     height: 180px;
 }
-
 
 main {
     /* margin-top: 100px; */

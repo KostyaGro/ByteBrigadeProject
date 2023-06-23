@@ -1,4 +1,4 @@
-import listen from './listeners.js';
+import listen from './assets/common-scripts/listeners.js';
 
 const shopButton = document.querySelector('.go-to-shop');
 listen.redirect(shopButton, '/shop/index.html');

@@ -1,6 +1,5 @@
-import { request } from 'express';
-import Products from '../products.js';
-import Users from '../users.js';
+import Products from '../classes/products.js';
+import Users from '../classes/users.js';
 import parseCookie from '../utils/parseCookie.js';
 import Cart from '../classes/cart.js';
 
@@ -217,7 +216,7 @@ const apiRouter = (request, response, config) => {
   request
     .on('data', (chunk) => body.push(chunk.toString()))
     .on('end', () => {
-      console.log('body: ', body);
+      // console.log('body: ', body);
       const { pathname } = new URL(request.url, `http://${request.headers.host}`);
       const route = routes[request.method];
 
@@ -243,6 +242,7 @@ const apiRouter = (request, response, config) => {
         response.end();
         return false;
       }
+      return true;
     });
   //   const pathParts = request.url.slice(5).split('/');
   return true;

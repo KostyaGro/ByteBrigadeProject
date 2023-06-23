@@ -1,10 +1,11 @@
+/* eslint-disable no-param-reassign */
 import {
   fetchObject,
 } from './lib.js';
 import listener from './listeners.js';
 
 // добавление карточеи в список товаров
-const addCard = (cardTemplateAddress = '/shop/podutct-card.html', listContainerClass) => fetch(cardTemplateAddress)
+const addCard = (cardTemplateAddress, listContainerClass) => fetch(cardTemplateAddress)
   .then((cardResponse) => cardResponse.text())
   .then((html) => {
     const parser = new DOMParser();
@@ -16,7 +17,7 @@ const addCard = (cardTemplateAddress = '/shop/podutct-card.html', listContainerC
     return card;
   });
 
-const buildCards = (products, options) => new Promise((resolve, reject) => {
+const buildCards = (products, options) => new Promise((resolve) => {
   const lastID = Object.keys(products).at(-1);
   Object
     .entries(products)
@@ -45,7 +46,7 @@ const buildCards = (products, options) => new Promise((resolve, reject) => {
 });
 
 // --- заполнение списка товаров ---
-const getFrom = (inputOptions) => new Promise((resolve, reject) => {
+const getFrom = (inputOptions) => new Promise((resolve) => {
   const DefaultOptions = {
     fetchAddress: '/api/products/',
     cardTemplateAddress: '/shop/podutct-card.html',

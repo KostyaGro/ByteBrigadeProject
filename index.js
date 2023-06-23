@@ -1,6 +1,6 @@
 import http from 'http';
 import serverApp from './server/serverApp.js';
-import Config from './server/config.js';
+import Config from './server/classes/config.js';
 
 // eslint-disable-next-line no-console
 console.clear();

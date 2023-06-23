@@ -1,7 +1,9 @@
-{"port":"5000",
-"siteDir":"./site/",
-"dataDir":"./database/",
-"usersDBfilename":"users.json",
-"productsDBfilename":"products.json",
-"productImgDir":"/resources/",
-"cartDir":"./database/cart"}  
+{
+    "port": "5000",
+    "siteDir": "./site/",
+    "dataDir": "./database/",
+    "usersDBfilename": "users.json",
+    "productsDBfilename": "products.json",
+    "productImgDir": "/assets/images/products",
+    "cartDir": "./database/cart"
+}
