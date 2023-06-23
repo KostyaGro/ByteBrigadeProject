@@ -10,7 +10,7 @@
 
     <body class="account-body">
 
-        <header>
+        <!-- <header>
             <div class="logo-container">
                 <svg
                     onclick="document.location='/index.html'"
@@ -68,22 +68,28 @@
                     />
                 </svg>
             </div>
-        </header>
+        </header> -->
         
-        <nav class="flex-container flex-align-center justify-content-center">
-            <p class="title">Личный кабинет</p>
-            <div onclick="document.location='/shop/index.html'" class="button medium-size red">
-                <span class="button-text">&#60 &#60 назад</span>
-            </div>
-        </nav>
+        
+        
+        <div class="flex-container flex-align-center content justify-content-center column">
 
-        <div class="flex-container flex-align-center content justify-content-center">
+            <div class="small-logo">
+                <img src="../resources/ByteBridage-small.png" alt="Логотип магазина">
+            </div>
+
+            <nav class="flex-container account">
+                <p class="title content">Личный кабинет</p>
+                <div onclick="document.location='/shop/index.html'" class="button medium-size red">
+                    <span class="button-text">&#60 &#60 назад</span>
+                </div>
+            </nav>
             <div class="user-info">
                 <p>Никнейм:</p>
                 <div class="login-name frame-inset">
                     <p>Никнейм</p>
                 </div>
-                <p>Ф.И.О.:</p>
+                <p>Ф.И.О :</p>
                 <div class="first-name frame-inset">
                     <p>Иванов Иван Иванович</p>
                 </div>

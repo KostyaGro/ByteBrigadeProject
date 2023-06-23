@@ -325,7 +325,7 @@ svg .fuse-line {
 }
 
 .user-info {
-  width: 590px;
+  width: 491px;
   margin: 50px;
 }
 
@@ -384,6 +384,25 @@ svg .fuse-line {
   flex-direction: column;
 }
 
+.justify-content-space-evenly {
+  justify-content: space-evenly;
+}
+
 .justify-content-center {
   justify-content: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.account {
+  width: 600px;
+  /* по макету 540px, поствил больше, визуальней так больше понравилось */
+}
+
+.small-logo {
+  position: relative;
+  right: 164px;
+  top: -35px;
 }
