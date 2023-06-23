@@ -1,17 +1,17 @@
-import { clearSiblingsOfTag } from '../lib.js';
+import { clearSiblingsOfTag } from '../assets/common-scripts/lib.js';
 
 const loginTabTag = document.querySelector('.login-tab');
 const registerTabTag = document.querySelector('.registration-tab');
-const backButton = document.querySelector('.go-back');
+const backButtons = document.querySelectorAll('.go-back');
 
 const loginForm = document.querySelector('.login-form');
 const regForm = document.querySelector('.registration-form');
 const loginButton = document.querySelector('#login-button');
 const regButton = document.querySelector('#reg-button');
 
-backButton.addEventListener('click', () => {
+backButtons.forEach((btn) => btn.addEventListener('click', () => {
   window.history.back();
-});
+}));
 
 const tabSwitcher = (btn) => {
   const callback = (e) => {
@@ -61,12 +61,12 @@ const loginCallback = (event) => {
         case 403:
           loginErrorOut.textContent = 'неверный пароль';
           loginErrorOut.classList.remove('hidden');
-          break;
+          return false;
 
         case 422:
           loginErrorOut.textContent = 'пользователь не зарегистрирован';
           loginErrorOut.classList.remove('hidden');
-          break;
+          return false;
 
         default:
           loginErrorOut.textContent = 'неизвестная ошибка';
@@ -126,7 +126,7 @@ const registrationCallback = (event) => {
       if (resp.status === 200) {
         regErrorOut.textContent = 'успех';
         regErrorOut.classList.remove('hidden');
-        setTimeout(() => document.location = '../shop/index.html', 500);
+        setTimeout(() => { document.location = '../shop/index.html'; }, 500);
         return;
       }
       regErrorOut.textContent = 'неизвестная ошибка';

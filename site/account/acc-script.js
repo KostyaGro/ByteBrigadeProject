@@ -1,4 +1,4 @@
-import { fetchObject } from './lib.js';
+import { fetchObject } from '../assets/common-scripts/lib.js';
 
 // const userInfo = document.querySelector('.user-info');
 fetchObject('/api/user/')

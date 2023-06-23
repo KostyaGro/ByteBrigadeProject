@@ -1,8 +1,9 @@
-const hideElement = (elem) => elem.style.display = 'none';
-const showElement = (elem) => elem.style.display = 'block';
+/* eslint-disable no-param-reassign */
+const hideElement = (elem) => { elem.style.display = 'none'; };
+const showElement = (elem) => { elem.style.display = 'block'; };
 
 // делает запрос и отдает тело ответа виде строки из объекта/массива
-const fetchStringObject = (path, options = {}) => new Promise((resolve, reject) => {
+const fetchStringObject = (path, options = {}) => new Promise((resolve) => {
   fetch(path, options)
     .then((resp) => (resp.json()))
     .then((resp) => resolve(JSON.stringify(resp)));

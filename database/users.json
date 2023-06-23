@@ -48,5 +48,15 @@
     "phoneNumber": "",
     "shippingAddress": "",
     "cart": []
+  },
+  "6": {
+    "loginName": "user15",
+    "password": "123",
+    "email": "asd",
+    "firstName": "asa",
+    "secondName": "",
+    "phoneNumber": "",
+    "shippingAddress": "",
+    "cart": []
   }
 }
