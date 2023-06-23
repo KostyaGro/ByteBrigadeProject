@@ -2,7 +2,7 @@
 // import path from 'path';
 import fs from 'fs';
 import _ from 'lodash';
-import readObjFromFile from './readObjFromFile.js';
+import readObjFromFile from '../utils/readObjFromFile.js';
 
 class Users {
   constructor(config) {

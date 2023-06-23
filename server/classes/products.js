@@ -1,7 +1,7 @@
 // import fs from 'fs';
 import path from 'path';
 import _ from 'lodash';
-import readObjFromFile from './readObjFromFile.js';
+import readObjFromFile from '../utils/readObjFromFile.js';
 
 class Products {
   constructor(config) {

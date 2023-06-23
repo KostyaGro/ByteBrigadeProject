@@ -58,5 +58,15 @@
     "phoneNumber": "",
     "shippingAddress": "",
     "cart": []
+  },
+  "7": {
+    "loginName": "user16",
+    "password": "123",
+    "email": "asd",
+    "firstName": "asda",
+    "secondName": "",
+    "phoneNumber": "",
+    "shippingAddress": "",
+    "cart": []
   }
 }

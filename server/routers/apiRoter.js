@@ -1,6 +1,6 @@
 import { request } from 'express';
-import Products from '../products.js';
-import Users from '../users.js';
+import Products from '../classes/products.js';
+import Users from '../classes/users.js';
 import parseCookie from '../utils/parseCookie.js';
 import Cart from '../classes/cart.js';
 
