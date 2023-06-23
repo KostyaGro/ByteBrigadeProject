@@ -1,12 +1,11 @@
-import { log } from 'console';
 import fs from 'fs';
 import path from 'path';
 
 const isLegitTarget = (targetPath) => fs.existsSync(targetPath) && fs.statSync(targetPath).isFile();
 
 const formatHtml = (htmlPage) => String(htmlPage)
-  .replace(/(?<=href="\S+)\.html(?=")/g, '')
-  .replace(/(?<=href="\S+)index(?=")/g, '');
+  .replace(/(?<=['"]\S+)\.html(?=['"])/g, '')
+  .replace(/(?<=['"]\S+)index(?=['"])/g, '');
 
 const staticRouter = (request, response, relativePath, config) => {
   // ------------- поиск и отдача элементов сайта из папки "./site"
@@ -18,13 +17,18 @@ const staticRouter = (request, response, relativePath, config) => {
   if (isLegitTarget(absolutePath)) {
     const ext = absolutePath.split('.').at(-1);
     let MIME = 'application/octet-stream';
+    let needsReformat = false;
+    let format = 'binary';
     switch (ext) {
       case 'mjs':
       case 'js':
         MIME = 'application/javascript';
+        format = 'utf-8';
+        needsReformat = true;
         break;
       case 'css':
         MIME = 'text/css';
+        format = 'utf-8';
         break;
       case 'img':
       case 'jpg':
@@ -34,14 +38,18 @@ const staticRouter = (request, response, relativePath, config) => {
         break;
       case 'html':
         MIME = 'text/html';
+        format = 'utf-8';
+        needsReformat = true;
         break;
       default:
         break;
     }
     console.log(`ext: ${ext} | MIME: ${MIME}`);
     response.writeHead(200, { 'Content-Type': MIME });
-    const data = fs.readFileSync(absolutePath);
-    response.end(data, 'binary');
+    let data = fs.readFileSync(absolutePath);
+    if (needsReformat) { data = formatHtml(data); }
+    // console.log(data);
+    response.end(data, format);
     return true;
   }
 
@@ -49,7 +57,9 @@ const staticRouter = (request, response, relativePath, config) => {
   if (isLegitTarget(absolutePathHtml)) {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     const data = fs.readFileSync(absolutePathHtml);
-    response.end(formatHtml(data));
+    const formattedHTML = formatHtml(data, 'utf-8');
+    // console.log(formattedHTML);
+    response.end(formattedHTML);
     return true;
   }
 

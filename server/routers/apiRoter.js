@@ -19,7 +19,43 @@ const sendData = (data, resp) => {
   resp.end(JSON.stringify(data));
 };
 
+const loginAs = ({ credentials, users, response }) => {
+  if (!users.hasUser(credentials.loginName)) {
+    console.log(`login as "${credentials.loginName}" failed, user is not registered`);
+    response.writeHead(422);
+    response.end();
+  }
+
+  if (users.checkCredentials(credentials)) {
+    console.log(`login as "${credentials.loginName}" succesfull`);
+    response.writeHead(200, { 'Set-Cookie': `loginedAs = ${users.findUserID(credentials.loginName)}; path = / ` });
+    response.end();
+  } else {
+    console.log(`login as "${credentials.loginName}" failed, wrong password`);
+    response.writeHead(403);
+    response.end();
+  }
+};
+
 const routes = {
+  OPTIONS: {
+    'filter/': ({ response, products, body }) => {
+      if (body.length === 0) {
+        badRequest(response);
+        return;
+      }
+      const filter = JSON.parse(body);
+      const filteredData = products.filterBy(filter);
+      if (Object.keys(filteredData) === 0) {
+        response.writeHead('204');
+        return;
+      }
+      // response.writeHead('200');
+      sendData(filteredData, response);
+      // response.end();
+    },
+  },
+
   GET: {
     'user/': ({ userID, response, users }) => {
       if (!userID) {
@@ -80,21 +116,6 @@ const routes = {
       sendData(cart.totalPrice, response);
     },
     // _________________________________________________________
-    'filter/': ({ response, products, body }) => {
-      if (body.length === 0) {
-        badRequest(response);
-        return;
-      }
-      const filter = JSON.parse(body);
-      const filteredData = products.filterBy(filter);
-      if (Object.keys(filteredData) === 0) {
-        response.writeHead('204');
-        return;
-      }
-      // response.writeHead('200');
-      sendData(filteredData, response);
-      // response.end();
-    },
   },
   // ____________________________________________________________
   // ____________________________________________________________
@@ -117,35 +138,18 @@ const routes = {
       const credentials = JSON.parse(body);
       if (users.isAvailable(credentials)) {
         users.add(credentials);
-        response.writeHead(200);
-        response.end();
-        console.log('user added');
-        console.log(users.all);
+        loginAs({ credentials, users, response });
         return;
       }
-      console.log('user not added');
-      response.writeHead(400); // уточнить код ошибки
+      console.log('username is not available');
+      response.writeHead(403);
       response.end();
     },
     // _________________________________________________________
     login: ({ response, body, users }) => {
       console.log('=}} login attempt');
       const credentials = JSON.parse(body);
-      if (!users.hasUser(credentials.loginName)) {
-        console.log(`login as "${credentials.loginName}" failed, user is not registered`);
-        response.writeHead(400);
-        response.end();
-      }
-
-      if (users.checkCredentials(credentials)) {
-        console.log(`login as "${credentials.loginName}" succesfull`);
-        response.writeHead(200, { 'Set-Cookie': `loginedAs = ${users.findUserID(credentials.loginName)}; path = / ` });
-        response.end();
-      } else {
-        console.log(`login as "${credentials.loginName}" failed, wrong password`);
-        response.writeHead(400);
-        response.end();
-      }
+      loginAs({ credentials, users, response });
     },
   },
   DELETE: {
@@ -219,7 +223,7 @@ const apiRouter = (request, response, config) => {
 
       const result = pathname && Object.keys(route).find((str) => {
         const regexp = new RegExp(`^/api/${str}$`);
-        console.log(regexp);
+        // console.log(regexp);
         const matches = pathname.match(regexp);
         if (!matches) {
           return false;

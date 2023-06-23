@@ -4,13 +4,7 @@
     --debug-bg-color: #FFFFFF;
 }
 
-.product-list-container {
-    background-color: beige;
-    display: flex;
-    flex-direction: column;
-    vertical-align: middle;
-    /* justify-content: flex-start; */
-}
+
 
 .product-card {
     /* background-color: cadetblue;
@@ -18,13 +12,17 @@
     */
 
     /* Rectangle 16 */
+    padding-right: 30px;
     position: relative;
     display: flex;
     align-items: center;
-
+    width: 700px;
+    min-width: 500px;
+    max-width: 1000px;
 
     height: var(--card-hight);
-    margin: 10px 20%;
+    /* margin: 10px 20%; */
+    margin: 0px 10px;
     background: #FFFFFF;
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
@@ -48,14 +46,15 @@
 }
 
 .info-container {
+    flex-grow: 1;
     height: 90%;
-    width: 100%;
-    margin-right: 10px;
+    /* width: 90%; */
+    margin-right: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 
-    border-style: solid;
+    /* border-style: solid; */
     /* временно */
     border-width: 1px;
     background-color: var(--debug-bg-color);
@@ -63,12 +62,11 @@
     border-radius: 5px;
 }
 
-.product-name-container {
+*/ .product-name-container {
     height: 2em;
     display: flex;
 
-    /* временно */
-    border-style: solid;
+    временно border-style: solid;
     border-width: 1px;
     background-color: var(--debug-bg-color);
     margin: 1px;
@@ -99,11 +97,11 @@
     color: #000000;
 
     /* временно */
-    border-style: solid;
+    /* border-style: solid;
     border-width: 1px;
     background-color: var(--debug-bg-color);
     margin: 1px;
-    border-radius: 5px;
+    border-radius: 5px; */
 
 
 }
@@ -132,22 +130,22 @@
     color: #000000;
 
     /* временно */
-    border-style: solid;
+    /* border-style: solid;
     border-width: 1px;
     background-color: var(--debug-bg-color);
     margin: 1px;
-    border-radius: 5px;
+    border-radius: 5px; */
 
 }
 
 .product-description-container {
     height: 5em;
     /* временно */
-    border-style: solid;
+    /* border-style: solid;
     border-width: 1px;
     background-color: var(--debug-bg-color);
     margin: 1px;
-    border-radius: 5px;
+    border-radius: 5px; */
 }
 
 .product-description {
@@ -172,11 +170,11 @@
     color: #000000;
 
     /* временно */
-    border-style: solid;
+    /* border-style: solid;
     border-width: 1px;
     background-color: var(--debug-bg-color);
     margin: 1px;
-    border-radius: 5px;
+    border-radius: 5px; */
 
 }
 
@@ -186,11 +184,11 @@
     align-items: center;
     justify-content: end;
     /* временно */
-    border-style: solid;
+    /* border-style: solid;
     border-width: 1px;
     background-color: var(--debug-bg-color);
     margin: 1px;
-    border-radius: 5px;
+    border-radius: 5px; */
 }
 
 .hide-when-empty {

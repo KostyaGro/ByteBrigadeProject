@@ -1,6 +1,41 @@
-const loginButton = document.querySelector('#login-button');
+import { clearSiblingsOfTag } from '../lib.js';
 
-loginButton.addEventListener('click', async (event) => {
+const loginTabTag = document.querySelector('.login-tab');
+const registerTabTag = document.querySelector('.registration-tab');
+const backButton = document.querySelector('.go-back');
+
+const loginForm = document.querySelector('.login-form');
+const regForm = document.querySelector('.registration-form');
+const loginButton = document.querySelector('#login-button');
+const regButton = document.querySelector('#reg-button');
+
+backButton.addEventListener('click', () => {
+  window.history.back();
+});
+
+const tabSwitcher = (btn) => {
+  const callback = (e) => {
+    const formName = e.target.dataset.form;
+    const correspondingFormn = document.querySelector(`.${formName}`);
+    clearSiblingsOfTag(correspondingFormn, 'active');
+    clearSiblingsOfTag(btn, 'active');
+    btn.classList.add('active');
+    correspondingFormn.classList.add('active');
+  };
+
+  btn.addEventListener('click', callback);
+  btn.addEventListener('keyup', (e) => {
+    if (e.key === 'Enter' || e.keyCode === 32) {
+      callback(e);
+    }
+  });
+};
+tabSwitcher(loginTabTag);
+tabSwitcher(registerTabTag);
+
+// __________ old _______
+
+const loginCallback = (event) => {
   event.preventDefault();
   const loginNameInput = document.querySelector('#loginName-log-in');
   //   const loginName = loginNameInput.value;
@@ -16,18 +51,26 @@ loginButton.addEventListener('click', async (event) => {
     body: JSON.stringify(credentials),
   })
     .then((response) => {
-      const container = loginButton.closest('div');
-      const messageBox = document.createElement('p');
-      container.append(messageBox);
+      const loginErrorOut = document.querySelector('#login-error-text');
+      loginErrorOut.classList.add('hidden');
       switch (response.status) {
         case 200:
-          messageBox.textContent = 'успех';
+          // messageBox.textContent = 'успех';
           return true;
 
-        case 400:
-          messageBox.textContent = 'неверный логин или пароль';
+        case 403:
+          loginErrorOut.textContent = 'неверный пароль';
+          loginErrorOut.classList.remove('hidden');
           break;
+
+        case 422:
+          loginErrorOut.textContent = 'пользователь не зарегистрирован';
+          loginErrorOut.classList.remove('hidden');
+          break;
+
         default:
+          loginErrorOut.textContent = 'неизвестная ошибка';
+          loginErrorOut.classList.remove('hidden');
           return false;
       }
     })
@@ -35,22 +78,72 @@ loginButton.addEventListener('click', async (event) => {
       if (!result) return;
       window.location = '/shop/';
     });
-});
+};
 
-const regButton = document.querySelector('#reg-button');
-
-regButton.addEventListener('click', async (event) => {
+const registrationCallback = (event) => {
   event.preventDefault();
-  const regNameInput = document.querySelector('#loginName-reg');
-  //   const loginName = loginNameInput.value;
-  const regPasswordInput = document.querySelector('#password-reg');
-  const regPasswordRepeatInput = document.querySelector('#password-repeat-reg');
-  const credentials = { loginName: regNameInput.value, password: regPasswordInput.value };
+  const regErrorOut = document.querySelector('#registration-error-text');
+  regErrorOut.classList.add('hidden');
+  const regLoginName = document.querySelector('#loginName-reg').value;
+  const regPassword = document.querySelector('#password-reg').value;
+  const regPasswordRepeat = document.querySelector('#password-repeat-reg').value;
+  if (regPassword !== regPasswordRepeat) {
+    regErrorOut.textContent = 'Пароли не совпадают';
+    regErrorOut.classList.remove('hidden');
+    return;
+  }
+  const regEmail = document.querySelector('#email-reg').value;
+  if (regEmail === '') {
+    regErrorOut.textContent = 'Укажите ваш e-mail';
+    regErrorOut.classList.remove('hidden');
+    return;
+  }
+  const regFirstName = document.querySelector('#first-name-reg').value;
+  const regSecondName = document.querySelector('#second-name-reg').value;
+
+  const credentials = {
+    loginName: regLoginName,
+    password: regPassword,
+    email: regEmail,
+    firstName: regFirstName,
+    secondName: regSecondName,
+    // "phoneNumber": "+71234567890",
+    // "shippingAddress": "666666",
+  };
   fetch('/api/user', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(credentials),
-  });
+  })
+    .then((resp) => {
+      if (resp.status === 403) {
+        regErrorOut.textContent = 'никнейм недоступен';
+        regErrorOut.classList.remove('hidden');
+        return;
+      }
+      if (resp.status === 200) {
+        regErrorOut.textContent = 'успех';
+        regErrorOut.classList.remove('hidden');
+        setTimeout(() => document.location = '../shop/index.html', 500);
+        return;
+      }
+      regErrorOut.textContent = 'неизвестная ошибка';
+      regErrorOut.classList.remove('hidden');
+    });
+};
+
+regButton.addEventListener('click', registrationCallback);
+regForm.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    registrationCallback(e);
+  }
+});
+
+loginButton.addEventListener('click', loginCallback);
+loginForm.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    loginCallback(e);
+  }
 });
