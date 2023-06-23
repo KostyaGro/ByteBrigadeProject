@@ -151,7 +151,7 @@
     justify-content: center;
 }
 
-    /* .cart-side-bar {
+/* .cart-side-bar {
         flex-direction: column;
         align-items: start;
     } */
@@ -183,11 +183,43 @@ nav {
     gap: 30px;
     display: flex;
     justify-content: end;
+    align-items: center;
     max-height: 50px;
     /* background-color: aqua; */
     padding: 0px 20%;
     max-width: 1350px;
 }
+
+header {
+    margin: 0px;
+    padding-top: 10px;
+    width: 100vw;
+    background-color: #FFFFFF;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1000;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.padding {
+    height: 180px;
+}
+
+
+main {
+    /* margin-top: 100px; */
+    flex-grow: 1;
+    min-height: 75vh;
+}
+
+/* html {
+    padding: 0;
+} */
 
 /* .title {
     justify-self: start;
