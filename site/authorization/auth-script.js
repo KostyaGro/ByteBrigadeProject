@@ -4,6 +4,11 @@ const loginTabTag = document.querySelector('.login-tab');
 const registerTabTag = document.querySelector('.registration-tab');
 const backButton = document.querySelector('.go-back');
 
+const loginForm = document.querySelector('.login-form');
+const regForm = document.querySelector('.registration-form');
+const loginButton = document.querySelector('#login-button');
+const regButton = document.querySelector('#reg-button');
+
 backButton.addEventListener('click', () => {
   window.history.back();
 });
@@ -29,10 +34,8 @@ tabSwitcher(loginTabTag);
 tabSwitcher(registerTabTag);
 
 // __________ old _______
-const loginButton = document.querySelector('#login-button');
-const regButton = document.querySelector('#reg-button');
 
-loginButton.addEventListener('click', async (event) => {
+const loginCallback = (event) => {
   event.preventDefault();
   const loginNameInput = document.querySelector('#loginName-log-in');
   //   const loginName = loginNameInput.value;
@@ -59,10 +62,12 @@ loginButton.addEventListener('click', async (event) => {
           loginErrorOut.textContent = 'неверный пароль';
           loginErrorOut.classList.remove('hidden');
           break;
+
         case 422:
           loginErrorOut.textContent = 'пользователь не зарегистрирован';
           loginErrorOut.classList.remove('hidden');
           break;
+
         default:
           loginErrorOut.textContent = 'неизвестная ошибка';
           loginErrorOut.classList.remove('hidden');
@@ -73,9 +78,9 @@ loginButton.addEventListener('click', async (event) => {
       if (!result) return;
       window.location = '/shop/';
     });
-});
+};
 
-regButton.addEventListener('click', async (event) => {
+const registrationCallback = (event) => {
   event.preventDefault();
   const regErrorOut = document.querySelector('#registration-error-text');
   regErrorOut.classList.add('hidden');
@@ -127,4 +132,18 @@ regButton.addEventListener('click', async (event) => {
       regErrorOut.textContent = 'неизвестная ошибка';
       regErrorOut.classList.remove('hidden');
     });
+};
+
+regButton.addEventListener('click', registrationCallback);
+regForm.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    registrationCallback(e);
+  }
+});
+
+loginButton.addEventListener('click', loginCallback);
+loginForm.addEventListener('keyup', (e) => {
+  if (e.key === 'Enter') {
+    loginCallback(e);
+  }
 });
