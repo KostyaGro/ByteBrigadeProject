@@ -69,7 +69,7 @@ const addBrandFilter = (form) => form.addEventListener('click', (e) => {
 fetchObject('/api/product-variants/type')
   .then((types) => {
     types
-      .map((type) => {
+      .forEach((type) => {
         const typeButton = document.createElement('a');
         typeButton.href = '#';
         typeButton.textContent = type;
@@ -81,7 +81,7 @@ fetchObject('/api/product-variants/type')
 fetchObject('/api/product-variants/brand')
   .then((brands) => {
     brands
-      .map((brand) => {
+      .forEach((brand) => {
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.id = brand;

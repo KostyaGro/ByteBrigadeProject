@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 const parseCookie = (cookieStr) => {
   if (!cookieStr) return {};
   return cookieStr
