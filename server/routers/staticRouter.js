@@ -57,7 +57,7 @@ const staticRouter = (request, response, relativePath, config) => {
   if (isLegitTarget(absolutePathHtml)) {
     response.writeHead(200, { 'Content-Type': 'text/html' });
     const data = fs.readFileSync(absolutePathHtml);
-    const formattedHTML = formatHtml(data);
+    const formattedHTML = formatHtml(data, 'utf-8');
     // console.log(formattedHTML);
     response.end(formattedHTML);
     return true;
