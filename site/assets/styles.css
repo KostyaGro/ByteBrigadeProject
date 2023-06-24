@@ -1,4 +1,5 @@
-p {}
+p {
+}
 
 a {
     text-decoration: none;
@@ -195,6 +196,7 @@ svg.logo:hover {
     height: 40px;
     transition: background-color 0.2s, box-shadow 0.3s ease-in-out;
     text-align: center;
+    /* vertical-align: middle; */
     cursor: pointer;
 }
 
@@ -212,8 +214,9 @@ svg.logo:hover {
     font-family: 'Bahnschrift';
     font-style: normal;
     font-weight: 700;
-    font-size: 20px;
-    line-height: 40px;
+    font-size: 24px;
+    /* vertical-align: middle; */
+    /* line-height: 46px; */
     /* identical to box height */
     text-align: center;
     align-self: center;
@@ -425,9 +428,11 @@ nav {
 }
 
 .vector-icon {
+    user-select: none;
+    -webkit-user-drag: none;
     left: 0;
     filter: drop-shadow(0px 0px 0px);
-    transition: top 0.05s, left 0.05s, filter 0.05s
+    /* transition: top 0.05s, left 0.05s, filter 0.05s */
 }
 
 .vector-icon:hover,
