@@ -1,35 +1,33 @@
 :root {
-    --card-hight: 210px;
+    --card-hight: 250px;
     --img-container-size: calc(var(--card-hight));
     --debug-bg-color: #ffffff;
 }
 
 .product-card {
-    /* background-color: cadetblue;
-    border-radius: 10px;
-    */
-
-    /* Rectangle 16 */
-    padding-right: 30px;
+    /* border: solid blue; */
+    margin: 5px 15px;
     position: relative;
     display: flex;
     align-items: center;
-    width: 700px;
-    min-width: 500px;
-    max-width: 1000px;
-
+    min-width: 620px;
+    max-width: 1100px;
+    /* gap: 10px; */
     height: var(--card-hight);
-    /* margin: 10px 20%; */
-    margin: 0px 10px;
+    margin: 5px;
     background: #ffffff;
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
+    width: 95%;
 }
 
 .img-container {
+    text-overflow: initial;
     width: var(--img-container-size);
     height: var(--img-container-size);
+    min-width: var(--img-container-size);
     display: flex;
+    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     overflow: hidden;
@@ -41,43 +39,22 @@
 }
 
 .info-container {
-    flex-grow: 1;
-    height: 90%;
-    /* width: 90%; */
-    margin-right: 100px;
+    height: 80%;
+    width: 100%;
+    min-width: 210px;
+
+    margin-right: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: start;
 
-    /* border-style: solid; */
-    /* временно */
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
-}
-
-*/ .product-name-container {
-    height: 2em;
-    display: flex;
-
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 10px;
 }
 
 .product-brand {
-    /* 
-    height: 1em;
-    align-self: start;
-    width: 50%;
-    border-style: solid;
-    border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.623); */
-
-    /* Asus TUF GAMING */
-
+    /* flex-grow: 1; */
     margin: 0;
     font-family: 'Roboto';
     font-style: normal;
@@ -86,30 +63,11 @@
     line-height: 94.69%;
     /* or 27px */
     letter-spacing: 0.03em;
-
     color: #000000;
-
-    /* временно */
-    /* border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px; */
 }
 
 .product-name {
-    /* 
-    height: 1em;
-    align-self: start;
-    width: 50%;
-    border-style: solid;
-    border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.623); */
-
-    /* A15 FA507XI-HQ014 */
-
     margin: 0;
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
@@ -117,66 +75,30 @@
     line-height: 94.69%;
     /* or 17px */
     letter-spacing: 0.03em;
-
     color: #000000;
-
-    /* временно */
-    /* border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px; */
-}
-
-.product-description-container {
-    height: 5em;
-    /* временно */
-    /* border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px; */
 }
 
 .product-description {
-    /* 
-    width: 50%;
-    border-style: solid;
-    border-radius: 5px;
-    background-color: rgba(128, 128, 128, 0.623); */
-
-    /* Quad HD 2K (2560x1440), IPS, AMD Ryzen 9 7940HS, ядра: 8 х 4 ГГц, RAM 16 ГБ, SSD 512 ГБ, GeForce RTX 4070 для ноутбуков 8 ГБ */
-
-    margin: 0;
-
+    flex-grow: 1;
+    text-overflow: ellipsis;
+    flex-shrink: 0;
+    text-overflow: clip;
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 94.69%;
-    /* or 15px */
     letter-spacing: 0.03em;
-
     color: #000000;
-
-    /* временно */
-    /* border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px; */
 }
 
 .buy-container {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
     display: flex;
     align-items: center;
     justify-content: end;
-    /* временно */
-    /* border-style: solid;
-    border-width: 1px;
-    background-color: var(--debug-bg-color);
-    margin: 1px;
-    border-radius: 5px; */
 }
 
 .hide-when-empty {
@@ -190,12 +112,116 @@
 
 .cart-counter {
     text-align: center;
+    margin: 0;
 }
 
 .remove-from-cart {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 20px;
+    right: 20px;
     font-weight: bold;
-    background-color: rgb(180, 67, 67);
+    background-color: rgb(197, 55, 55);
 }
+
+.price,
+.total-price {
+    text-align: center;
+    font-family: Roboto;
+    margin: 0px;
+    font-size: 26px;
+    font-weight: 700;
+    line-height: 30px;
+    letter-spacing: 0.03em;
+    margin: 5px;
+}
+
+.price-tag {
+    margin: 0px 20px 0px 0px;
+    min-width: 120px;
+    width: 120px;
+    text-align: center;
+}
+
+.cart-container {
+    /* border: solid red; */
+    justify-content: center;
+}
+
+/* .cart-side-bar {
+        flex-direction: column;
+        align-items: start;
+    } */
+
+.cart-list-container {
+    /* padding: 0; */
+    /* border: solid green; */
+    /* background-color: beige; */
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    align-items: end;
+}
+
+.checkout-box {
+    margin: 5px 15px;
+    justify-content: center;
+    width: 200px;
+    height: 200px;
+}
+
+.price-container {
+    flex-direction: column;
+    justify-content: center;
+}
+
+nav {
+    gap: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    max-height: 50px;
+    /* background-color: aqua; */
+    padding: 0px 20%;
+    max-width: 1350px;
+}
+
+header {
+    margin: 0px;
+    padding-top: 10px;
+    width: 100vw;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    z-index: 1000;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+}
+
+.padding {
+    height: 180px;
+}
+
+main {
+    /* margin-top: 100px; */
+    flex-grow: 1;
+    min-height: 75vh;
+}
+
+/* html {
+    padding: 0;
+} */
+
+/* .title {
+    justify-self: start;
+    font-family: Bahnschrift;
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: 0em;
+    text-align: left;
+    margin: 0;
+    flex-grow: 1;
+} */
