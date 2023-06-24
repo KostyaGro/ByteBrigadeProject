@@ -322,8 +322,15 @@ svg .fuse-line {
     margin: 50px;
 }
 
-.nav-width {
-    width: 590px;
+nav {
+    gap: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    max-height: 50px;
+    /* background-color: aqua; */
+    padding: 0px 20%;
+    max-width: 1350px;
 }
 
 .user-info p {
