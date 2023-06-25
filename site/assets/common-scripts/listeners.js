@@ -3,6 +3,7 @@ import {
   refreshCardButtonsVisisbility,
   refreshLoginDependant,
   refreshAllCardButtons,
+  refreshTotalPrice,
 } from './lib.js';
 
 const redirect = (button, address) => button
@@ -39,7 +40,8 @@ const removeFromCart = (btn) => {
         console.log(cartCount);
         return ({ container, productCount });
       })
-      .then(refreshCardButtonsVisisbility);
+      .then(refreshCardButtonsVisisbility)
+      .then(refreshTotalPrice);
   });
 };
 
@@ -56,7 +58,8 @@ const addToCart = (btn) => {
         return ({ container, productCount });
       })
       .catch(() => window.alert('войдите или зарегистрируйтесь для добавления товаров в корзину'))
-      .then(refreshCardButtonsVisisbility);
+      .then(refreshCardButtonsVisisbility)
+      .then(refreshTotalPrice);
   });
 };
 
@@ -74,7 +77,8 @@ const subtractFromCart = (btn, removeIfEmpty = false) => {
         console.log(cartCount);
         return ({ container, productCount });
       })
-      .then(refreshCardButtonsVisisbility);
+      .then(refreshCardButtonsVisisbility)
+      .then(refreshTotalPrice);
   });
 };
 
