@@ -1,5 +1,5 @@
 import {
-  clearSiblingsOfTag, fetchObject, refreshLoginDependant, refreshAllCardButtons,
+  clearSiblingsOfTag, fetchObject, refreshLoginDependant, refreshAllCardButtons, redirectGuest,
 } from '../assets/common-scripts/lib.js';
 import listener from '../assets/common-scripts/listeners.js';
 import productList from '../assets/common-scripts/productList.js';
@@ -99,3 +99,9 @@ fetchObject('/api/product-variants/brand')
 // добавление ивентов
 addTypeFilter(typeListContainer);
 addBrandFilter(brandListContainer);
+
+const redirectedButton = document.querySelector('.redirect-to-login-if-guest');
+redirectedButton.addEventListener('click', (e) => {
+  document.cookie = 'backTo=shop; path=/;';
+  redirectGuest(e);
+});

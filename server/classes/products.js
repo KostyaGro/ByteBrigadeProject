@@ -21,7 +21,7 @@ class Products {
 
   getListBy = (key) => {
     const list = Object.values(_.mapValues(this.all, key));
-    return _.uniq(list);
+    return _.uniq(list).sort();
   };
 
   filterBy = (filtersObj) => {

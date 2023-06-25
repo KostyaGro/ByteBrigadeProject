@@ -62,6 +62,8 @@ const refreshAllCardButtons = () => {
     });
 };
 
+const isLoggedIn = () => document.cookie.includes('loginedAs');
+
 // обновляет видимость объектов в зависимости от того, залогинен ли пользователь
 const refreshLoginDependant = () => {
   console.log('refresh visibility is called');
@@ -70,9 +72,8 @@ const refreshLoginDependant = () => {
 
   const flexVisibleWhenLoggedIn = document.querySelectorAll('.flex-container.vsible-when-logged-in');
   const flexVisibleWhenLoggedOut = document.querySelectorAll('.flex-container.vsible-when-logged-out');
-  const isLoggedIn = document.cookie.includes('loginedAs');
 
-  if (isLoggedIn) {
+  if (isLoggedIn()) {
     visibleWhenLoggedIn.forEach(showElement);
     visibleWhenLoggedOut.forEach(hideElement);
 
@@ -93,6 +94,15 @@ const clearSiblingsOfTag = (element, tag) => {
     .forEach((sibling) => sibling.classList.remove(tag));
 };
 
+const redirectGuest = (event) => {
+  console.log('redirected');
+  if (!isLoggedIn()) {
+    console.log('redirected');
+    event.preventDefault();
+    document.location = '/authorization/index.html?next=account';
+  }
+};
+
 export {
   clearSiblingsOfTag,
   refreshLoginDependant,
@@ -101,4 +111,6 @@ export {
   refreshCardButtonsVisisbility,
   refreshAllCardButtons,
   refreshTotalPrice,
+  isLoggedIn,
+  redirectGuest,
 };

@@ -76,6 +76,11 @@ const loginCallback = (event) => {
     })
     .then((result) => {
       if (!result) return;
+      const redirectTo = new URL(document.location).searchParams.get('next');
+      if (redirectTo) {
+        window.location = `/${redirectTo}/`;
+        return;
+      }
       window.location = '/shop/';
     });
 };

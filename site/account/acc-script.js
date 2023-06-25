@@ -1,5 +1,7 @@
 import { fetchObject } from '../assets/common-scripts/lib.js';
 
+// console.log(document.history.search({ text: '' }));
+
 // const userInfo = document.querySelector('.user-info');
 fetchObject('/api/user/')
   .then((resp) => {

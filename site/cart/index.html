@@ -87,7 +87,10 @@
                 </div>
 
                 <div>
-                    <a class="vector-icon" href="../account/index.html">
+                    <a
+                        class="vector-icon redirect-to-login-if-guest"
+                        href="../account/index.html"
+                    >
                         <svg
                             width="24"
                             height="24"
@@ -115,7 +118,7 @@
 
                 <div class="vsible-when-logged-out vector-icon">
                     <!-- <a href="../authorization/index.html">авторизация</a> -->
-                    <a href="../authorization/index.html">
+                    <a href="../authorization/index.html?next=cart">
                         <svg
                             id="Layer_1"
                             data-name="Layer 1"
@@ -232,7 +235,7 @@
                     Войдите или зарегестрируйтесь для доступа к корзине
                 </p>
                 <div
-                    onclick="document.location='../authorization/index.html'"
+                    onclick="document.location='../authorization/index.html?next=cart'"
                     class="button red auth"
                 >
                     <span class="button-text"> авторизация </span>
