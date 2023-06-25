@@ -1,6 +1,6 @@
 import listener from '../assets/common-scripts/listeners.js';
 import {
-  refreshLoginDependant, refreshAllCardButtons, fetchObject, refreshTotalPrice,
+  refreshLoginDependant, refreshAllCardButtons, fetchObject, refreshTotalPrice, redirectGuest,
 } from '../assets/common-scripts/lib.js';
 import productList from '../assets/common-scripts/productList.js';
 
@@ -30,3 +30,9 @@ fetchObject('/api/user/')
 // вынести
 
 refreshTotalPrice();
+const redirectedButton = document.querySelector('.redirect-to-login-if-guest');
+
+redirectedButton.addEventListener('click', (e) => {
+  document.cookie = 'backTo=cart; path=/;';
+  redirectGuest(e);
+});
