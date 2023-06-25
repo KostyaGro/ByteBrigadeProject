@@ -179,10 +179,22 @@
         </header>
         <div class="padding"></div>
         <main class="cart-container flex-container">
-            <div class="cart-list-container flex-container">
+            <div class="not-logged-container vsible-when-logged-out">
+                <p class="not-logged-in-message">
+                    Войдите или зарегестрируйтесь для доступа к корзине
+                </p>
+                <div
+                    onclick="document.location='../authorization/index.html'"
+                    class="button red auth"
+                >
+                    <span class="button-text"> авторизация </span>
+                    <!-- &#60 &#60  -->
+                </div>
+            </div>
+            <div class="cart-list-container flex-container vsible-when-logged-in">
                 <!-- <p>wtf</p> -->
             </div>
-            <div class="cart-side-bar flex-container">
+            <div class="cart-side-bar flex-container vsible-when-logged-in">
                 <div class="checkout-box frame flex-container flex-vertical flex-align-center">
                     <div class="price-container flex-container">
                         <p class="price">Итого:</p>

@@ -477,3 +477,27 @@ header {
     z-index: 1000;
     align-items: center;
 }
+
+.not-logged-in-message {
+    justify-self: start;
+    font-family: Bahnschrift;
+    font-size: 34px;
+    font-weight: 600;
+    /* line-height: 41px; */
+    padding: 15%;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 0;
+}
+
+.not-logged-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.not-logged-container .auth {
+    margin: 0 25%;
+    width: 50%;
+    align-self: center;
+}

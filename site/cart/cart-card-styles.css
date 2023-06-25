@@ -146,7 +146,6 @@
     justify-content: center;
 }
 
-
 .cart-list-container {
     display: flex;
     gap: 10px;
@@ -176,7 +175,6 @@ body {
 }
 
 main {
-    /* margin-top: 100px; */
     flex-grow: 1;
     min-height: 75vh;
 }
