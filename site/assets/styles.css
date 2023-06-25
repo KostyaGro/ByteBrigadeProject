@@ -366,6 +366,7 @@ nav {
 
 .product-type-filter .active {
     color: #f33;
+    cursor: default;
 }
 
 .footer p {
@@ -501,4 +502,53 @@ header {
     margin: 0 25%;
     width: 50%;
     align-self: center;
+}
+
+.shop-main-navbar {
+    display: flex;
+    max-width: 1150px;
+    width: 100vw;
+    min-width: 500px;
+
+    justify-content: end;
+    align-items: center;
+    gap: 30px;
+}
+
+.justify-left {
+    justify-self: left;
+}
+
+.flex-grows-1 {
+    flex-grow: 1;
+}
+
+.cart-side-bar,
+.shop-sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    flex-grow: 1;
+    /* flex-shrink: 2; */
+    padding: 10px 20px 20vw 10px;
+    /* flex-shrink: 1; */
+    /* width: 20%; */
+    /* width: 150px */
+    width: 150px;
+}
+
+.product-brand-filter {
+    padding: 20px;
+    min-width: 100px;
+}
+
+.cart-list-container,
+.product-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    flex-grow: 1;
+    gap: 10px;
+    padding: 10px 20px 0px 10px;
+    width: 950px;
 }
