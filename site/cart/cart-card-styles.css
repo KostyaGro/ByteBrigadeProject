@@ -174,16 +174,16 @@
     justify-content: center;
 }
 
-nav {
+/* nav {
     gap: 30px;
     display: flex;
     justify-content: end;
     align-items: center;
     max-height: 50px;
-    /* background-color: aqua; */
+
     padding: 0px 20%;
     max-width: 1350px;
-}
+} */
 
 header {
     margin: 0px;

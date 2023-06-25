@@ -1,5 +1,5 @@
 import listener from '../assets/common-scripts/listeners.js';
-import { refreshLoginDependant, refreshAllCardButtons } from '../assets/common-scripts/lib.js';
+import { refreshLoginDependant, refreshAllCardButtons, fetchObject } from '../assets/common-scripts/lib.js';
 import productList from '../assets/common-scripts/productList.js';
 
 const logoutButton = document.querySelector('.logout-button');
@@ -21,6 +21,10 @@ productList.getFrom({
     });
   });
 
+fetchObject('/api/user/')
+  .then((resp) => {
+    document.querySelector('.username').textContent = resp.loginName;
+  });
 // вынести
 const refreshTotalPrice = () => {
   const totalCostElem = document.querySelector('.total-price');
