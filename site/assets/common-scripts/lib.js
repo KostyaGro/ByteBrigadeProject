@@ -9,13 +9,13 @@ const fetchStringObject = (path, options = {}) => new Promise((resolve) => {
     .then((resp) => resolve(JSON.stringify(resp)));
 });
 // делает запрос и отдает тело ответа виде объекта/массива
-const fetchObject = (path, options = {}) => new Promise((resolve, reject) => {
+const fetchObject = (path, options = {}) => new Promise((resolve) => {
   fetch(path, options)
     .then((resp) => {
-      if (resp.status === 401) { throw new Error('you are not authorized'); }
+      if (resp.status === 401) { resolve({}); }
       resolve(resp.json());
-    })
-    .catch((err) => reject(err));
+    });
+  // .catch((err) => reject(err));
 });
 
 const refreshCardButtonsVisisbility = ({ container, productCount }) => {
@@ -37,6 +37,7 @@ const refreshAllCardButtons = () => {
   fetchObject('/api/cart-ammounts/')
     .then((cartAmmountsByID) => {
       const items = Array.from(document.querySelectorAll('.product-card'));
+      // console.log(items);
       // console.log('refreshing visibility dependant on ammounts in cart');
       items.forEach((item) => {
         const productID = item.id;
@@ -44,6 +45,7 @@ const refreshAllCardButtons = () => {
         item.querySelector('.cart-counter').textContent = itemAmmount;
         refreshCardButtonsVisisbility({ container: item, productCount: itemAmmount });
       });
+      // .catch(() => console.log('hi'));
     });
 };
 
