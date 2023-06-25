@@ -10,13 +10,13 @@ const fetchStringObject = (path, options = {}) => new Promise((resolve) => {
     .then((resp) => resolve(JSON.stringify(resp)));
 });
 // делает запрос и отдает тело ответа виде объекта/массива
-const fetchObject = (path, options = {}) => new Promise((resolve) => {
+const fetchObject = (path, options = {}) => new Promise((resolve, reject) => {
   fetch(path, options)
     .then((resp) => {
-      if (resp.status === 401) { resolve({}); }
+      if (resp.status === 401) { throw new Error('you are not logged in'); }
       resolve(resp.json());
-    });
-  // .catch((err) => reject(err));
+    })
+    .catch((err) => reject(err));
 });
 
 const refreshTotalPrice = () => {
@@ -48,6 +48,7 @@ const refreshCardButtonsVisisbility = ({ container, productCount }) => {
 
 const refreshAllCardButtons = () => {
   fetchObject('/api/cart-ammounts/')
+    .catch(() => ({}))
     .then((cartAmmountsByID) => {
       const items = Array.from(document.querySelectorAll('.product-card'));
       // console.log(items);
@@ -58,7 +59,6 @@ const refreshAllCardButtons = () => {
         item.querySelector('.cart-counter').textContent = itemAmmount;
         refreshCardButtonsVisisbility({ container: item, productCount: itemAmmount });
       });
-      // .catch(() => console.log('hi'));
     });
 };
 
