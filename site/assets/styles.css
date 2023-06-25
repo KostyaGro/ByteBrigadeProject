@@ -552,3 +552,14 @@ header {
     padding: 10px 20px 0px 10px;
     width: 950px;
 }
+
+.product-type-filter a:not(.active):hover {
+    filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.568));
+}
+
+.product-type-filter a:not(.active):active {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.253));
+}
