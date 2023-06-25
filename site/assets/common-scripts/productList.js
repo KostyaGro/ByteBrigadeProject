@@ -5,14 +5,15 @@ import {
 import listener from './listeners.js';
 
 // добавление карточеи в список товаров
-const addCard = (cardTemplateAddress, listContainerClass) => fetch(cardTemplateAddress)
+const addCard = (cardTemplateAddress, listContainerClass, blank) => fetch(cardTemplateAddress)
   .then((cardResponse) => cardResponse.text())
   .then((html) => {
     const parser = new DOMParser();
     const cardDoc = parser.parseFromString(html, 'text/html');
     const card = cardDoc.querySelector('.product-card');
-    const productList = document.querySelector(listContainerClass);
-    productList.append(card);
+    // const productList = document.querySelector(listContainerClass);
+    // productList.append(card);
+    blank.replaceWith(card);
     console.log('card added');
     return card;
   });
@@ -21,8 +22,15 @@ const buildCards = (products, options) => new Promise((resolve) => {
   const lastID = Object.keys(products).at(-1);
   Object
     .entries(products)
-    .forEach(([ID, info]) => {
-      addCard(options.cardTemplateAddress, options.listContainerClass)
+    .map(([ID, info]) => {
+      const productList = document.querySelector(options.listContainerClass);
+      const blank = (document.createElement('div'));
+      blank.classList.add('product-card');
+      productList.append(blank);
+      return [ID, info, blank];
+    })
+    .forEach(([ID, info, blank]) => {
+      addCard(options.cardTemplateAddress, options.listContainerClass, blank)
         .then((card) => {
           card.querySelector('.img-container img').src = info.productImgPath;
           card.querySelector('.product-brand').textContent = info.brand;
