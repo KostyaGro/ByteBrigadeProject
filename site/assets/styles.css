@@ -330,9 +330,9 @@ nav {
     justify-content: end;
     align-items: center;
     max-height: 50px;
-    /* background-color: aqua; */
-    padding: 0px 20%;
+    padding: 0px 50px;
     max-width: 1350px;
+    box-sizing: border-box;
 }
 
 .user-info p {
@@ -409,9 +409,19 @@ nav {
     flex-direction: column;
 }
 
-.account {
+nav.account {
     width: 600px;
+    padding-right: 0;
+    /* background-color: #ee2e2e; */
+    justify-content: space-between;
     /* по макету 540px, поствил больше, визуальней так больше понравилось */
+}
+
+.account .title {
+    flex-grow: 1;
+    padding: 50px;
+    justify-self: end;
+    text-align: right;
 }
 
 .small-logo {
@@ -461,4 +471,5 @@ header {
     flex-direction: column;
     position: fixed;
     z-index: 1000;
+    align-items: center;
 }
