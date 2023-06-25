@@ -72,6 +72,13 @@
                 </svg>
             </div>
             <nav>
+                <div
+                    onclick="document.location='/shop/index.html'"
+                    class="button medium-size red"
+                >
+                    <span class="button-text"> < < в магазин</span>
+                    <!-- &#60 &#60  -->
+                </div>
                 <p class="title">Корзина</p>
                 <!-- <input type="text" /> -->
 
@@ -106,10 +113,6 @@
                     </a>
                 </div>
 
-                <p>
-                    <a href="../shop/index.html">магазин</a>
-                </p>
-
                 <div class="vsible-when-logged-out vector-icon">
                     <!-- <a href="../authorization/index.html">авторизация</a> -->
                     <a href="../authorization/index.html">
@@ -137,7 +140,7 @@
                             </defs>
                             <title>login_esport</title>
                             <line
-                                class="cls-1"
+                                class="cls-2"
                                 x1="26"
                                 y1="15"
                                 x2="8"
@@ -192,7 +195,7 @@
                             </defs>
                             <title>logout_exp</title>
                             <line
-                                class="cls-1"
+                                class="cls-2"
                                 x1="12"
                                 y1="15"
                                 x2="28"
@@ -224,10 +227,24 @@
         </header>
         <div class="padding"></div>
         <main class="cart-container flex-container">
-            <div class="cart-list-container flex-container">
+            <div class="not-logged-container vsible-when-logged-out">
+                <p class="not-logged-in-message">
+                    Войдите или зарегестрируйтесь для доступа к корзине
+                </p>
+                <div
+                    onclick="document.location='../authorization/index.html'"
+                    class="button red auth"
+                >
+                    <span class="button-text"> авторизация </span>
+                    <!-- &#60 &#60  -->
+                </div>
+            </div>
+            <div
+                class="cart-list-container flex-container vsible-when-logged-in"
+            >
                 <!-- <p>wtf</p> -->
             </div>
-            <div class="cart-side-bar flex-container">
+            <div class="cart-side-bar flex-container vsible-when-logged-in">
                 <div
                     class="checkout-box frame flex-container flex-vertical flex-align-center"
                 >

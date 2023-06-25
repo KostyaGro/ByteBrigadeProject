@@ -18,6 +18,15 @@ const fetchObject = (path, options = {}) => new Promise((resolve) => {
   // .catch((err) => reject(err));
 });
 
+const refreshTotalPrice = () => {
+  const totalCostElem = document.querySelector('.total-price');
+  if (!totalCostElem) return;
+  fetch('/api/cart-total-price/')
+    .then((resp) => resp.json())
+    .then(JSON.stringify)
+    .then((totalCost) => { totalCostElem.textContent = `${totalCost} \u20bd`; });
+};
+
 const refreshCardButtonsVisisbility = ({ container, productCount }) => {
   const showWhenEmpty = container.querySelectorAll('.show-when-empty');
   const hideWhenEmpty = container.querySelectorAll('.hide-when-empty');
@@ -80,5 +89,5 @@ export {
   fetchObject,
   refreshCardButtonsVisisbility,
   refreshAllCardButtons,
-
+  refreshTotalPrice,
 };
