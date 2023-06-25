@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign */
 const hideElement = (elem) => { elem.style.display = 'none'; };
 const showElement = (elem) => { elem.style.display = 'block'; };
+const showFlex = (elem) => { elem.style.display = 'flex'; };
 
 // делает запрос и отдает тело ответа виде строки из объекта/массива
 const fetchStringObject = (path, options = {}) => new Promise((resolve) => {
@@ -29,11 +30,14 @@ const refreshTotalPrice = () => {
 
 const refreshCardButtonsVisisbility = ({ container, productCount }) => {
   const showWhenEmpty = container.querySelectorAll('.show-when-empty');
+
   const hideWhenEmpty = container.querySelectorAll('.hide-when-empty');
+
   const isEmpty = () => productCount < 1;
   if (isEmpty()) {
     console.log(`empty > ID: ${container.id} | count: ${productCount}`);
     showWhenEmpty.forEach(showElement);
+
     hideWhenEmpty.forEach(hideElement);
     return;
   }
@@ -63,16 +67,23 @@ const refreshLoginDependant = () => {
   console.log('refresh visibility is called');
   const visibleWhenLoggedIn = document.querySelectorAll('.vsible-when-logged-in');
   const visibleWhenLoggedOut = document.querySelectorAll('.vsible-when-logged-out');
+
+  const flexVisibleWhenLoggedIn = document.querySelectorAll('.flex-container.vsible-when-logged-in');
+  const flexVisibleWhenLoggedOut = document.querySelectorAll('.flex-container.vsible-when-logged-out');
   const isLoggedIn = document.cookie.includes('loginedAs');
 
   if (isLoggedIn) {
     visibleWhenLoggedIn.forEach(showElement);
     visibleWhenLoggedOut.forEach(hideElement);
+
+    flexVisibleWhenLoggedIn.forEach(showFlex);
     return;
   }
 
   visibleWhenLoggedIn.forEach(hideElement);
   visibleWhenLoggedOut.forEach(showElement);
+
+  flexVisibleWhenLoggedOut.forEach(showFlex);
 };
 
 const clearSiblingsOfTag = (element, tag) => {

@@ -15,8 +15,8 @@
     max-width: 1100px;
     /* gap: 10px; */
     height: var(--card-hight);
-    margin: 5px;
     background: #ffffff;
+    /* background-color: red; */
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.2);
     border-radius: 30px;
 }
