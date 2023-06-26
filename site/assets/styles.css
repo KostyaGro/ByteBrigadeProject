@@ -1,4 +1,5 @@
-p {
+:root {
+    --total-delay: 2s;
 }
 
 a {
@@ -32,14 +33,14 @@ h2 {
 
 .title-screen {
     position: absolute;
-    /* left: 50%;
-  top: 50%; */
-
     width: 1065px;
     height: 672px;
     left: calc(50% - 1065px / 2);
     /* top: 50px; */
     top: calc(50% - 672px / 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     /*сделал по центу экрана */
 }
 
@@ -65,7 +66,7 @@ img.logo {
     box-shadow: 2px 6px 30px rgba(0, 0, 0, 0.1);
     border-radius: 30px;
     position: relative;
-    left: calc(50% - 900px / 2);
+    /* left: calc(50% - 900px / 2); */
 }
 
 .red-plate div {
@@ -178,7 +179,7 @@ svg.logo:hover {
     width: 900px;
     justify-content: space-around;
     position: relative;
-    left: calc(50% - 900px / 2);
+    /* left: calc(50% - 900px / 2); */
 }
 
 .flex-vertical {
@@ -562,4 +563,172 @@ header {
     top: 1px;
     left: 1px;
     filter: drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.253));
+}
+
+.let-1 {
+    /* fill: none; */
+}
+
+.let-2 {
+    /* fill: none; */
+}
+
+.let-3 {
+    /* fill: none; */
+}
+
+.let-4 {
+    /* fill: none; */
+}
+
+.let-5 {
+    /* fill: none; */
+}
+
+.let-6 {
+    /* fill: none; */
+}
+
+.let-7dot {
+    animation-name: dot-translation;
+    animation-duration: 5s;
+    /* fill: none; */
+}
+
+.let-7line {
+    animation-name: draw-outline-line, color-fill-line, line-translation;
+    animation-duration: 5s;
+    /* fill: none; */
+}
+
+.let-8 {
+    /* fill: none; */
+}
+
+.let-9 {
+    /* fill: none; */
+}
+
+.let-10 {
+    /* fill: none; */
+}
+
+.let-11 {
+    /* fill: none; */
+    /* animation-delay: 1.8s; */
+}
+
+.animated-logo path {
+    stroke-dasharray: 350;
+    stroke-dashoffset: 0px;
+    stroke-width: 3px;
+}
+
+.animated-logo path:not(.let-7dot, .let-7line) {
+    animation-name: draw-outline-all, color-fill-all;
+    animation-duration: 4s;
+
+    /* position: relative; */
+    /* transition-timing-function: linear; */
+    /* animation-timing-function: steps(5, jump-start) */
+}
+
+@keyframes draw-outline-all {
+    0% {
+        stroke-dashoffset: -350px;
+        stroke: black;
+        stroke-width: 2px;
+    }
+
+    70% {
+        stroke-dashoffset: 0px;
+        stroke: rgb(170, 3, 36);
+        stroke-width: 3px;
+    }
+
+    100% {
+        stroke-dashoffset: 0px;
+        stroke: rgba(170, 3, 36, 0);
+        stroke-width: 1px;
+    }
+}
+
+@keyframes draw-outline-line {
+    0% {
+        stroke-dashoffset: -350px;
+        stroke: black;
+        stroke-width: 2px;
+    }
+
+    56% {
+        stroke-dashoffset: 0px;
+        stroke: rgb(170, 3, 36);
+        stroke-width: 3px;
+    }
+
+    80% {
+        stroke-dashoffset: 0px;
+        stroke: rgba(170, 3, 36, 0);
+        stroke-width: 1px;
+    }
+}
+
+@keyframes color-fill-all {
+    0% {
+        fill: #ff333300;
+    }
+
+    50% {
+        fill: #ff333300;
+    }
+
+    100% {
+        fill: #ff3333;
+    }
+}
+
+@keyframes color-fill-line {
+    0% {
+        fill: #ff333300;
+    }
+
+    40% {
+        fill: #ff333300;
+    }
+
+    80% {
+        fill: #ff3333;
+    }
+}
+
+@keyframes dot-translation {
+    0% {
+        transform: translateY(150px);
+    }
+
+    81% {
+        transform: translateY(200px);
+    }
+
+    90% {
+        transform: translateY(0px);
+    }
+}
+
+@keyframes line-translation {
+    0% {
+        transform: translateY(30px);
+    }
+
+    86.5% {
+        transform: translateY(25px);
+    }
+
+    89% {
+        transform: translateY(0px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
