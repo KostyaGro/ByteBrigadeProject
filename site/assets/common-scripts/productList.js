@@ -36,7 +36,7 @@ const buildCards = (products, options) => new Promise((resolve) => {
           card.querySelector('.product-brand').textContent = info.brand;
           card.querySelector('.product-name').textContent = info.name;
           card.querySelector('.product-description').textContent = info.description;
-          card.querySelector('.price').textContent = `${info.price} \u20bd`;
+          card.querySelector('.price').textContent = info.price.toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', minimumFractionDigits: 0 });
           listener.removeFromCart(card.querySelector('.remove-from-cart'));
           listener.addToCart(card.querySelector('.add-to-cart-button'));
           listener.addToCart(card.querySelector('.plus-cart-button'));

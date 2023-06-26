@@ -25,7 +25,7 @@ const refreshTotalPrice = () => {
   fetch('/api/cart-total-price/')
     .then((resp) => resp.json())
     .then(JSON.stringify)
-    .then((totalCost) => { totalCostElem.textContent = `${totalCost} \u20bd`; });
+    .then((totalCost) => { totalCostElem.textContent = parseInt(totalCost, 10).toLocaleString('ru-RU', { style: 'currency', currency: 'RUB', minimumFractionDigits: 0 }); });
 };
 
 const refreshCardButtonsVisisbility = ({ container, productCount }) => {
