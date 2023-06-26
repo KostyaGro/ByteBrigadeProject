@@ -514,6 +514,9 @@ header {
     justify-content: end;
     align-items: center;
     gap: 30px;
+    font-size: 17px;
+    font-family: Bahnschrift;
+    font-weight: 600;
 }
 
 .justify-left {
@@ -536,6 +539,10 @@ header {
     /* width: 20%; */
     /* width: 150px */
     width: 150px;
+    font-size: 17px;
+    accent-color: #FF3333;
+    font-family: Bahnschrift;
+    font-weight: 600;
 }
 
 .product-brand-filter {
