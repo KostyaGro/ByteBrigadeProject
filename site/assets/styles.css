@@ -717,7 +717,7 @@ header {
 
 @keyframes line-translation {
     0% {
-        transform: translateY(30px);
+        transform: translateY(25px);
     }
 
     87% {
