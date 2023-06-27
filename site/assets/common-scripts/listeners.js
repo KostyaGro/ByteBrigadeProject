@@ -50,12 +50,10 @@ const errorPopup = document.querySelector('.error-popup');
 const popError = (e) => {
   clearTimeout(errorPopup.timerRef);
   errorPopup.style.animation = 'none';
+  // eslint-disable-next-line no-unused-expressions
   errorPopup.offsetHeight; /* trigger reflow */
   errorPopup.style.animation = null;
-  // console.log('hi')
   errorPopup.style.display = 'flex';
-  console.log(e.clientX);
-  console.log(e.clientY);
   errorPopup.style.top = `${e.clientY - errorPopup.offsetHeight}px`;
   errorPopup.style.left = `${(e.clientX - errorPopup.offsetWidth / 2)}px`;
   errorPopup.timerRef = setTimeout(() => {
@@ -115,5 +113,12 @@ const logout = (btn) => {
 };
 
 export default {
-  removeFromCart, addToCart, subtractFromCart, logout, redirect, setDeleteTimer, stopRefresh,
+  removeFromCart,
+  addToCart,
+  subtractFromCart,
+  logout,
+  redirect,
+  setDeleteTimer,
+  stopRefresh,
+  popError,
 };
