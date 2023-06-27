@@ -45,6 +45,24 @@ const removeFromCart = (btn) => {
   });
 };
 
+const errorPopup = document.querySelector('.error-popup');
+// document.querySelector('body').addEventListener('click',popError)
+const popError = (e) => {
+  clearTimeout(errorPopup.timerRef);
+  errorPopup.style.animation = 'none';
+  errorPopup.offsetHeight; /* trigger reflow */
+  errorPopup.style.animation = null;
+  // console.log('hi')
+  errorPopup.style.display = 'flex';
+  console.log(e.clientX);
+  console.log(e.clientY);
+  errorPopup.style.top = `${e.clientY - 120}px`;
+  errorPopup.style.left = `${(e.clientX - 150)}px`;
+  errorPopup.timerRef = setTimeout(() => {
+    errorPopup.style.display = 'none';
+  }, 5000);
+};
+
 const addToCart = (btn) => {
   btn.addEventListener('click', (event) => {
     const container = event.target.closest('.product-card');
@@ -57,7 +75,8 @@ const addToCart = (btn) => {
           .textContent = productCount;
         return ({ container, productCount });
       })
-      .catch(() => window.alert('войдите или зарегистрируйтесь для добавления товаров в корзину'))
+      // .catch(() => window.alert('войдите или зарегистрируйтесь для добавления товаров'))
+      .catch(() => popError(event))
       .then(refreshCardButtonsVisisbility)
       .then(refreshTotalPrice);
   });
