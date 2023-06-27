@@ -56,8 +56,8 @@ const popError = (e) => {
   errorPopup.style.display = 'flex';
   console.log(e.clientX);
   console.log(e.clientY);
-  errorPopup.style.top = `${e.clientY - 120}px`;
-  errorPopup.style.left = `${(e.clientX - 150)}px`;
+  errorPopup.style.top = `${e.clientY - errorPopup.offsetHeight}px`;
+  errorPopup.style.left = `${(e.clientX - errorPopup.offsetWidth / 2)}px`;
   errorPopup.timerRef = setTimeout(() => {
     errorPopup.style.display = 'none';
   }, 5000);
