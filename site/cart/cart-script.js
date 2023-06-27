@@ -36,3 +36,15 @@ redirectedButton.addEventListener('click', (e) => {
   document.cookie = 'backTo=cart; path=/;';
   redirectGuest(e);
 });
+
+const checkoutButton = document.querySelector('.checkout');
+checkoutButton.addEventListener('click', (e) => {
+  fetchObject('/api/cart-ammounts/')
+    // .catch(() => ({}))
+    .then((cartAmmountsByID) => {
+      // console.log(Array.from(cartAmmountsByID));
+      const itemsCount = Object.keys(cartAmmountsByID).length;
+      if (itemsCount === 0) { listener.popError(e); return; }
+      document.location = '/thanks/index.html';
+    });
+});
