@@ -43,8 +43,9 @@ class Users {
   saveDB() { fs.writeFileSync(this.config.usersDBpath, JSON.stringify(this.all, null, 2)); }
 
   add(credentials) {
+    const regDate = new Date().toLocaleString("ru")
     const lastID = Number(Object.keys(this.all).at(-1) ?? 0);
-    this.all[lastID + 1] = { ...Users.emptyUser, ...credentials };
+    this.all[lastID + 1] = { ...Users.emptyUser, ...credentials, regDate };
     this.saveDB();
   }
 }
