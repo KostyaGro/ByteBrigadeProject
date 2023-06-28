@@ -85,11 +85,28 @@ const loginCallback = (event) => {
     });
 };
 
+// eslint-disable-next-line
+String.prototype.capitalize = function () {
+  if (!this) return '';
+  return this[0].toLocaleUpperCase() + this.substring(1).toLocaleLowerCase();
+};
+
 const registrationCallback = (event) => {
   event.preventDefault();
   const regErrorOut = document.querySelector('#registration-error-text');
   regErrorOut.classList.add('hidden');
   const regLoginName = document.querySelector('#loginName-reg').value;
+  if (regLoginName.match(/^[0-9]+/)) {
+    regErrorOut.textContent = 'логин не должен начинаться с цифр';
+    regErrorOut.classList.remove('hidden');
+    return;
+  }
+  if (!regLoginName.match(/^[a-zA-Z]+[a-zA-Z0-9]+$/)) {
+    regErrorOut.textContent = 'логин должен состоять из латинских букв, может включать цифры';
+    regErrorOut.classList.remove('hidden');
+    return;
+  }
+
   const regPassword = document.querySelector('#password-reg').value;
   const regPasswordRepeat = document.querySelector('#password-repeat-reg').value;
   if (regPassword !== regPasswordRepeat) {
@@ -103,8 +120,24 @@ const registrationCallback = (event) => {
     regErrorOut.classList.remove('hidden');
     return;
   }
-  const regFirstName = document.querySelector('#first-name-reg').value;
-  const regSecondName = document.querySelector('#second-name-reg').value;
+  if (!regEmail.match(/^[-._a-zA-z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/)) {
+    regErrorOut.textContent = 'неверный формат e-mail';
+    regErrorOut.classList.remove('hidden');
+    return;
+  }
+  const regFirstName = document.querySelector('#first-name-reg').value.capitalize();
+
+  if (!regFirstName.match(/^[а-яА-Я]*$/)) {
+    regErrorOut.textContent = 'Имя может содержать только кириллицу';
+    regErrorOut.classList.remove('hidden');
+    return;
+  }
+  const regSecondName = document.querySelector('#second-name-reg').value.capitalize();
+  if (!regSecondName.match(/^[а-яА-Я]*$/)) {
+    regErrorOut.textContent = 'Фамилия может содержать только кириллицу';
+    regErrorOut.classList.remove('hidden');
+    return;
+  }
 
   const credentials = {
     loginName: regLoginName,
