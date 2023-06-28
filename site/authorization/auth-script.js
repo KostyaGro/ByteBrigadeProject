@@ -127,13 +127,13 @@ const registrationCallback = (event) => {
   }
   const regFirstName = document.querySelector('#first-name-reg').value.capitalize();
 
-  if (!regFirstName.match(/^[а-яА-Я]*$/)) {
+  if (!regFirstName.match(/^[а-яА-ЯёЁ]*$/)) {
     regErrorOut.textContent = 'Имя может содержать только кириллицу';
     regErrorOut.classList.remove('hidden');
     return;
   }
   const regSecondName = document.querySelector('#second-name-reg').value.capitalize();
-  if (!regSecondName.match(/^[а-яА-Я]*$/)) {
+  if (!regSecondName.match(/^[а-яА-ЯёЁ]*$/)) {
     regErrorOut.textContent = 'Фамилия может содержать только кириллицу';
     regErrorOut.classList.remove('hidden');
     return;
