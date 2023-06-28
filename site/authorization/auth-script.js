@@ -97,12 +97,12 @@ const registrationCallback = (event) => {
   regErrorOut.classList.add('hidden');
   const regLoginName = document.querySelector('#loginName-reg').value;
   if (regLoginName.match(/^[0-9]+/)) {
-    regErrorOut.textContent = 'логин не должен начинаться с цифр';
+    regErrorOut.textContent = 'Никнейм не должен начинаться с цифр';
     regErrorOut.classList.remove('hidden');
     return;
   }
   if (!regLoginName.match(/^[a-zA-Z]+[a-zA-Z0-9]+$/)) {
-    regErrorOut.textContent = 'логин должен состоять из латинских букв, может включать цифры';
+    regErrorOut.textContent = 'Никнейм должен состоять из латинских букв, может включать цифры';
     regErrorOut.classList.remove('hidden');
     return;
   }
