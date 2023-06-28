@@ -9,6 +9,6 @@ fetchObject('/api/user/')
     document.querySelector('.first-name p').textContent = resp.firstName;
     document.querySelector('.second-name p').textContent = resp.secondName;
     document.querySelector('.e-mail p').textContent = resp.email;
-    document.querySelector('.reg-date p').textContent = resp.regDate;
+    document.querySelector('.reg-date p').textContent = resp.regDate ?? 'неисчислимо давно';
     // userInfo.textContent = resp;
   });
