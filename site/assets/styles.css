@@ -351,6 +351,7 @@ nav {
 .footer {
     background: #d9d9d9;
     min-height: 88px;
+    margin-top: 20px;
 
     display: flex;
     flex-direction: column;
