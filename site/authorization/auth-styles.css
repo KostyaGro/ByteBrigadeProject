@@ -83,7 +83,7 @@ body {
     display: flex;
 }
 
-.ui-container>.active {
+.ui-container > .active {
     top: 0;
     z-index: 50;
     background-color: rgb(255, 255, 255);
@@ -170,4 +170,21 @@ input {
     font-size: 25px;
     line-height: 18px;
     text-align: center;
+}
+
+.help-popup {
+    font-weight: 300;
+    position: absolute;
+    width: 400px;
+    right: -400px;
+    font-family: 'Bahnschrift';
+    font-style: normal;
+    margin: 5px;
+    padding: 20px 20px 5px 30px;
+    border-radius: 20px;
+    font-size: 18px;
+    line-height: 21px;
+    background-color: rgba(4, 201, 4, 0.726);
+    color: rgb(0, 24, 0);
+    letter-spacing: 1px;
 }
