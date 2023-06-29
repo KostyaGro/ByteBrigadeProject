@@ -439,6 +439,9 @@ nav.account {
     position: relative;
     right: 164px;
     top: -35px;
+    padding-top: 50px;
+    /* margin-left: 400px; */
+    /* align-self: start; */
 
     align-items: center;
     /* identical to box height */
