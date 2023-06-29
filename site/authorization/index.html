@@ -11,13 +11,14 @@
         <main class="ui-container">
             <div class="forms-container">
                 <form class="login-form active" action="#">
+                    <p id="already-logged-in" class="hidden">
+                        Вы уже вошли как <span class="bold"></span>
+                    </p>
                     <label> никнейм</label>
                     <input id="loginName-log-in" type="name" />
                     <label> пароль</label>
                     <input id="password-log-in" type="password" />
-                    <p id="login-error-text" class="hidden">
-                        неверный логин или пароль
-                    </p>
+                    <p id="login-error-text" class="hidden">неверный логин или пароль</p>
                     <div id="login-button" class="button medium-size red">
                         <span class="button-text"> войти </span>
                     </div>
@@ -39,9 +40,7 @@
                     <input id="first-name-reg" type="first-name" />
                     <label> фамилия </label>
                     <input id="second-name-reg" type="second-name" />
-                    <p id="registration-error-text" class="hidden">
-                        никнейм занят
-                    </p>
+                    <p id="registration-error-text" class="hidden">никнейм занят</p>
                     <div id="reg-button" class="button medium-size red">
                         <span class="button-text"> зарегистрироваться </span>
                     </div>
@@ -51,14 +50,8 @@
                 </form>
             </div>
 
-            <div tabindex="0" class="login-tab active" data-form="login-form">
-                вход
-            </div>
-            <div
-                tabindex="0"
-                class="registration-tab"
-                data-form="registration-form"
-            >
+            <div tabindex="0" class="login-tab active" data-form="login-form">вход</div>
+            <div tabindex="0" class="registration-tab" data-form="registration-form">
                 регистрация
             </div>
         </main>

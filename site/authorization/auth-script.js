@@ -1,4 +1,4 @@
-import { clearSiblingsOfTag } from '../assets/common-scripts/lib.js';
+import { clearSiblingsOfTag, fetchObject } from '../assets/common-scripts/lib.js';
 
 const loginTabTag = document.querySelector('.login-tab');
 const registerTabTag = document.querySelector('.registration-tab');
@@ -185,3 +185,10 @@ loginForm.addEventListener('keyup', (e) => {
     loginCallback(e);
   }
 });
+
+const alreadyLoggedInMessage = document.querySelector('#already-logged-in .bold');
+fetchObject('/api/user/')
+  .then((resp) => {
+    alreadyLoggedInMessage.textContent = `${resp.loginName}`;
+    alreadyLoggedInMessage.parentElement.classList.remove('hidden');
+  });
