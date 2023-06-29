@@ -323,7 +323,7 @@ svg .fuse-line {
 
 .user-info {
     width: 491px;
-    margin: 50px;
+    /* margin: 50px; */
 }
 
 nav {
@@ -350,7 +350,7 @@ nav {
 
 .footer {
     background: #d9d9d9;
-    height: 88px;
+    min-height: 88px;
 
     display: flex;
     flex-direction: column;
@@ -438,8 +438,9 @@ nav.account {
 .small-logo {
     position: relative;
     right: 164px;
-    top: -35px;
-    padding-top: 50px;
+    /* top: -35px; */
+    padding-top: 30px;
+    padding-bottom: 30px;
     /* margin-left: 400px; */
     /* align-self: start; */
 
