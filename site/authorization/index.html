@@ -18,7 +18,9 @@
                     <input id="loginName-log-in" type="name" />
                     <label> пароль</label>
                     <input id="password-log-in" type="password" />
-                    <p id="login-error-text" class="hidden">неверный логин или пароль</p>
+                    <p id="login-error-text" class="hidden">
+                        неверный логин или пароль
+                    </p>
                     <div id="login-button" class="button medium-size red">
                         <span class="button-text"> войти </span>
                     </div>
@@ -28,30 +30,133 @@
                 </form>
 
                 <form class="registration-form" action="#">
-                    <label> никнейм *</label>
-                    <input id="loginName-reg" type="name" />
-                    <label> пароль *</label>
-                    <input id="password-reg" type="password" />
-                    <label> повторите пароль *</label>
-                    <input id="password-repeat-reg" type="password" />
-                    <label> e-mail *</label>
-                    <input id="email-reg" type="email" />
-                    <label> имя </label>
-                    <input id="first-name-reg" type="first-name" />
-                    <label> фамилия </label>
-                    <input id="second-name-reg" type="second-name" />
-                    <p id="registration-error-text" class="hidden">никнейм занят</p>
-                    <div id="reg-button" class="button medium-size red">
+                    <label>
+                        никнейм *
+                        <div id="help-nick" class="help-popup hidden">
+                            Имя пользователя для входа на сайт:
+                            <ul>
+                                <li>
+                                    может содержать только латинские буквы и
+                                    цифры
+                                </li>
+                                <li>не должно начинаться с цифр</li>
+                                <li>* поле обязательно для заполнения</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input
+                        id="loginName-reg"
+                        type="name"
+                        data-help-id="help-nick"
+                    />
+                    <label>
+                        пароль *
+                        <div id="help-password" class="help-popup hidden">
+                            Пароль для входа на сайт:
+                            <ul>
+                                <li>должен быть не короче 4 символов</li>
+                                <li>не должен содержать пробелов</li>
+                                <li>* поле обязательно для заполнения</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input
+                        id="password-reg"
+                        type="password"
+                        data-help-id="help-password"
+                    />
+
+                    <label>
+                        повторите пароль *
+                        <div
+                            id="help-repeat-password"
+                            class="help-popup hidden"
+                        >
+                            Повторите пароль, введнный выше, для исключения
+                            опечаток:
+                            <ul>
+                                <li>* поле обязательно для заполнения</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input
+                        id="password-repeat-reg"
+                        type="password"
+                        data-help-id="help-repeat-password"
+                    />
+                    <label>
+                        e-mail *
+                        <div id="help-email" class="help-popup hidden">
+                            Адрес вашей электронной почты:
+                            <ul>
+                                <li>* поле обязательно для заполнения</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input
+                        id="email-reg"
+                        type="email"
+                        data-help-id="help-email"
+                    />
+                    <label>
+                        имя
+                        <div id="help-first-name" class="help-popup hidden">
+                            Ваше имя:
+                            <ul>
+                                <li>может содержать только кириллицу</li>
+                                <li>не должно содержать пробелов</li>
+                                <li>не обязательно для заполнения</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input
+                        id="first-name-reg"
+                        type="first-name"
+                        data-help-id="help-first-name"
+                    />
+                    <label>
+                        фамилия
+                        <div id="help-second-name" class="help-popup hidden">
+                            Ваша фамилия:
+                            <ul>
+                                <li>может содержать только кириллицу</li>
+                                <li>не должна содержать пробелов</li>
+                                <li>не обязательно для заполнения</li>
+                            </ul>
+                        </div>
+                    </label>
+                    <input
+                        id="second-name-reg"
+                        type="second-name"
+                        data-help-id="help-second-name"
+                    />
+                    <p id="registration-error-text" class="hidden">
+                        никнейм занят
+                    </p>
+                    <div
+                        style="width: 250px"
+                        id="reg-button"
+                        class="button medium-size red"
+                    >
                         <span class="button-text"> зарегистрироваться </span>
                     </div>
-                    <div class="button medium-size white go-back">
+                    <div
+                        style="width: 250px"
+                        class="button medium-size white go-back"
+                    >
                         <span class="button-text"> отмена </span>
                     </div>
                 </form>
             </div>
 
-            <div tabindex="0" class="login-tab active" data-form="login-form">вход</div>
-            <div tabindex="0" class="registration-tab" data-form="registration-form">
+            <div tabindex="0" class="login-tab active" data-form="login-form">
+                вход
+            </div>
+            <div
+                tabindex="0"
+                class="registration-tab"
+                data-form="registration-form"
+            >
                 регистрация
             </div>
         </main>

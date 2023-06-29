@@ -176,3 +176,15 @@ fetchObject('/api/user/')
     alreadyLoggedInMessage.textContent = `${resp.loginName}`;
     alreadyLoggedInMessage.parentElement.classList.remove('hidden');
   });
+
+regForm.addEventListener('focusin', (e) => {
+  const helpID = e.target.dataset.helpId;
+  const helpPopup = document.querySelector(`#${helpID}`);
+  helpPopup.classList.remove('hidden');
+});
+
+regForm.addEventListener('focusout', (e) => {
+  const helpID = e.target.dataset.helpId;
+  const helpPopup = document.querySelector(`#${helpID}`);
+  helpPopup.classList.add('hidden');
+});
