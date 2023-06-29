@@ -341,6 +341,10 @@ nav {
     color: black;
     font-size: 22px;
     font-family: Bahnschrift;
+    height: 20px;
+}
+
+.user-info div p {
     height: 36px;
 }
 

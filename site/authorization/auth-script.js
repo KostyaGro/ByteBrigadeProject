@@ -1,4 +1,4 @@
-import { clearSiblingsOfTag } from '../assets/common-scripts/lib.js';
+import { clearSiblingsOfTag, fetchObject } from '../assets/common-scripts/lib.js';
 
 const loginTabTag = document.querySelector('.login-tab');
 const registerTabTag = document.querySelector('.registration-tab');
@@ -91,53 +91,37 @@ String.prototype.capitalize = function () {
   return this[0].toLocaleUpperCase() + this.substring(1).toLocaleLowerCase();
 };
 
+// eslint-disable-next-line consistent-return
 const registrationCallback = (event) => {
   event.preventDefault();
   const regErrorOut = document.querySelector('#registration-error-text');
   regErrorOut.classList.add('hidden');
+  const showErrorMessage = (errString) => {
+    regErrorOut.textContent = errString.capitalize();
+    regErrorOut.classList.remove('hidden');
+  };
+
   const regLoginName = document.querySelector('#loginName-reg').value;
-  if (regLoginName.match(/^[0-9]+/)) {
-    regErrorOut.textContent = 'Никнейм не должен начинаться с цифр';
-    regErrorOut.classList.remove('hidden');
-    return;
-  }
-  if (!regLoginName.match(/^[a-zA-Z]+[a-zA-Z0-9]+$/)) {
-    regErrorOut.textContent = 'Никнейм должен состоять из латинских букв, может включать цифры';
-    regErrorOut.classList.remove('hidden');
-    return;
-  }
+  if (regLoginName.match(/^[0-9]+/)) return showErrorMessage('Никнейм не должен начинаться с цифр');
+  if (!regLoginName.match(/^[a-zA-Z]+[a-zA-Z0-9]+$/)) return showErrorMessage('Никнейм должен состоять из латинских букв, может включать цифры');
 
   const regPassword = document.querySelector('#password-reg').value;
-  const regPasswordRepeat = document.querySelector('#password-repeat-reg').value;
-  if (regPassword !== regPasswordRepeat) {
-    regErrorOut.textContent = 'Пароли не совпадают';
-    regErrorOut.classList.remove('hidden');
-    return;
-  }
-  const regEmail = document.querySelector('#email-reg').value;
-  if (regEmail === '') {
-    regErrorOut.textContent = 'Укажите ваш e-mail';
-    regErrorOut.classList.remove('hidden');
-    return;
-  }
-  if (!regEmail.match(/^[-._a-zA-z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/)) {
-    regErrorOut.textContent = 'неверный формат e-mail';
-    regErrorOut.classList.remove('hidden');
-    return;
-  }
-  const regFirstName = document.querySelector('#first-name-reg').value.capitalize();
+  if (!regPassword.match(/^.{4,}$/)) return showErrorMessage('Пароль слишком короткий');
+  if (!regPassword.match(/^[\S]{4,}$/)) return showErrorMessage('пароль не должен содержать пробелы');
 
-  if (!regFirstName.match(/^[а-яА-ЯёЁ]*$/)) {
-    regErrorOut.textContent = 'Имя может содержать только кириллицу';
-    regErrorOut.classList.remove('hidden');
-    return;
-  }
+  const regPasswordRepeat = document.querySelector('#password-repeat-reg').value;
+  if (!regPasswordRepeat) return showErrorMessage('Повторите пароль');
+  if (regPassword !== regPasswordRepeat) return showErrorMessage('Пароли не совпадают');
+
+  const regEmail = document.querySelector('#email-reg').value;
+  if (regEmail === '') return showErrorMessage('Укажите ваш e-mail');
+  if (!regEmail.match(/^[-._a-zA-z0-9]+@[a-zA-Z]+\.[a-zA-Z]+$/)) return showErrorMessage('Неверный формат e-mail');
+
+  const regFirstName = document.querySelector('#first-name-reg').value.capitalize();
+  if (!regFirstName.match(/^[а-яА-ЯёЁ]*$/)) return showErrorMessage('Имя может содержать только кириллицу');
+
   const regSecondName = document.querySelector('#second-name-reg').value.capitalize();
-  if (!regSecondName.match(/^[а-яА-ЯёЁ]*$/)) {
-    regErrorOut.textContent = 'Фамилия может содержать только кириллицу';
-    regErrorOut.classList.remove('hidden');
-    return;
-  }
+  if (!regSecondName.match(/^[а-яА-ЯёЁ]*$/)) return showErrorMessage('Фамилия может содержать только кириллицу');
 
   const credentials = {
     loginName: regLoginName,
@@ -184,4 +168,23 @@ loginForm.addEventListener('keyup', (e) => {
   if (e.key === 'Enter') {
     loginCallback(e);
   }
+});
+
+const alreadyLoggedInMessage = document.querySelector('#already-logged-in .bold');
+fetchObject('/api/user/')
+  .then((resp) => {
+    alreadyLoggedInMessage.textContent = `${resp.loginName}`;
+    alreadyLoggedInMessage.parentElement.classList.remove('hidden');
+  });
+
+regForm.addEventListener('focusin', (e) => {
+  const helpID = e.target.dataset.helpId;
+  const helpPopup = document.querySelector(`#${helpID}`);
+  helpPopup.classList.remove('hidden');
+});
+
+regForm.addEventListener('focusout', (e) => {
+  const helpID = e.target.dataset.helpId;
+  const helpPopup = document.querySelector(`#${helpID}`);
+  helpPopup.classList.add('hidden');
 });
