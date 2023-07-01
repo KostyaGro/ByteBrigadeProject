@@ -54,8 +54,8 @@ const popError = (e) => {
   errorPopup.offsetHeight; /* trigger reflow */
   errorPopup.style.animation = null;
   errorPopup.style.display = 'flex';
-  errorPopup.style.top = `${e.clientY - errorPopup.offsetHeight}px`;
-  errorPopup.style.left = `${(e.clientX - errorPopup.offsetWidth / 2)}px`;
+  errorPopup.style.top = `${e.pageY - errorPopup.offsetHeight}px`;
+  errorPopup.style.left = `${(e.pageX - errorPopup.offsetWidth / 2)}px`;
   errorPopup.timerRef = setTimeout(() => {
     errorPopup.style.display = 'none';
   }, 5000);
